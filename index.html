@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>消费策略模拟 · 项目构想</title>
+  <style>
+    :root {
+      --text: #1a1a1a;
+      --muted: #555;
+      --border: #e5e5e5;
+      --accent: #2563eb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+        "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--text);
+      background: #fafafa;
+    }
+    main {
+      max-width: 42rem;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4rem;
+      background: #fff;
+      min-height: 100vh;
+    }
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin: 0 0 0.5rem;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin: 0 0 2.5rem;
+    }
+    h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 2.25rem 0 0.75rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 1px solid var(--border);
+    }
+    p { margin: 0 0 1rem; }
+    ul, ol { margin: 0 0 1rem; padding-left: 1.35rem; }
+    li { margin-bottom: 0.35rem; }
+    strong { font-weight: 600; }
+    .tag {
+      display: inline-block;
+      font-size: 0.8rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      background: #eff6ff;
+      color: var(--accent);
+      margin-right: 0.35rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin: 1rem 0;
+    }
+    th, td {
+      text-align: left;
+      padding: 0.5rem 0.65rem;
+      border: 1px solid var(--border);
+      vertical-align: top;
+    }
+    th { background: #f5f5f5; font-weight: 600; }
+    footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p><span class="tag">AI for Social Sciences</span><span class="tag">Week 2</span></p>
+    <h1>消费策略模拟：不确定情境下的高中生决策</h1>
+    <p class="subtitle">
+      上海市平和学校 · 高二 · 互动模拟游戏（网页）<br />
+      Generation AI 2026 · 初步项目构想
+    </p>
+
+    <h2>社会问题与受众</h2>
+    <p>
+      <strong>问题：</strong>高中生在零花钱有限、商品信息不完整时，常面临「不知道值不值得买」，同时又看到同学、朋友或「多数人已经买了」的信号。此时他们会坚持自己的判断、跟随他人、先查更多信息，还是优先守住预算？这一过程涉及社会比较、信息差与机会成本，但缺少可观察、可讨论的测量方式。
+    </p>
+    <p>
+      <strong>受众：</strong>主要面向<strong>中国高中生</strong>（本校同学及同龄样本），也供家长、教师用于讨论理性消费与同伴影响。
+    </p>
+
+    <h2>产品形态</h2>
+    <p>
+      <strong>互动模拟游戏（网页）。</strong>非幻灯片演示：玩家在浏览器中完成约 5 分钟、4 个固定情境，每情境做一次选择；系统记录选项、虚拟预算变化，并在结尾生成<strong>消费策略标签</strong>（非好坏评判，仅描述策略模式）。
+    </p>
+    <p>分析框架借鉴<strong>博弈论</strong>的基本思想：在「他人选择会影响自己的结果」的条件下，消费是一种策略选择，而非孤立的个人行为。</p>
+
+    <h2>核心研究问题</h2>
+    <p>
+      当高中生面对不确定是否「值得购买」的商品，且同时接收到他人或群体的消费信号时，他们更常采用哪类决策策略？<strong>预算压力</strong>与<strong>群体信号</strong>是否会改变策略分布？
+    </p>
+
+    <h2>游戏结构（最小可玩版本）</h2>
+    <ul>
+      <li>开局：虚拟预算 800 元</li>
+      <li>场景 1：信息不确定（评价两极，无他人信号）</li>
+      <li>场景 2：群体信号（「班里已有多人购买」）</li>
+      <li>场景 3：预算压力（剩余预算紧张 + 限时促销）</li>
+      <li>场景 4：信号 + 促销叠加（短视频/直播情境）</li>
+      <li>结局：策略标签 + 预算结果 + 匿名提交数据</li>
+    </ul>
+    <p>每场景固定选项，例如：立即购买 / 查评价或等待 / 放弃 / 选替代方案。</p>
+
+    <h2>策略标签（示例）</h2>
+    <ul>
+      <li>独立判断型 · 信号跟随型 · 信息验证型</li>
+      <li>预算防守型 · 机会冒险型 · 协调参与型 · 混合型</li>
+    </ul>
+    <p>由各场景选择累计计分得出，用于帮助玩家认识自己的决策模式，而非道德评价。</p>
+
+    <h2>如何收集用户反馈（数据）</h2>
+    <p>从第一版起内置<strong>匿名数据记录</strong>（如提交至在线表格或后端接口）：</p>
+    <table>
+      <thead>
+        <tr>
+          <th>记录项</th>
+          <th>用途</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>场景 1–4 各选项（A/B/C/D）</td>
+          <td>分析不同情境下的策略选择比例</td>
+        </tr>
+        <tr>
+          <td>虚拟预算起始值与结局余额</td>
+          <td>分析预算压力与超支/克制的关系</td>
+        </tr>
+        <tr>
+          <td>系统生成的策略标签</td>
+          <td>描述样本中的策略类型分布</td>
+        </tr>
+        <tr>
+          <td>（可选）性别、年级、自评理性程度</td>
+          <td>交叉分析，如自评 vs 实际选择是否一致</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>目标样本：约 <strong>25 人</strong>试玩（课程参考标准），可扩展至更大年级群体。</p>
+
+    <h2>反馈如何支撑研究论文</h2>
+    <ol>
+      <li>
+        <strong>研究问题</strong>：用上述数据回答「哪类策略最常见」「群体信号场景是否显著提高跟买比例」「预算紧张时限时购买比例是否上升」等可测量问题。
+      </li>
+      <li>
+        <strong>方法</strong>：互动网页为研究工具（instrument）；用户每次选择为一条观测（data point）。
+      </li>
+      <li>
+        <strong>分析</strong>：描述统计（各标签占比、各场景选项比例）+ 简单交叉（如场景 2 跟买 vs 场景 1 是否先查评价；低预算 vs 高预算下的选择差异）。
+      </li>
+      <li>
+        <strong>理论对话</strong>：与社会影响、信息搜寻、预算约束相关文献对照（文献需自行核实，不依赖 AI 编造引用）。
+      </li>
+      <li>
+        <strong>伦理</strong>：匿名、自愿参与、结果仅作策略描述、不羞辱或贴「坏消费者」标签。
+      </li>
+    </ol>
+
+    <h2>本周之后的发展路线</h2>
+    <ul>
+      <li>本周：完成本构想页 + GitHub 公开仓库</li>
+      <li>下一步：实现可玩的单页 HTML/JS 小游戏 + 表单提交数据</li>
+      <li>暑期：约 25 人用户试玩 + 约 4000–5000 字 APA 格式论文（含文献综述、方法、结果、伦理）</li>
+    </ul>
+
+    <footer>
+      项目仓库将托管于 GitHub · 单文件 HTML，无外部框架<br />
+      联系：平和学校 · AI for Social Sciences 2026
+    </footer>
+  </main>
+</body>
+</html>
