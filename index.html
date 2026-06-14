@@ -3,17 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Week 2 · 消费自我认知与实际选择</title>
+  <title>高中生消费自我认知与实际选择差异</title>
   <style>
     :root {
-      --bg: #f6f7f4;
+      --bg: #f5f6f2;
       --paper: #ffffff;
+      --panel: #f9faf7;
       --text: #202124;
-      --muted: #5f6673;
-      --line: #dfe3e8;
+      --muted: #626a73;
+      --line: #dde2e6;
       --accent: #1f7a5a;
-      --accent-soft: #e9f5ef;
-      --note: #f8faf8;
+      --accent-dark: #165a43;
+      --accent-soft: #e8f4ed;
+      --warn: #9a5b18;
+      --warn-soft: #fff5e6;
+      --danger: #9b2c2c;
+      --danger-soft: #fff0f0;
+      --blue: #245b9d;
+      --blue-soft: #edf4ff;
+      --shadow: 0 18px 45px rgba(30, 38, 50, 0.08);
     }
 
     * {
@@ -25,80 +33,89 @@
       background: var(--bg);
       color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
-        "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-      font-size: 17px;
-      line-height: 1.68;
+        "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.62;
     }
 
     main {
-      max-width: 900px;
+      max-width: 1120px;
       min-height: 100vh;
       margin: 0 auto;
-      padding: 48px 24px 64px;
-      background: var(--paper);
+      padding: 34px 18px 56px;
     }
 
     h1,
     h2,
     h3 {
+      margin: 0;
+      line-height: 1.24;
       letter-spacing: 0;
-      line-height: 1.25;
     }
 
     h1 {
-      margin: 0 0 10px;
-      font-size: clamp(30px, 5vw, 44px);
+      max-width: 850px;
+      font-size: clamp(30px, 5vw, 52px);
     }
 
     h2 {
-      margin: 38px 0 12px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--line);
-      font-size: 22px;
+      margin-bottom: 12px;
+      font-size: 23px;
     }
 
     h3 {
-      margin: 0 0 8px;
-      font-size: 17px;
+      margin-bottom: 8px;
+      font-size: 18px;
     }
 
     p {
-      margin: 0 0 14px;
+      margin: 0 0 13px;
     }
 
     ul,
     ol {
-      margin: 0 0 16px;
+      margin: 0;
       padding-left: 1.25rem;
     }
 
     li {
-      margin-bottom: 7px;
+      margin: 5px 0;
     }
 
-    strong {
-      font-weight: 700;
+    button,
+    input,
+    textarea {
+      font: inherit;
     }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 14px 0 18px;
-      font-size: 15px;
+    button {
+      cursor: pointer;
     }
 
-    th,
-    td {
+    .shell {
+      display: grid;
+      gap: 18px;
+    }
+
+    .hero,
+    .section,
+    .tool {
       border: 1px solid var(--line);
-      padding: 10px 12px;
-      text-align: left;
-      vertical-align: top;
+      border-radius: 8px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
     }
 
-    th {
-      width: 30%;
-      background: #f2f4f2;
-      font-weight: 700;
+    .hero {
+      padding: 34px;
+    }
+
+    .section {
+      padding: 24px;
+    }
+
+    .tool {
+      overflow: hidden;
     }
 
     .tags {
@@ -110,25 +127,27 @@
 
     .tag {
       display: inline-flex;
-      align-items: center;
       min-height: 28px;
+      align-items: center;
       padding: 3px 10px;
       border-radius: 999px;
       background: var(--accent-soft);
-      color: var(--accent);
+      color: var(--accent-dark);
       font-size: 14px;
-      font-weight: 650;
+      font-weight: 700;
     }
 
     .subtitle {
+      max-width: 820px;
+      margin-top: 16px;
       color: var(--muted);
-      margin-bottom: 28px;
+      font-size: 18px;
     }
 
     .callout {
-      margin: 22px 0;
+      margin-top: 22px;
       padding: 16px 18px;
-      border: 1px solid #b9d8c6;
+      border: 1px solid #bad8c6;
       border-radius: 8px;
       background: #f4fbf7;
     }
@@ -137,273 +156,943 @@
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 14px;
-      margin: 16px 0 18px;
     }
 
     .card {
-      padding: 14px;
+      min-height: 100%;
+      padding: 15px;
       border: 1px solid var(--line);
       border-radius: 8px;
-      background: var(--note);
+      background: var(--panel);
     }
 
     .card p:last-child {
       margin-bottom: 0;
     }
 
-    .flow {
-      counter-reset: step;
+    .muted {
+      color: var(--muted);
+    }
+
+    .topic-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 15px;
+    }
+
+    .topic-table th,
+    .topic-table td {
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .topic-table th {
+      width: 27%;
+      background: #f1f3ef;
+    }
+
+    .tool-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: center;
+      padding: 22px 24px;
+      border-bottom: 1px solid var(--line);
+      background: #fbfcf9;
+    }
+
+    .stepper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .step-pill {
+      min-height: 30px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .step-pill.active {
+      border-color: #a9d1ba;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+    }
+
+    .tool-body {
+      padding: 24px;
+    }
+
+    .screen {
+      display: none;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    .question-list {
       display: grid;
       gap: 12px;
-      margin: 16px 0 18px;
+      margin-top: 16px;
     }
 
-    .flow-step {
-      position: relative;
-      padding: 14px 14px 14px 52px;
+    .question {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 16px;
+      align-items: center;
+      padding: 14px;
       border: 1px solid var(--line);
       border-radius: 8px;
-      background: #fbfcfb;
+      background: #fff;
     }
 
-    .flow-step::before {
-      counter-increment: step;
-      content: counter(step);
-      position: absolute;
-      left: 14px;
-      top: 16px;
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
+    .choice-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .choice,
+    .primary,
+    .secondary,
+    .option-btn {
+      min-height: 42px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      padding: 9px 13px;
+      background: #fff;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .choice.selected,
+    .option-btn.selected {
+      border-color: #82b99a;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+    }
+
+    .primary {
+      border-color: var(--accent);
       background: var(--accent);
       color: #fff;
+    }
+
+    .primary:disabled {
+      cursor: not-allowed;
+      border-color: #c8d0d5;
+      background: #d8dee2;
+      color: #7c858d;
+    }
+
+    .secondary {
+      background: #fff;
+      color: var(--text);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+      align-items: center;
+    }
+
+    .checkout {
       display: grid;
+      grid-template-columns: minmax(0, 1fr) 320px;
+      gap: 18px;
+      align-items: start;
+      margin-top: 16px;
+    }
+
+    .phone {
+      border: 1px solid #cfd6dc;
+      border-radius: 18px;
+      background: #ffffff;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(37, 48, 62, 0.1);
+    }
+
+    .phone-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 44px;
+      padding: 0 14px;
+      border-bottom: 1px solid var(--line);
+      background: #f7f8f7;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .phone-body {
+      padding: 16px;
+    }
+
+    .order-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-weight: 800;
+    }
+
+    .placeholder-box {
+      display: grid;
+      min-height: 92px;
       place-items: center;
-      font-weight: 700;
+      margin-bottom: 14px;
+      border: 1px dashed #cbd4d9;
+      border-radius: 8px;
+      background: #f8faf9;
+      color: var(--muted);
       font-size: 14px;
+      text-align: center;
+    }
+
+    .budget {
+      margin: 12px 0 14px;
+      padding: 12px;
+      border-radius: 8px;
+      background: var(--blue-soft);
+      color: #173d6e;
+    }
+
+    .bar {
+      height: 10px;
+      overflow: hidden;
+      margin-top: 8px;
+      border-radius: 999px;
+      background: #dbe6f4;
+    }
+
+    .bar-fill {
+      width: 55%;
+      height: 100%;
+      border-radius: inherit;
+      background: var(--blue);
+      transition: width 0.25s ease;
+    }
+
+    .notice {
+      margin: 12px 0;
+      padding: 12px;
+      border: 1px solid #f0cf9a;
+      border-radius: 8px;
+      background: var(--warn-soft);
+      color: var(--warn);
+      font-weight: 700;
+    }
+
+    .service {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .fake-check {
+      display: grid;
+      width: 20px;
+      height: 20px;
+      flex: 0 0 auto;
+      place-items: center;
+      border-radius: 5px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .review-list {
+      display: grid;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .review {
+      padding: 10px;
+      border-radius: 8px;
+      background: #f6f7f4;
+      color: #3f464d;
+      font-size: 14px;
+    }
+
+    .option-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .option-btn {
+      width: 100%;
+      text-align: left;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 82px;
+      margin-top: 14px;
+      resize: vertical;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 11px 12px;
+      background: #fff;
+      color: var(--text);
+    }
+
+    .side-panel {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .result-card {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .result-card.good {
+      border-color: #add2bc;
+      background: #f3fbf6;
+    }
+
+    .result-card.mismatch {
+      border-color: #f0c2c2;
+      background: var(--danger-soft);
+    }
+
+    .badge {
+      display: inline-flex;
+      min-height: 24px;
+      align-items: center;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: #eef1f3;
+      color: #43505b;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .badge.good {
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+    }
+
+    .badge.mismatch {
+      background: var(--danger-soft);
+      color: var(--danger);
+    }
+
+    .export-box {
+      width: 100%;
+      min-height: 160px;
+      margin-top: 14px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 13px;
+      white-space: pre-wrap;
     }
 
     footer {
-      margin-top: 44px;
-      padding-top: 20px;
-      border-top: 1px solid var(--line);
+      margin-top: 18px;
       color: var(--muted);
       font-size: 14px;
+      text-align: center;
     }
 
-    @media (max-width: 760px) {
-      main {
-        padding: 32px 18px 48px;
+    .research-toggle {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      border: 1px solid var(--line);
+      background: #ffffff;
+      color: var(--text);
+      padding: 18px;
+      border-radius: 8px;
+      text-align: left;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(16, 24, 40, 0.06);
+    }
+
+    .research-toggle strong {
+      display: block;
+      margin-top: 4px;
+      font-size: 22px;
+    }
+
+    .research-kicker {
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .toggle-symbol {
+      width: 34px;
+      height: 34px;
+      display: inline-grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      font-size: 24px;
+      line-height: 1;
+      transition: transform 0.18s ease;
+      flex: 0 0 auto;
+    }
+
+    .research-toggle[aria-expanded="true"] .toggle-symbol {
+      transform: rotate(45deg);
+    }
+
+    .research-panel {
+      display: none;
+      margin-top: 16px;
+    }
+
+    .research-panel.open {
+      display: block;
+    }
+
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .research-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+      padding: 16px;
+    }
+
+    .research-card.full {
+      grid-column: 1 / -1;
+    }
+
+    .research-card h3 {
+      margin: 0 0 8px;
+    }
+
+    @media (max-width: 860px) {
+      .hero,
+      .section,
+      .tool-body,
+      .tool-header {
+        padding: 20px;
       }
 
-      .grid {
+      .grid,
+      .checkout,
+      .result-grid,
+      .research-grid {
         grid-template-columns: 1fr;
       }
 
-      th {
-        width: 38%;
+      .question {
+        grid-template-columns: 1fr;
+      }
+
+      .choice-row {
+        justify-content: flex-start;
       }
     }
   </style>
 </head>
 <body>
   <main>
-    <div class="tags">
-      <span class="tag">AI for Social Sciences</span>
-      <span class="tag">Week 2</span>
-      <span class="tag">Preliminary Idea</span>
+    <div class="shell">
+      <section class="hero">
+        <div class="tags">
+          <span class="tag">AI for Social Sciences</span>
+          <span class="tag">Interactive MVP</span>
+          <span class="tag">单文件作品页</span>
+        </div>
+        <h1>高中生消费自我认知与实际选择差异</h1>
+        <p class="subtitle">
+          上海市平和学校 · 高二项目。这个作品关注人在社会环境中如何理解自己，以及真实的数字消费页面如何暴露这种自我理解的偏差。
+        </p>
+        <div class="callout">
+          <p><strong>一句话概括：</strong>我想做一个类似 MBTI 形式、但更偏研究性的网页互动工具。它会先让高中生评估自己平时的消费判断方式，再让他们完成几个数字消费情境，最后比较“我以为的自己”和“我实际做出的选择”是否一致。</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>作品说明</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>社会议题</h3>
+            <p>我关注的社会问题是：人在社会环境中如何理解自己，以及真实情境如何暴露这种自我理解的偏差。放到高中生消费中，很多人可能会认为自己“比较理性”“不会轻易冲动”“会看预算”“会先查评价”，但在具体数字消费情境中，他们的实际选择可能和自我判断不完全一致。</p>
+          </div>
+          <div class="card">
+            <h3>目标用户</h3>
+            <p>这个项目主要面向高中生。它不把参与者简单分成“理性”或“冲动”，而是观察他们如何描述自己的消费判断能力，以及他们在具体情境中是否真的按照这种自我认知行动。</p>
+          </div>
+          <div class="card">
+            <h3>产品形式</h3>
+            <p>网页互动工具：中性自我认知评估 + 统一购物下单界面 demo + 前后结果对比。页面不使用真实人民币金额，不展示具体商品图片，降低商品偏好和金钱感知差异的影响。</p>
+          </div>
+        </div>
+
+        <table class="topic-table">
+          <tr>
+            <th>中文项目名称</th>
+            <td>高中生消费自我认知与实际选择差异研究：基于互动情境模拟</td>
+          </tr>
+          <tr>
+            <th>English Topic</th>
+            <td>High School Students' Consumer Self-Perception and Simulated Choices in Digital Consumption Scenarios</td>
+          </tr>
+          <tr>
+            <th>核心研究问题</th>
+            <td>高中生对自己消费判断能力的自我认知，是否会和他们在数字消费情境中的实际选择出现差异？如果出现差异，他们如何解释这种差异？</td>
+          </tr>
+        </table>
+      </section>
+
+      <section class="section" id="research-section">
+        <button class="research-toggle" id="research-toggle" type="button" aria-expanded="false" aria-controls="research-panel">
+          <span>
+            <span class="research-kicker">Midterm research story</span>
+            <strong>研究 / The research</strong>
+          </span>
+          <span class="toggle-symbol" aria-hidden="true">+</span>
+        </button>
+
+        <div class="research-panel" id="research-panel">
+          <div class="research-grid">
+            <div class="research-card full">
+              <h3>研究问题 / Research Question</h3>
+              <p>这个互动式下单模拟工具，如何帮助高中生识别自己“以为会怎么消费”和“实际会怎么选择”之间的差距？</p>
+              <p class="muted">English version: How does an interactive checkout simulation affect high school students' recognition of gaps between their consumer self-perception and simulated choices?</p>
+            </div>
+
+            <div class="research-card">
+              <h3>假设 / Hypothesis</h3>
+              <p>我预计，使用这个工具后，高中生会更容易意识到自己的消费自我认知和模拟选择之间可能并不完全一致。</p>
+            </div>
+
+            <div class="research-card">
+              <h3>为什么重要 / Why It Matters</h3>
+              <p>高中生每天都会接触购物页、会员服务、游戏道具、短视频推荐和评价信息。页面里的倒计时、默认选项、高评分并不是中性的设计，它们可能影响人的判断。</p>
+            </div>
+
+            <div class="research-card">
+              <h3>我做了什么 / What I Built</h3>
+              <p>我做了一个单文件网页：先让用户回答中性的消费判断题，再进入三个模拟下单情境，包括优惠压力、默认加购和评价冲突。</p>
+            </div>
+
+            <div class="research-card">
+              <h3>初步观察方向 / Early Direction</h3>
+              <p>用户研究还没有正式开始，所以这里不写结论。我接下来会观察：哪些人前后选择一致，哪些人在页面机制影响下偏离了自己原本的判断，以及他们如何解释这种偏离。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="tool" aria-labelledby="tool-title">
+        <div class="tool-header">
+          <div>
+            <h2 id="tool-title">互动 Demo：自我认知与下单选择对照</h2>
+            <p class="muted">完成 8 道中性评估题，再体验 3 个购物页面机制。所有数据只在本浏览器里生成。</p>
+          </div>
+          <div class="stepper" aria-label="进度">
+            <span class="step-pill active" data-step-label="intro">说明</span>
+            <span class="step-pill" data-step-label="survey">评估</span>
+            <span class="step-pill" data-step-label="scenario">下单页</span>
+            <span class="step-pill" data-step-label="result">结果</span>
+          </div>
+        </div>
+
+        <div class="tool-body">
+          <div class="screen active" id="screen-intro">
+            <h3>开始前说明</h3>
+            <p>你将进入一个仿购物软件的下单页面。这里不会发生真实付款，也不会收集姓名、手机号、真实消费记录或支付信息。</p>
+            <p>本 demo 想观察的是：你对自己消费判断方式的理解，和你在模拟页面中的实际操作是否一致。</p>
+            <div class="actions">
+              <button class="primary" id="start-btn" type="button">开始评估</button>
+            </div>
+          </div>
+
+          <div class="screen" id="screen-survey">
+            <h3>第一部分：中性自我认知评估</h3>
+            <p class="muted">题目不涉及具体商品和具体金额。请选择“比较符合我”或“不太符合我”。</p>
+            <div class="question-list" id="question-list"></div>
+            <div class="actions">
+              <button class="secondary" id="survey-back" type="button">返回说明</button>
+              <button class="primary" id="survey-next" type="button" disabled>进入下单页面 demo</button>
+            </div>
+          </div>
+
+          <div class="screen" id="screen-scenario">
+            <h3 id="scenario-title">第二部分：购物软件下单界面 demo</h3>
+            <p class="muted" id="scenario-desc"></p>
+            <div class="checkout">
+              <div class="phone" aria-label="模拟手机购物页面">
+                <div class="phone-top">
+                  <span>购物软件 · 下单确认</span>
+                  <span id="scenario-count">1 / 3</span>
+                </div>
+                <div class="phone-body" id="phone-body"></div>
+              </div>
+              <div class="side-panel">
+                <h3>你的选择</h3>
+                <p class="muted">请选择你会怎么操作，并用一句话解释原因。</p>
+                <div class="option-list" id="option-list"></div>
+                <textarea id="reason" placeholder="写一句原因，例如：我想先确认规则 / 我没有注意到默认服务 / 我觉得评价还可以。"></textarea>
+                <div class="actions">
+                  <button class="secondary" id="scenario-back" type="button">上一步</button>
+                  <button class="primary" id="scenario-next" type="button" disabled>确认这一轮</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="screen" id="screen-result">
+            <h3>结果页：自我认知与页面操作对照</h3>
+            <p id="result-summary"></p>
+            <div class="result-grid" id="result-grid"></div>
+            <label for="reflection"><strong>最后反思</strong></label>
+            <textarea id="reflection" placeholder="这个结果和你对自己的理解一致吗？为什么？"></textarea>
+            <div class="actions">
+              <button class="secondary" id="copy-result" type="button">生成 / 复制研究记录</button>
+              <button class="secondary" id="restart" type="button">重新体验</button>
+            </div>
+            <textarea class="export-box" id="export-box" readonly placeholder="点击“生成 / 复制研究记录”后，这里会出现可用于后续统计分析的 JSON 数据。"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>后续可以分析什么</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>定量数据</h3>
+            <p>每个用户出现几次“评估与操作不一致”；哪个页面机制最容易造成不一致：优惠压力、默认加购、评价冲突。</p>
+          </div>
+          <div class="card">
+            <h3>定性解释</h3>
+            <p>用户写下的原因可以归为主题，例如没注意到页面变化、想保留优惠、觉得默认服务有用、相信总体评价、觉得查看更多信息太麻烦。</p>
+          </div>
+          <div class="card">
+            <h3>研究价值</h3>
+            <p>这个项目不评价谁“理性”或“冲动”，而是研究高中生如何理解自己的消费判断能力，以及这种理解在数字消费页面中是否稳定。</p>
+          </div>
+        </div>
+      </section>
     </div>
-
-    <h1>高中生消费自我认知与实际选择差异</h1>
-    <p class="subtitle">
-      上海市平和学校 · 高二 · Week 2 项目构想页<br />
-      本页用于说明项目想法和未来互动产品的运行方式，不是最终产品原型。
-    </p>
-
-    <div class="callout">
-      <p><strong>一句话概括：</strong>我想做一个类似 MBTI 形式、但更偏研究性的网页互动工具。它会先让高中生评估自己平时的消费判断方式，再让他们完成几个数字消费情境，最后比较“我以为的自己”和“我实际做出的选择”是否一致。</p>
-    </div>
-
-    <h2>1. Social Issue and Audience</h2>
-    <p>
-      我关注的社会问题是：人在社会环境中如何理解自己，以及真实情境如何暴露这种自我理解的偏差。放到高中生消费中，很多人可能会认为自己“比较理性”“不会轻易冲动”“会看预算”“会先查评价”，但在具体数字消费情境中，他们的实际选择可能和自我判断不完全一致。
-    </p>
-    <p>
-      这个项目主要面向高中生。它不把参与者简单分成“理性”或“冲动”，而是观察他们如何描述自己的消费判断能力，以及他们在具体情境中是否真的按照这种自我认知行动。
-    </p>
-
-    <h2>2. Project Topic</h2>
-    <table>
-      <tr>
-        <th>中文项目名称</th>
-        <td>高中生消费自我认知与实际选择差异研究：基于互动情境模拟</td>
-      </tr>
-      <tr>
-        <th>English Topic</th>
-        <td>High School Students’ Consumer Self-Perception and Actual Choices in Digital Consumption Scenarios: An Interactive Scenario Simulation</td>
-      </tr>
-      <tr>
-        <th>产品形式</th>
-        <td>网页互动工具：自我认知测试 + 数字消费情境模拟 + 前后结果对比。</td>
-      </tr>
-      <tr>
-        <th>研究重点</th>
-        <td>比较参与者开始前对自己的判断，和他们在模拟消费情境中的实际选择是否一致。</td>
-      </tr>
-    </table>
-
-    <h2>3. Core Research Question</h2>
-    <p>
-      我的核心研究问题是：<strong>高中生对自己消费判断能力的自我认知，是否会和他们在数字消费情境中的实际选择出现差异？如果出现差异，他们如何解释这种差异？</strong>
-    </p>
-    <p>
-      这个问题更偏社会学和心理学。它关注的不是优惠本身能不能提高购买率，而是高中生如何理解自己、如何在真实情境中做选择，以及他们如何解释自我认知与实际行为之间的不一致。
-    </p>
-
-    <h2>4. Product Logic</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>第一步：自我认知测试</h3>
-        <p>参与者先回答几道中性问题，描述自己平时如何做消费判断。</p>
-      </div>
-      <div class="card">
-        <h3>第二步：情境模拟</h3>
-        <p>参与者进入具体数字消费情境，面对优惠、评价、默认选项和预算提醒做选择。</p>
-      </div>
-      <div class="card">
-        <h3>第三步：结果对比</h3>
-        <p>系统比较前测自我认知和模拟中的实际路径，并让参与者解释一致或不一致的原因。</p>
-      </div>
-    </div>
-
-    <h2>5. How the Product Works</h2>
-    <div class="flow">
-      <div class="flow-step">
-        <h3>开始前：消费自我认知测试</h3>
-        <p>
-          参与者以自己的身份回答问题。问题不会直接问“你会不会被限时优惠影响”，而是使用更中性的表达，例如“我买东西前通常会查信息”“我会考虑之后几天的预算”“我有时买完才发现没那么需要”。这样可以减少对后面模拟的直接引导。
-        </p>
-      </div>
-      <div class="flow-step">
-        <h3>进入模拟：完成几个消费情境</h3>
-        <p>
-          系统展示几个常见数字消费情境，例如普通页面、限时优惠、满减和默认加购、评价分歧、预算提醒。参与者每轮选择购买、等待、查信息、取消加购、延迟或放弃。
-        </p>
-      </div>
-      <div class="flow-step">
-        <h3>每轮选择后：记录简短理由</h3>
-        <p>
-          每轮选择后，参与者选择一个主要理由，或写一句简短解释。例如“担心错过”“觉得还不确定”“预算不够”“评价让我更信任”“规则太复杂”。这部分用于定性分析。
-        </p>
-      </div>
-      <div class="flow-step">
-        <h3>结尾：比较自我认知和实际选择</h3>
-        <p>
-          系统展示参与者开始前如何描述自己，以及模拟中实际做了什么。重点不是给出固定人格标签，而是指出哪些选择和自我认知一致，哪些选择出现偏差。
-        </p>
-      </div>
-      <div class="flow-step">
-        <h3>最后反思：让参与者解释差异</h3>
-        <p>
-          结尾询问：“刚才的选择和你一开始对自己的判断一致吗？哪里一致或不一致？”这能帮助研究者理解参与者如何解释自己的行为。
-        </p>
-      </div>
-    </div>
-
-    <h2>6. Example Questions and Scenarios</h2>
-    <table>
-      <tr>
-        <th>部分</th>
-        <th>内容示例</th>
-        <th>想观察什么</th>
-      </tr>
-      <tr>
-        <td>自我认知测试</td>
-        <td>“我买东西前通常会先确认是否真的需要。” “我会考虑这次消费对之后预算的影响。”</td>
-        <td>参与者如何描述自己的消费判断方式。</td>
-      </tr>
-      <tr>
-        <td>普通页面</td>
-        <td>商品正常显示，没有明显促销。</td>
-        <td>没有刺激时，实际选择是否接近自我认知。</td>
-      </tr>
-      <tr>
-        <td>限时优惠</td>
-        <td>页面提示优惠即将结束。</td>
-        <td>时间压力是否让参与者偏离自认为的消费方式。</td>
-      </tr>
-      <tr>
-        <td>满减和默认加购</td>
-        <td>页面提示还差一点满减，同时默认勾选小额附加服务。</td>
-        <td>复杂规则和隐藏成本是否影响实际选择。</td>
-      </tr>
-      <tr>
-        <td>评价分歧</td>
-        <td>页面同时出现大量好评和一些关键差评。</td>
-        <td>参与者是否会主动寻找风险信息，还是跟随多数评价。</td>
-      </tr>
-      <tr>
-        <td>预算提醒</td>
-        <td>系统提示这笔消费会影响之后几天的预算。</td>
-        <td>预算提醒是否让参与者重新调整选择。</td>
-      </tr>
-    </table>
-
-    <h2>7. How User Feedback Becomes Data</h2>
-    <p>
-      这个项目会同时收集三类信息：自我认知、实际选择、选择理由。它们共同构成后续研究的数据。
-    </p>
-    <table>
-      <tr>
-        <th>数据</th>
-        <th>用途</th>
-      </tr>
-      <tr>
-        <td>自我认知回答</td>
-        <td>了解参与者如何描述自己的消费判断能力。</td>
-      </tr>
-      <tr>
-        <td>情境中的选择路径</td>
-        <td>观察参与者在具体消费情境中如何行动。</td>
-      </tr>
-      <tr>
-        <td>一致或不一致</td>
-        <td>比较前测回答和实际选择，判断是否出现偏差。</td>
-      </tr>
-      <tr>
-        <td>选择理由和结尾反思</td>
-        <td>用定性分析归纳参与者如何解释自己的选择，例如怕错过、预算压力、规则复杂、真实需要。</td>
-      </tr>
-    </table>
-
-    <h2>8. How Feedback Supports the Research Paper</h2>
-    <p>
-      后续论文可以从两个方向分析。定量部分可以看：有多少参与者的实际选择和自我认知一致，哪些情境最容易出现不一致。定性部分可以分析参与者写下的理由，归纳他们如何解释自己的行为。
-    </p>
-    <p>
-      这个设计的价值在于，它不只问“你觉得自己是什么样的人”，也不只看“你最后买不买”。它把自我认知、具体情境和行为解释连起来，研究高中生如何理解自己，以及真实消费情境如何暴露这种理解的偏差。
-    </p>
-
-    <h2>9. Current Concerns</h2>
-    <p>
-      目前最需要注意的是前测可能影响后面的游戏。如果自我认知测试太直接，例如直接问“你会不会被限时优惠影响”，参与者可能会在后面刻意保持一致。因此，前测问题需要保持中性和抽象，不直接暴露后面的具体情境。
-    </p>
-    <p>
-      另一个问题是连续情境之间可能互相影响。后续可以考虑调整情境顺序，或在关键情境之间加入简短干扰任务，减少前后内容的直接影响。
-    </p>
-
-    <h2>10. Next Steps</h2>
-    <ul>
-      <li>设计一组不太引导用户的自我认知测试题。</li>
-      <li>筛选 3 到 5 个最核心的数字消费情境。</li>
-      <li>设计每一轮的选择和理由选项。</li>
-      <li>确定如何判断“自我认知和实际选择是否一致”。</li>
-      <li>在 Week 3 或之后，把这个构想发展成最小可玩的网页原型。</li>
-    </ul>
-
-    <footer>
-      Week 2 preliminary idea page · Single-file HTML · Future product: self-perception and scenario simulation tool
-    </footer>
+    <footer>本页为单文件 HTML 作品页：纯 HTML + CSS + JavaScript，无外部资源。</footer>
   </main>
+
+  <script>
+    const surveyQuestions = [
+      { id: "rules", text: "做消费决定前，我通常会先确认自己原本的判断标准。" },
+      { id: "coupon", text: "页面出现优惠信息时，我通常会先看清楚限制条件。" },
+      { id: "total", text: "结算前，我通常会检查总价有没有发生变化。" },
+      { id: "default", text: "如果页面默认勾选了额外选项，我通常会注意并重新判断。" },
+      { id: "review", text: "遇到评价信息不一致时，我通常会愿意查看更多信息。" },
+      { id: "pause", text: "如果页面催我快速决定，我通常会暂停一下。" },
+      { id: "cost", text: "如果某个选项看起来更方便，我也会检查它是否带来额外成本。" },
+      { id: "stable", text: "如果我已经形成初步判断，我通常不会因为页面提示轻易改变。" }
+    ];
+
+    const scenarios = [
+      {
+        id: "coupon",
+        title: "情境一：优惠压力",
+        desc: "页面提示当前优惠即将失效。观察你是否会先查看规则。",
+        bar: 58,
+        expectedIds: ["coupon", "pause"],
+        consistentActions: ["check_rules", "pause"],
+        html: `
+          <div class="order-title"><span>订单 A</span><span>预算进度：中等</span></div>
+          <div class="placeholder-box">中性订单占位<br>不展示具体商品类别或图片</div>
+          <div class="budget"><strong>虚拟预算进度</strong><div class="bar"><div class="bar-fill" style="width:58%"></div></div></div>
+          <div class="notice">当前优惠即将失效。继续下单可以保留优惠，稍后可能失效。</div>
+          <button class="primary" type="button">继续下单</button>
+          <button class="secondary" type="button">查看优惠规则</button>
+        `,
+        options: [
+          { id: "continue", label: "直接继续下单" },
+          { id: "check_rules", label: "查看优惠规则后再决定" },
+          { id: "pause", label: "暂停下单" }
+        ]
+      },
+      {
+        id: "default",
+        title: "情境二：默认加购",
+        desc: "页面默认勾选购物保障服务。观察你是否会注意并修改。",
+        expectedIds: ["default", "total", "cost"],
+        consistentActions: ["cancel_service", "read_service", "pause"],
+        html: `
+          <div class="order-title"><span>订单 A</span><span>预算进度：接近上限</span></div>
+          <div class="placeholder-box">中性订单占位<br>进入结算确认页</div>
+          <div class="service"><span class="fake-check">✓</span><div><strong>购物保障服务</strong><br><span class="muted">默认勾选，包含退换保障、优先客服等。</span></div></div>
+          <div class="budget"><strong>虚拟预算进度</strong><div class="bar"><div class="bar-fill" style="width:82%"></div></div></div>
+          <p class="muted">取消入口存在，但视觉上不突出。</p>
+        `,
+        options: [
+          { id: "keep_service", label: "保留默认服务并继续" },
+          { id: "cancel_service", label: "取消默认服务后继续" },
+          { id: "read_service", label: "查看服务说明后再决定" },
+          { id: "pause", label: "暂停下单" }
+        ]
+      },
+      {
+        id: "review",
+        title: "情境三：评价冲突",
+        desc: "总体评价较高，但出现负面评价摘要。观察你是否继续核查。",
+        expectedIds: ["review"],
+        consistentActions: ["read_more", "pause"],
+        html: `
+          <div class="order-title"><span>订单 A</span><span>购买前确认</span></div>
+          <div class="placeholder-box">总体评价较高<br>但下方出现负面摘要</div>
+          <div class="review-list">
+            <div class="review">总体评价：较高</div>
+            <div class="review">负面摘要：实际体验和页面描述有差距。</div>
+            <div class="review">负面摘要：使用一段时间后出现问题。</div>
+            <div class="review">负面摘要：处理问题比较慢。</div>
+          </div>
+        `,
+        options: [
+          { id: "continue", label: "根据总体评价继续提交" },
+          { id: "read_more", label: "查看更多评价后再决定" },
+          { id: "pause", label: "暂停下单" }
+        ]
+      }
+    ];
+
+    const state = {
+      step: "intro",
+      survey: {},
+      scenarioIndex: 0,
+      currentAction: "",
+      answers: []
+    };
+
+    const screens = {
+      intro: document.getElementById("screen-intro"),
+      survey: document.getElementById("screen-survey"),
+      scenario: document.getElementById("screen-scenario"),
+      result: document.getElementById("screen-result")
+    };
+
+    function setStep(step) {
+      state.step = step;
+      Object.entries(screens).forEach(([name, el]) => {
+        el.classList.toggle("active", name === step);
+      });
+      document.querySelectorAll("[data-step-label]").forEach((pill) => {
+        pill.classList.toggle("active", pill.dataset.stepLabel === step);
+      });
+    }
+
+    function renderSurvey() {
+      const list = document.getElementById("question-list");
+      list.innerHTML = surveyQuestions.map((q, index) => `
+        <div class="question">
+          <div><strong>${index + 1}. ${q.text}</strong></div>
+          <div class="choice-row" role="group" aria-label="${q.text}">
+            <button class="choice ${state.survey[q.id] === true ? "selected" : ""}" type="button" data-q="${q.id}" data-value="true">比较符合我</button>
+            <button class="choice ${state.survey[q.id] === false ? "selected" : ""}" type="button" data-q="${q.id}" data-value="false">不太符合我</button>
+          </div>
+        </div>
+      `).join("");
+
+      list.querySelectorAll(".choice").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          state.survey[btn.dataset.q] = btn.dataset.value === "true";
+          renderSurvey();
+          updateSurveyNext();
+        });
+      });
+      updateSurveyNext();
+    }
+
+    function updateSurveyNext() {
+      const complete = surveyQuestions.every((q) => typeof state.survey[q.id] === "boolean");
+      document.getElementById("survey-next").disabled = !complete;
+    }
+
+    function renderScenario() {
+      const scenario = scenarios[state.scenarioIndex];
+      state.currentAction = "";
+      document.getElementById("scenario-title").textContent = scenario.title;
+      document.getElementById("scenario-desc").textContent = scenario.desc;
+      document.getElementById("scenario-count").textContent = `${state.scenarioIndex + 1} / ${scenarios.length}`;
+      document.getElementById("phone-body").innerHTML = scenario.html;
+      document.getElementById("reason").value = "";
+      document.getElementById("scenario-next").disabled = true;
+
+      const optionList = document.getElementById("option-list");
+      optionList.innerHTML = scenario.options.map((option) => `
+        <button class="option-btn" type="button" data-action="${option.id}">${option.label}</button>
+      `).join("");
+
+      optionList.querySelectorAll(".option-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          state.currentAction = btn.dataset.action;
+          optionList.querySelectorAll(".option-btn").forEach((item) => item.classList.remove("selected"));
+          btn.classList.add("selected");
+          document.getElementById("scenario-next").disabled = false;
+        });
+      });
+
+      document.getElementById("scenario-back").disabled = state.scenarioIndex === 0;
+      setStep("scenario");
+    }
+
+    function expectedCautious(scenario) {
+      return scenario.expectedIds.some((id) => state.survey[id] === true);
+    }
+
+    function saveScenarioAnswer() {
+      const scenario = scenarios[state.scenarioIndex];
+      const reason = document.getElementById("reason").value.trim();
+      const cautious = expectedCautious(scenario);
+      const actionIsCautious = scenario.consistentActions.includes(state.currentAction);
+      const consistent = cautious ? actionIsCautious : true;
+      state.answers[state.scenarioIndex] = {
+        scenario: scenario.id,
+        title: scenario.title,
+        expectedCautious: cautious,
+        action: state.currentAction,
+        actionLabel: scenario.options.find((o) => o.id === state.currentAction).label,
+        consistent,
+        reason
+      };
+    }
+
+    function reasonTheme(text) {
+      const value = text || "";
+      if (value.includes("优惠") || value.includes("失效") || value.includes("保留")) return "想保留优惠";
+      if (value.includes("服务") || value.includes("保障")) return "觉得默认服务可能有用";
+      if (value.includes("评价") || value.includes("评论") || value.includes("评分")) return "相信或核查评价";
+      if (value.includes("麻烦") || value.includes("懒")) return "觉得查看更多信息太麻烦";
+      if (value.includes("没注意") || value.includes("没看到")) return "没注意到页面变化";
+      if (value.includes("现实") || value.includes("真的")) return "现实中可能会不同";
+      return "需要人工进一步编码";
+    }
+
+    function renderResults() {
+      const mismatches = state.answers.filter((a) => !a.consistent);
+      const summary = document.getElementById("result-summary");
+      if (mismatches.length === 0) {
+        summary.innerHTML = "<strong>多数一致：</strong>你的页面操作基本符合前面的自我评估。";
+      } else if (mismatches.length === 1) {
+        summary.innerHTML = "<strong>部分偏离：</strong>有 1 个页面机制让你的操作偏离了前面的判断方式。";
+      } else {
+        summary.innerHTML = `<strong>多处偏离：</strong>有 ${mismatches.length} 个页面机制下，你的操作和前面的自我评估出现差距。`;
+      }
+
+      const grid = document.getElementById("result-grid");
+      grid.innerHTML = state.answers.map((answer) => `
+        <div class="result-card ${answer.consistent ? "good" : "mismatch"}">
+          <span class="badge ${answer.consistent ? "good" : "mismatch"}">${answer.consistent ? "一致" : "偏离"}</span>
+          <h3>${answer.title}</h3>
+          <p><strong>你的操作：</strong>${answer.actionLabel}</p>
+          <p><strong>解释主题：</strong>${reasonTheme(answer.reason)}</p>
+          <p class="muted">${answer.reason ? "原始理由：" + answer.reason : "你没有填写理由。"}</p>
+        </div>
+      `).join("");
+      setStep("result");
+    }
+
+    function exportData() {
+      const payload = {
+        project: "高中生消费自我认知与实际选择差异",
+        timestamp: new Date().toISOString(),
+        survey: state.survey,
+        scenarioAnswers: state.answers,
+        reflection: document.getElementById("reflection").value.trim(),
+        mismatchCount: state.answers.filter((a) => !a.consistent).length
+      };
+      const text = JSON.stringify(payload, null, 2);
+      const box = document.getElementById("export-box");
+      box.value = text;
+      box.select();
+      try {
+        document.execCommand("copy");
+      } catch (error) {
+        // The text remains in the box even if copy is blocked.
+      }
+    }
+
+    const researchToggle = document.getElementById("research-toggle");
+    const researchPanel = document.getElementById("research-panel");
+    if (researchToggle && researchPanel) {
+      researchToggle.addEventListener("click", () => {
+        const isOpen = researchPanel.classList.toggle("open");
+        researchToggle.setAttribute("aria-expanded", String(isOpen));
+      });
+    }
+
+    document.getElementById("start-btn").addEventListener("click", () => {
+      renderSurvey();
+      setStep("survey");
+    });
+
+    document.getElementById("survey-back").addEventListener("click", () => setStep("intro"));
+    document.getElementById("survey-next").addEventListener("click", () => {
+      state.scenarioIndex = 0;
+      state.answers = [];
+      renderScenario();
+    });
+
+    document.getElementById("scenario-back").addEventListener("click", () => {
+      if (state.scenarioIndex > 0) {
+        state.scenarioIndex -= 1;
+        renderScenario();
+      }
+    });
+
+    document.getElementById("scenario-next").addEventListener("click", () => {
+      saveScenarioAnswer();
+      if (state.scenarioIndex < scenarios.length - 1) {
+        state.scenarioIndex += 1;
+        renderScenario();
+      } else {
+        renderResults();
+      }
+    });
+
+    document.getElementById("copy-result").addEventListener("click", exportData);
+    document.getElementById("restart").addEventListener("click", () => {
+      state.survey = {};
+      state.scenarioIndex = 0;
+      state.currentAction = "";
+      state.answers = [];
+      document.getElementById("reflection").value = "";
+      document.getElementById("export-box").value = "";
+      setStep("intro");
+    });
+  </script>
 </body>
 </html>
