@@ -4,6 +4,12 @@
 
 这个 MVP 是一个网页互动产品。用户先完成一套中性的“消费判断自我认知评估”，再进入一个仿购物软件下单界面 demo。项目比较用户对自己消费判断方式的理解，和他们在模拟页面里的实际操作是否一致。
 
+## Research Question & Hypothesis
+
+Research Question: How does an interactive checkout simulation affect high school students' awareness of gaps between their consumer self-perception and simulated choices?
+
+Hypothesis: I hypothesize that after using the interactive checkout simulation, high school students will increase their awareness of gaps between their consumer self-perception and simulated choices.
+
 ## 当前需要解决的问题
 
 这个项目最容易出现的问题是变量太多。如果情境里出现具体商品、真实人民币金额、用户自填预算或个性化题目，结果会受到很多额外因素影响。
