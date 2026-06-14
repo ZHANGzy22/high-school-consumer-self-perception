@@ -1,6 +1,8 @@
 ## Title
 
-High School Students' Consumer Self-Perception and Simulated Checkout Choices
+Seeing the Gap: An Interactive Checkout Simulation for High School Students
+
+Subtitle: Consumer Self-Perception and Simulated Choices in Digital Checkout Pages
 
 Student: Zhiyan Zhang
 
@@ -8,9 +10,9 @@ Research Advisor: Lawted Wu
 
 ## Research Question & Hypothesis
 
-Research Question: How does an interactive checkout simulation affect high school students' awareness of gaps between their consumer self-perception and simulated choices?
+Research Question: How does an interactive checkout simulation affect high school students' recognition of gaps between their consumer self-perception and simulated choices?
 
-Hypothesis: I hypothesize that after using the interactive checkout simulation, high school students will increase their awareness of gaps between their consumer self-perception and simulated choices.
+Hypothesis: I hypothesize that after using the interactive checkout simulation, high school students will increase their recognition of gaps between their consumer self-perception and simulated choices.
 
 ## Background
 
