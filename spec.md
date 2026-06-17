@@ -163,6 +163,8 @@ Hypothesis: I hypothesize that after using the interactive shopping-platform sim
 
 这个页面不是让用户自由无限浏览，也不是直接复制某个真实平台。它是一个被控制好的模拟购物页面：每个阶段主要测试一个机制，例如商品兴趣、降价弹窗、默认加购、评价冲突或预算压力。这样可以保留购物页面的真实感，同时让后续数据还能分析。
 
+为了让体验更像一个互动任务，每个购物页面限时 60 秒。用户需要在 60 秒内完成一个操作，例如点开商品、关闭弹窗、查看评价、取消默认服务、选择更低规格或暂时不买。限时设计有两个作用：第一，它让用户更接近真实平台中的快速判断；第二，它减少不同用户停留时间差异太大的问题。
+
 模拟页面包含：
 
 1. 首页商品流，包含用户近期接触过的类别和其他类别
@@ -187,6 +189,8 @@ Hypothesis: I hypothesize that after using the interactive shopping-platform sim
 ### 阶段一：首页推荐流
 
 用户看到一个模拟购物首页。系统展示多张商品卡片，其中有用户近期接触过的类别，也有其他类别。用户先自然浏览并选择想点开的商品。
+
+本轮限时 60 秒。用户可以点开商品，也可以暂时跳过这些推荐。
 
 页面可能出现：
 
@@ -213,6 +217,8 @@ Hypothesis: I hypothesize that after using the interactive shopping-platform sim
 
 用户点开商品后看到商品图、价格、优惠券、销量、评价、倒计时和规格选择。
 
+本轮限时 60 秒。用户需要决定继续查看信息、加入购物车、立即购买或返回。
+
 用户操作：
 
 1. 领券
@@ -236,6 +242,8 @@ Hypothesis: I hypothesize that after using the interactive shopping-platform sim
 
 “你刚刚看的商品降价了，10 分钟内下单可保留当前价格。”
 
+本轮限时 60 秒。用户需要决定立即查看、稍后再说或关闭弹窗。
+
 用户操作：
 
 1. 立即查看
@@ -252,6 +260,8 @@ Hypothesis: I hypothesize that after using the interactive shopping-platform sim
 ### 阶段四：结算页
 
 用户进入结算页。页面显示最终价格、优惠券、运费、预算进度，并默认勾选一个额外服务，例如保障服务、会员试用、加速配送或自动续费优惠。
+
+本轮限时 60 秒。用户需要检查结算页并完成一个操作。
 
 用户操作：
 
@@ -270,6 +280,8 @@ Hypothesis: I hypothesize that after using the interactive shopping-platform sim
 ### 阶段五：评价冲突与预算压力
 
 提交前，页面显示总体评分较高，同时展示几条负面评价摘要。若用户预算进度接近上限，页面也会显示剩余预算压力。
+
+本轮限时 60 秒。用户需要做出最终处理，例如继续提交、查看更多评价、降低规格或暂时不买。
 
 用户操作：
 
@@ -360,3 +372,5 @@ Hypothesis: I hypothesize that after using the interactive shopping-platform sim
 6. 结果分析中是否可以把商品兴趣作为一个影响因素。
 7. 网页里的选择应称为 simulated shopping behavior 还是 simulated shopping choice。
 8. 自我认知测试是否需要借鉴成熟量表，还是可以使用更贴近高中生日常消费的自拟题目。
+9. 每个购物页面限时 60 秒是否合理，是否会让用户过于紧张。
+10. 为了提高参与感，是否可以加入任务提示、倒计时条和即时操作反馈。
