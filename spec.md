@@ -6,9 +6,9 @@
 
 ## Research Question & Hypothesis
 
-Research Question: How does an interactive shopping-platform simulation affect high school students' recognition of gaps between their consumer self-perception and simulated shopping choices?
+Research Question: How does an interactive shopping platform simulation affect high school students' recognition of gaps between their consumer self-perception and their observed choices in the simulation?
 
-Hypothesis: I hypothesize that after using the interactive shopping-platform simulation, high school students will increase their recognition of gaps between their consumer self-perception and simulated shopping choices.
+Hypothesis: I hypothesize that after using the interactive shopping platform simulation, high school students will become more aware of the gap between what they think they will do and what they actually choose.
 
 ## 当前项目重点
 

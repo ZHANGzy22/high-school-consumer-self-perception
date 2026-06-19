@@ -1,8 +1,6 @@
 ## Title
 
-Seeing the Gap: An Interactive Shopping-Platform Simulation for High School Students
-
-Subtitle: Consumer Self-Perception and Simulated Shopping Choices on Digital Shopping Pages
+Seeing the Gap: An Interactive Shopping Platform Simulation for High School Students
 
 Student: Zhiyan Zhang
 
@@ -10,108 +8,100 @@ Research Advisor: Lawted Wu
 
 ## Research Question & Hypothesis
 
-Research Question: How does an interactive shopping-platform simulation affect high school students' recognition of gaps between their consumer self-perception and simulated shopping choices?
+Research Question: How does an interactive shopping platform simulation affect high school students' recognition of gaps between their consumer self-perception and their observed choices in the simulation?
 
-Hypothesis: I hypothesize that after using the interactive shopping-platform simulation, high school students will increase their recognition of gaps between their consumer self-perception and simulated shopping choices.
+Hypothesis: I hypothesize that after using the interactive shopping platform simulation, high school students will become more aware of the gap between what they think they will do and what they actually choose.
 
 ## Background
 
-Many high school students use digital platforms every day. They see shopping pages, short videos, membership offers, game items, online reviews, and product recommendations. These platforms are not neutral. They can include countdowns, discount reminders, default add-ons, high ratings, and sudden pop-ups.
+High school students make consumer decisions in a social and digital environment. Their choices are not shaped only by personal preference or money. They may also be shaped by shopping platforms, short videos, product recommendations, peer culture, online reviews, discounts, membership systems, and interface design.
 
-My project starts from a simple problem. Many students may believe that they make careful consumer decisions. They may say that they check prices, compare information, notice extra costs, and think before buying. However, when they are placed inside a realistic shopping-page prototype, their choices may not always match this self-perception.
+This topic matters because many students already have an image of themselves as consumers. Some may think they are careful, budget-conscious, or good at checking information. However, this self-image may not always match what they do when they face a real-looking shopping situation. A product may feel attractive. A page may create time pressure. A default option may be easy to miss. A discount may make the choice feel more reasonable.
 
-This matters because digital consumption is now part of teenagers' everyday life. It is not only about money. It is also about self-understanding. A student may think, "I am careful," but a shopping interface may reveal a gap between what they think they do and what they actually choose.
+The project is related to high school students, teachers, parents, and anyone who cares about youth digital life. It is not only about whether teenagers spend money. It is about how young people understand their own judgment inside consumer environments.
 
-My project is for high school students. It does not label users as rational or irrational. Instead, it helps them compare their consumer self-perception with their choices on simulated shopping pages.
+The ordinary reader should care about this project because digital shopping is already part of everyday life. If a student can see the gap between self-perception and actual choice, they may better understand the situations that change their decisions. This can support healthier consumer awareness without simply labeling someone as rational or irrational.
 
 ## Literature Review
 
-Rozendaal et al. (2011) argue that advertising literacy is not always enough to protect young people from advertising effects. A young person may know that a message is persuasive, but this knowledge may not be used in the moment. This supports my project because my tool compares what students think they will do with what they choose inside a simulated platform.
+Research on advertising literacy gives the first reason for this project. Rozendaal et al. (2011) argue that knowing that a message is persuasive does not always protect young people in the moment of exposure. This finding is important because my project is not based on the simple idea that students either "know" or "do not know" marketing. A student may understand a persuasive message, but still not use this knowledge during an actual choice. What remains unresolved is how this gap appears in a concrete shopping task. My project responds by placing users inside a controlled shopping platform simulation.
 
-De Jans, Hudders, and Cauberghe (2018) study adolescents' self-reported advertising literacy. Their work shows that teenagers can describe their own ability to recognize and resist advertising. However, self-report alone does not show what they do in a realistic digital environment. My project adds simulated shopping pages after the self-perception test.
+De Jans, Hudders, and Cauberghe (2018) study adolescents' self-reported advertising literacy. Their work shows that adolescents can report their own ability to recognize, understand, and resist advertising. This supports the self-perception part of my design. However, self-report alone cannot show whether a student behaves in the same way inside a realistic choice environment. My project adds a behavioral simulation after the self-perception questions.
 
-Donaldson and Grant-Vallone (2002) explain that self-report data can be biased. People may present themselves in a better way, or they may not fully understand their own behavior. This is important for my project because I do not only ask students what kind of consumer they think they are. I also record their simulated shopping choices.
+Donaldson and Grant-Vallone (2002) explain that self-report data can be biased. People may answer in a socially desirable way, or they may describe an ideal version of themselves. This is central to my project. If I only ask students whether they are careful consumers, the result may reflect their self-image more than their behavior. My design compares self-perception answers with observed choices.
 
-Sproles and Kendall (1986) propose that consumer decision-making styles can be measured through several dimensions, such as price consciousness, quality consciousness, impulsiveness, and confusion from too many choices. This helps me think about my self-perception test. I will not copy the full scale, but I can use the idea that consumer judgment is not one single trait.
+Sproles and Kendall (1986) show that consumer decision-making style can be measured through several dimensions, such as price awareness, quality concern, impulsiveness, and confusion from many choices. This helps me avoid a simple personality label. My self-perception test should not divide users into one fixed type. It should measure several habits that can later be compared with behavior.
 
-These studies support the self-perception part of my design. The first part of my website is not a full personality test. It is a short self-perception measure. It asks about daily consumer habits, such as checking price changes, reading reviews, noticing default add-ons, and pausing under time pressure.
+Mathur et al. (2019) study dark patterns on shopping websites. Their work shows that shopping pages can use urgency, social proof, default choices, and hidden costs to guide user behavior. This supports the platform design part of my project. I will not copy a real shopping platform, but I can build a safe simulation that includes similar choice mechanisms.
 
-Mathur et al. (2019) study dark patterns on shopping websites. They show that online shopping pages can include design patterns such as urgency, social proof, and hidden costs. My project does not copy a real platform, but it uses similar mechanisms in a safe and simplified shopping-platform simulation.
+Steiner, Atzmuller, and Su (2017) discuss how to design valid vignette experiments. Their work is useful because my simulation needs both realism and control. The pages should feel close to real shopping, but each section should still test a clear mechanism, such as time pressure, product interest, default add-ons, or information checking.
 
-Steiner, Atzmuller, and Su (2017) discuss how to design reliable vignette experiments. Their work is useful because my simulation still needs control. The shopping pages should feel realistic, but the page mechanisms and choice points should be planned carefully.
+Braun and Clarke (2006) introduce thematic analysis. This method may be useful if I include a short optional feedback question after the simulation. Users may explain why they made a choice. These explanations can be coded into themes such as budget concern, real need, interest, time pressure, trust in reviews, or missing page details.
 
-Braun and Clarke (2006) introduce thematic analysis. This may help my project if I later include an optional feedback question after the main experience. The main data will come from behavioral choices.
-
-The gap in the literature is that many studies focus on advertising, persuasion, or consumer behavior in general. My project focuses on one smaller question: can an interactive shopping-platform simulation make the gap between consumer self-perception and simulated shopping choices visible for high school students?
+The new angle of my project is the connection between self-perception and observed choice. Many studies discuss advertising, self-report, consumer decision styles, or interface design. My project combines these areas in one interactive artifact. It asks whether a shopping platform simulation can make the gap between "what I think I do" and "what I actually choose" visible for high school students.
 
 ## Research Design / Method
 
-My artifact is a single-page interactive website that simulates shopping-platform pages. It has four parts.
+My artifact is an interactive shopping platform simulation for high school students. It is a single-page website, but the intended product experience is not a simple form. It should feel like a small shopping platform, where users move through questions, product pages, pop-ups, reviews, cart decisions, and result feedback.
 
-First, users answer objective background questions one by one. These questions ask about their monthly disposable money range, recent product categories they have browsed or bought, and common shopping entry points. I plan to use money ranges instead of exact numbers. Exact numbers may be hard for high school students to answer, and they may feel too private. The website only needs a rough budget level, because the main variable is budget pressure, not family background. After a user chooses relevant product categories, the website can ask category-based price range questions. For example, the website may ask what price range the user would seriously consider for stationery, digital accessories, clothes, or game memberships. These answers become internal anchors. The budget range becomes a budget anchor, and the category price range becomes a category anchor.
+The first part collects basic information. Users answer one question at a time. The questions ask about budget range, recent product interests, common shopping channels, and category-based acceptable price ranges. I use ranges instead of exact money amounts because exact numbers may feel too private or difficult to answer. These answers help the system create a shopping situation that is closer to the user's daily life.
 
-Second, users complete a short five-point consumer self-perception test. The questions appear one at a time, similar to a personality-test interface. Users answer from "strongly disagree" to "strongly agree." The test measures budget planning, information checking, attention to page details, and reactions to time pressure. The questions should sound like daily habit statements. They should not directly ask whether the user is influenced by marketing.
+The second part is a short consumer self-perception scale. It should look like a simple personality-test style interaction, but the content measures consumer judgment habits. The scale should cover budget control, information checking, attention to page details, and response to time pressure. The questions must be neutral. They should not directly ask, "Are you influenced by marketing?" because that would make the research purpose too obvious.
 
-Third, users enter simulated shopping pages. The pages should look like a real shopping platform, with product feeds, product cards, discount pop-ups, product detail pages, reviews, a cart page, default add-ons, and budget pressure. The website is still controlled. Each stage mainly tests one mechanism, such as product interest, a discount pop-up, a default add-on, conflicting reviews, or budget pressure. Each shopping page has a 60-second time limit. Users must complete one action before the timer ends, such as opening a product, closing a pop-up, checking reviews, canceling a default add-on, choosing a cheaper option, or stopping the purchase. This makes the experience more engaging and also reduces large differences in time spent across users. The user interface should only show shopping actions. Research labels and behavior logs are recorded in the background. Product cards include both categories the user recently interacted with and other categories. Prices are generated from both the user's budget range and the price range of each product category. The planned pressure levels are low, medium, and high. Low pressure is around 5% to 10% of the budget anchor. Medium pressure is around 10% to 25%. High pressure is around 25% to 40%. If the budget ratio and the product category do not fit each other, I will keep the product price realistic for that category and record the actual budget pressure for analysis.
+The third part is the shopping simulation. Users see a platform-like environment with product cards, product details, reviews, discount or price-change pop-ups, a cart page, default add-ons, and budget pressure. Users only see shopping actions. The research labels and data logs stay in the background.
 
-Fourth, short mini-games appear between shopping sections. These mini-games may include number memory, arithmetic fill-in questions, or shape matching. They are not part of the consumer score. Their purpose is to reduce direct links between one shopping choice and the next. I will keep this part in the design because it helps reduce the feeling that every shopping stage is asking the same research question.
+The platform can collect several types of data:
 
-The simulation records behavioral choices. For example, it records whether users click a product, enter the detail page, check reviews, respond to a discount pop-up, keep a default add-on, cancel an extra service, submit an order, choose a cheaper option, or stop when the budget pressure becomes high.
+1. Background information, such as budget range and product interests.
+2. Self-perception scale answers.
+3. Choice data, such as clicking a product, opening reviews, closing a pop-up, removing an add-on, choosing a cheaper option, or stopping before purchase.
+4. Process data, such as decision time and the order of clicks.
+5. Optional short feedback after the experience.
 
-I plan to invite high school students to use the website. I will collect five kinds of data:
+Between shopping rounds, I plan to add short filler tasks, such as number memory or arithmetic questions. Their purpose is to lower the influence from one shopping round to the next. This is important because I do not want every decision to feel like the same repeated question.
 
-1. Their background consumption information.
-2. Their self-perception test answers.
-3. Their simulated shopping choices.
-4. Their mismatch indicators across different page mechanisms.
-5. Optional feedback after the main experience, if needed.
+For quantitative analysis, I will compare self-perception answers with observed choices. For example, if a user says they usually check information, I can see whether they open reviews. If a user says they control their budget, I can see whether they stop when the product price becomes a high share of their budget range. I can also compare answers, clicks, and decision time to see where the largest mismatch appears.
 
-For quantitative analysis, I will compare self-perception scores with simulated choices. I will count mismatch patterns in budget control, information checking, default add-on awareness, time pressure, and interest-based product choices. The result page will describe patterns, not fixed personalities. For example, it can show "budget-pressure mismatch" or "default-option mismatch." It should not say that a student is simply a rational or impulsive consumer.
-
-For qualitative analysis, I may use thematic analysis only if I later add an optional feedback question. The main analysis will still come from choice data.
+For qualitative analysis, I may use optional feedback only as support. The main data will come from the interaction records. If I collect short written explanations, I can code them into themes, but I will not use them as the only evidence.
 
 ## Research Plan & Challenges
 
 Current progress:
 
 - I have built a first version of the website.
-- The current version needs revision because the product concept has changed from a simple checkout demo to simulated shopping-platform pages.
-- I have collected background sources and method sources in the research folder.
-- I have deployed the website to Vercel, but the demo needs to be updated to match the new research design.
+- I have clarified the main research focus: the gap between consumer self-perception and actual choice behavior.
+- I have collected research sources in the `research/` folder.
+- I have deployed the website online, and I have started revising the idea from a simple checkout demo into a fuller shopping platform simulation.
 
 Plan:
 
-- Before June 20: revise the research logic, update the midterm draft, and prepare the 7-minute presentation.
-- Late June: rebuild the website demo around step-by-step background questions, a short self-perception test, and simulated shopping pages.
-- Early July: test the website with a small group of high school students.
-- Mid July: organize self-perception scores and simulated choice data.
-- Late July: analyze mismatch patterns and revise the final report.
+- Before June 20: finalize the midterm research draft, prepare the PPT, and explain the current artifact clearly.
+- Late June: revise the website into a more complete shopping platform simulation, with background questions, a self-perception scale, shopping rounds, filler tasks, and a result page.
+- Early July: test the prototype with a small group of high school students.
+- Mid July: organize the interaction records, including answers, clicks, choices, and decision time.
+- Late July: analyze mismatch patterns and revise the final project report.
 
 Main challenges:
 
-First, the self-perception questions may make the research purpose too clear. To reduce this problem, the questions should be written as daily habit statements instead of direct questions about marketing influence.
+First, I need to design a reasonable self-perception scale. The questions should be clear and connected to consumer judgment, but they should not be too leading. If the questions reveal the purpose too clearly, users may try to act more carefully in the simulation.
 
-Second, product preference and money perception can affect choices. To handle this problem, the simulation will record users' recent product categories and generate prices using both budget anchors and category price anchors. I still need to ask my advisor whether the low, medium, and high pressure ratios are reasonable.
+Second, I need to decide how to set budget and price ranges. Different students have different money perceptions, and different product categories have different normal prices. The platform should create comparable pressure without making the product prices feel unrealistic.
 
-Third, I need to decide how much the shopping pages should feel like a real platform. Single scenario questions are easier to control. Simulated shopping pages may feel more realistic. I will ask my advisor which direction is more suitable for the midterm version.
+Third, I need to balance realism and control. If the platform is too simple, users may not feel involved. If it is too complex, the data will be hard to analyze. I need to choose a small number of page mechanisms and make each one meaningful.
 
-I also need to ask whether my self-perception test should borrow more directly from existing scales, or use self-written daily habit questions that fit high school students better.
-
-I need to ask whether a 60-second time limit for each shopping page is reasonable. The timer may make the task more realistic and engaging, but it may also create too much pressure if it is too short.
-
-Fourth, the shopping pages must feel realistic without copying a real brand. They should look familiar, but they should not use real logos or platform identities.
-
-Fifth, the user study has not been run yet. I cannot make claims about real results now. I can only describe what I expect to observe.
+Fourth, I need to decide how to analyze the relationship between self-perception answers, clicks, choices, and decision time. This is one of the most important method questions for the next stage.
 
 ## Expected Results — user study not yet run
 
-I expect that some students will show consistency. They may say that they usually check information, and then they may also check reviews, cancel default add-ons, or pause under budget pressure in the simulation.
+I expect the user study to show that self-perception and choice behavior are not always consistent.
 
-I also expect that some students will show mismatch. For example, a student may say that they usually control their budget, but they may continue when a product matches their interest and the page shows a limited-time discount. Another student may say that they check final prices, but they may keep a default add-on on the checkout page.
+Some students may show consistency. For example, a student who says they usually check information may also open reviews in the simulation. A student who says they notice extra costs may remove a default add-on before checkout.
 
-I expect product interest to be an important factor. When the simulated product category matches what a student recently browsed or bought, the student may be more likely to move toward purchase even if their self-perception suggests caution.
+Other students may show mismatch. A student may describe themselves as budget-conscious, but still continue when the product matches their interest or when the page presents a discount. Another student may say they check details, but may miss an added service or move quickly under time pressure.
 
-I expect the result page to help users see this gap more clearly. The main expected result is not that users become "more rational" immediately. The main expected result is that they can notice where their self-perception and simulated shopping choices differ.
+I also expect product interest to matter. When a product category matches what a student recently browsed, bought, or cared about, the student may move closer to purchase even if their self-perception suggests caution.
+
+The expected value of the result page is that users can see the gap in a concrete way. The page should not say that a user is simply "rational" or "irrational." It should show where the user's self-image and observed choices match, and where they do not match.
 
 No user study has been run yet. I will not report any user numbers, percentages, charts, or final conclusions at this stage.
 
@@ -133,4 +123,4 @@ Steiner, P. M., Atzmuller, C., & Su, D. (2017). Designing valid and reliable vig
 
 ## Acknowledgements
 
-I would like to thank Research Advisor Lawted Wu for his criticism and guidance. His feedback helped me narrow my topic and make the project more realistic.
+I would like to thank Research Advisor Lawted Wu for his criticism and guidance. His feedback helped me narrow the topic, improve the research design, and make the product more realistic.
