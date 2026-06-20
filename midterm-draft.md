@@ -8,7 +8,7 @@ Research Advisor: Lawted Wu
 
 ## Research Question & Hypothesis
 
-Research Question: How does an interactive shopping platform simulation affect high school students' recognition of gaps between their consumer self-perception and their observed choices in the simulation?
+Research Question: How does an interactive shopping platform simulation affect high school students' recognition of gaps between their consumer self-perception and their observed choices?
 
 Hypothesis: I hypothesize that after using the interactive shopping platform simulation, high school students will become more aware of the gap between what they think they will do and what they actually choose.
 
@@ -62,7 +62,7 @@ Between shopping rounds, I plan to add short filler tasks, such as number memory
 
 For quantitative analysis, I will compare self-perception answers with observed choices. For example, if a user says they usually check information, I can see whether they open reviews. If a user says they control their budget, I can see whether they stop when the product price becomes a high share of their budget range. I can also compare answers, clicks, and decision time to see where the largest mismatch appears.
 
-For qualitative analysis, I may use optional feedback only as support. The main data will come from the interaction records. If I collect short written explanations, I can code them into themes, but I will not use them as the only evidence.
+After users see their result comparison, I will ask a short post-use reflection question about whether they noticed a difference between their self-perception and their choices. This gives me direct feedback on the awareness outcome in my research question. Optional written explanations can also be coded into themes, but the main evidence will come from the interaction records and the post-use reflection.
 
 ## Research Plan & Challenges
 
@@ -101,7 +101,7 @@ Other students may show mismatch. A student may describe themselves as budget-co
 
 I also expect product interest to matter. When a product category matches what a student recently browsed, bought, or cared about, the student may move closer to purchase even if their self-perception suggests caution.
 
-The expected value of the result page is that users can see the gap in a concrete way. The page should not say that a user is simply "rational" or "irrational." It should show where the user's self-image and observed choices match, and where they do not match.
+The result page will generate a descriptive consumer-profile label from the relationship between self-perception and observed choice. The label will explain whether the user's self-image and behavior mostly match, or where a mismatch appears. It will describe a pattern rather than judge a user as rational or irrational. The exact classification rules are still a design question and will need to be tested and revised.
 
 No user study has been run yet. I will not report any user numbers, percentages, charts, or final conclusions at this stage.
 

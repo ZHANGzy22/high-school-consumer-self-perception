@@ -2,11 +2,11 @@
 
 ## 一句话说明
 
-这个 MVP 是一个面向高中生的模拟购物平台消费决策工具。用户先按“一题一页”的方式填写客观消费基础信息，并完成一组五档消费自我认知测试；系统随后根据用户的预算区间和近期接触过的商品类别，生成一个类似真实购物网站的页面原型。项目比较用户前测中“认为自己会如何消费”和模拟购物页面中“实际如何选择”之间是否存在差距。
+这个 MVP 是一个面向高中生的模拟购物平台消费决策工具。用户先按“一题一页”的方式填写客观消费基础信息，并完成一组五档消费自我认知测试；系统随后根据用户的预算区间和近期接触过的商品类别，生成一个类似真实购物网站的页面原型。项目比较用户前测中“认为自己会如何消费”和模拟购物页面中“实际如何选择”之间是否存在差距，并根据这种关系生成描述性的消费画像标签。
 
 ## Research Question & Hypothesis
 
-Research Question: How does an interactive shopping platform simulation affect high school students' recognition of gaps between their consumer self-perception and their observed choices in the simulation?
+Research Question: How does an interactive shopping platform simulation affect high school students' recognition of gaps between their consumer self-perception and their observed choices?
 
 Hypothesis: I hypothesize that after using the interactive shopping platform simulation, high school students will become more aware of the gap between what they think they will do and what they actually choose.
 
