@@ -303,6 +303,29 @@
     .result-card { padding: 15px; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
     .result-card.mismatch { border-color: #efc7c7; background: var(--danger-soft); }
     .result-card.good { border-color: #bad8c6; background: #f4fbf7; }
+    .feedback-form {
+      display: grid;
+      gap: 13px;
+      max-width: 760px;
+      margin: 20px 0;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .feedback-field { display: grid; gap: 6px; }
+    .feedback-field label { font-weight: 700; }
+    .feedback-field select, .feedback-field textarea {
+      width: 100%;
+      padding: 9px 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .feedback-field textarea { min-height: 92px; resize: vertical; }
+    .save-status { min-height: 24px; margin: 0; color: var(--muted); }
+    .save-status.success { color: var(--accent-dark); }
+    .save-status.error { color: var(--danger); }
     .export-box {
       width: 100%;
       min-height: 170px;
@@ -411,11 +434,12 @@
         <div class="tool-header">
           <div>
             <h2 id="tool-title">互动 Demo：模拟购物平台消费决策</h2>
-            <p class="muted">逐题填写基础信息，完成短版五档自测，再进入购物页面。所有数据只在本浏览器里生成。</p>
+            <p class="muted">逐题填写基础信息，完成短版五档自测，再进入购物页面。匿名研究记录会保存到项目数据库。</p>
           </div>
           <div class="stepper" aria-label="进度">
             <span class="step-pill active" data-step-label="intro">说明</span>
             <span class="step-pill" data-step-label="profile">基础信息</span>
+            <span class="step-pill" data-step-label="awareness">初始判断</span>
             <span class="step-pill" data-step-label="test">自我认知</span>
             <span class="step-pill" data-step-label="shop">购物页面</span>
             <span class="step-pill" data-step-label="mini">小游戏</span>
@@ -426,12 +450,12 @@
           <div class="screen active" id="screen-intro">
             <h3>开始前说明</h3>
             <p>你将进入一个模拟购物平台页面。这里不会发生真实付款，也不会收集姓名、手机号、真实消费记录或支付信息。</p>
-            <p>页面不会显示研究标签。系统只在后台记录你的点击选择。</p>
+            <p>系统会保存匿名回答、点击选择及结果反馈，用于课程研究。你可以随时关闭页面退出；已提交的匿名记录不会包含你的身份信息。</p>
             <div class="callout">
               <p><strong>你的任务：</strong>每个购物页面限时 60 秒。你需要像平时逛购物平台一样完成一个选择：点开、查看、关闭、加入购物车、取消服务、降低规格或暂时不买。</p>
             </div>
             <div class="actions">
-              <button class="primary" id="start-btn" type="button">开始</button>
+              <button class="primary" id="start-btn" type="button">开始并同意保存匿名研究记录</button>
             </div>
           </div>
 
@@ -451,7 +475,7 @@
           </div>
 
           <div class="screen" id="screen-test">
-            <h3>第二部分：消费自我认知测试</h3>
+            <h3>第三部分：消费自我认知测试</h3>
             <p class="muted">短版测试，一题一页。选择最接近日常情况的一项。</p>
             <div class="question-card">
               <div class="progress-line" id="test-progress"></div>
@@ -461,6 +485,20 @@
             <div class="actions">
               <button class="secondary" type="button" id="test-back">上一步</button>
               <button class="primary" type="button" id="test-next" disabled>下一题</button>
+            </div>
+          </div>
+
+          <div class="screen" id="screen-awareness">
+            <h3>第二部分：开始前判断</h3>
+            <p class="muted">请按你此刻的真实想法作答。没有正确答案。</p>
+            <div class="question-card">
+              <div class="progress-line" id="awareness-progress"></div>
+              <h3 id="awareness-question"></h3>
+              <div class="scale-grid" id="awareness-options"></div>
+            </div>
+            <div class="actions">
+              <button class="secondary" type="button" id="awareness-back">上一步</button>
+              <button class="primary" type="button" id="awareness-next" disabled>下一题</button>
             </div>
           </div>
 
@@ -502,6 +540,38 @@
             <h3>结果页：自我认知与模拟购物选择对照</h3>
             <p id="result-summary"></p>
             <div class="result-grid" id="result-grid"></div>
+            <form class="feedback-form" id="feedback-form">
+              <h3>结果反馈</h3>
+              <p class="muted">提交后会作为本次匿名研究记录的一部分保存。</p>
+              <div class="feedback-field">
+                <h3>看完结果后，请再次判断</h3>
+                <p class="muted">请按你现在的真实想法作答。</p>
+                <div id="awareness-post-questions"></div>
+              </div>
+              <div class="feedback-field">
+                <label for="label-fit">结果中的消费画像符合你的感受吗？</label>
+                <select id="label-fit" required>
+                  <option value="" selected disabled>请选择</option>
+                  <option value="1">1 · 完全不符合</option>
+                  <option value="2">2 · 不太符合</option>
+                  <option value="3">3 · 一般</option>
+                  <option value="4">4 · 比较符合</option>
+                  <option value="5">5 · 非常符合</option>
+                </select>
+              </div>
+              <div class="feedback-field">
+                <label for="reflection">你从这次模拟中发现了什么？（可选）</label>
+                <textarea id="reflection" maxlength="2000" placeholder="例如：我原本以为自己会先看评价，但在倒计时出现时还是想立即购买。"></textarea>
+              </div>
+              <div class="feedback-field">
+                <label for="influence-notes">哪些页面元素影响了你的选择？（可选）</label>
+                <textarea id="influence-notes" maxlength="2000" placeholder="例如：降价提醒、默认服务、预算提示、评价分歧。"></textarea>
+              </div>
+              <div class="actions">
+                <button class="primary" id="save-feedback" type="submit">提交匿名结果反馈</button>
+              </div>
+              <p class="save-status" id="save-status" aria-live="polite"></p>
+            </form>
             <div class="actions">
               <button class="secondary" id="copy-result" type="button">生成 / 复制研究记录</button>
               <button class="secondary" id="restart" type="button">重新体验</button>
@@ -529,10 +599,30 @@
         </div>
       </section>
     </div>
-    <footer>本页为单文件 HTML 作品页：纯 HTML + CSS + JavaScript，无外部资源。</footer>
+    <footer>本页为单文件 HTML 作品页：纯 HTML + CSS + JavaScript，通过 Supabase REST API 保存匿名研究记录。</footer>
   </main>
 
   <script>
+    // Publishable keys are designed for browser use; row-level security controls access.
+    const SUPABASE_URL = "https://hqrqfimdcktrollahndh.supabase.co";
+    const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_MNWBBbAucPlRND1Fgq0PzQ_CAziQeIn";
+
+    async function supabaseInsert(table, payload) {
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/${table}`, {
+        method: "POST",
+        headers: {
+          apikey: SUPABASE_PUBLISHABLE_KEY,
+          Authorization: `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
+          "Content-Type": "application/json",
+          Prefer: "return=minimal"
+        },
+        body: JSON.stringify(payload)
+      });
+      if (!response.ok) {
+        throw new Error(`${table} 写入失败（${response.status}）`);
+      }
+    }
+
     const categories = [
       "零食饮料",
       "文具 / 学习用品",
@@ -561,6 +651,9 @@
       profileIndex: 0,
       profile: { categories: [], categoryPrices: {} },
       categoryPriceIndex: 0,
+      awarenessIndex: 0,
+      awarenessPre: {},
+      awarenessPost: {},
       testIndex: 0,
       self: {},
       stageIndex: 0,
@@ -570,7 +663,12 @@
       miniAnswer: null,
       timerId: null,
       timeLeft: 60,
-      lastFeedback: ""
+      lastFeedback: "",
+      sessionId: null,
+      sessionReady: false,
+      databaseError: null,
+      result: null,
+      feedbackSubmitted: false
     };
 
     const baseProfileQuestions = [
@@ -636,6 +734,12 @@
       { id: "extra_service", dimension: "detail", text: "如果页面里出现额外服务或附加选项，我通常会看一下。" },
       { id: "countdown", dimension: "time", text: "如果页面提示活动快结束，我通常会先停一下再决定。" },
       { id: "price_drop", dimension: "time", text: "如果价格突然变低，我通常会先确认这是不是我原本就需要的东西。" }
+    ];
+
+    const awarenessQuestions = [
+      { id: "predict_choice", text: "我认为自己能预测在购物页面里会怎样做选择。" },
+      { id: "plan_action_match", text: "我认为自己的实际选择通常会和事先想法一致。" },
+      { id: "know_influences", text: "我认为自己能说清哪些页面信息会影响我的选择。" }
     ];
 
     const scaleLabels = ["非常不符合", "比较不符合", "不确定", "比较符合", "非常符合"];
@@ -759,8 +863,9 @@
         renderProfileQuestion();
         return;
       }
-      renderTestQuestion();
-      setStep("test");
+      state.awarenessIndex = 0;
+      renderAwarenessQuestion();
+      setStep("awareness");
     }
 
     function prevProfile() {
@@ -776,6 +881,44 @@
         }
       }
       renderProfileQuestion();
+    }
+
+    function renderAwarenessQuestion() {
+      const question = awarenessQuestions[state.awarenessIndex];
+      document.getElementById("awareness-progress").textContent = `开始前判断 ${state.awarenessIndex + 1} / ${awarenessQuestions.length}`;
+      document.getElementById("awareness-question").textContent = question.text;
+      document.getElementById("awareness-next").disabled = !state.awarenessPre[question.id];
+      document.getElementById("awareness-next").textContent = state.awarenessIndex === awarenessQuestions.length - 1 ? "进入自我认知测试" : "下一题";
+      document.getElementById("awareness-options").innerHTML = scaleLabels.map((label, index) => `
+        <button class="scale-btn ${state.awarenessPre[question.id] === index + 1 ? "selected" : ""}" type="button" data-value="${index + 1}">${label}</button>
+      `).join("");
+    }
+
+    function chooseAwareness(value) {
+      const question = awarenessQuestions[state.awarenessIndex];
+      state.awarenessPre[question.id] = Number(value);
+      renderAwarenessQuestion();
+    }
+
+    function nextAwareness() {
+      if (state.awarenessIndex < awarenessQuestions.length - 1) {
+        state.awarenessIndex += 1;
+        renderAwarenessQuestion();
+        return;
+      }
+      state.testIndex = 0;
+      renderTestQuestion();
+      setStep("test");
+    }
+
+    function prevAwareness() {
+      if (state.awarenessIndex > 0) {
+        state.awarenessIndex -= 1;
+        renderAwarenessQuestion();
+        return;
+      }
+      renderProfileQuestion();
+      setStep("profile");
     }
 
     function renderTestQuestion() {
@@ -795,11 +938,36 @@
       renderTestQuestion();
     }
 
-    function nextTest() {
+    async function createSession() {
+      state.sessionId = crypto.randomUUID();
+      await supabaseInsert("sessions", {
+        id: state.sessionId,
+        app_version: "mvp-1",
+        profile: state.profile,
+        self_assessment: {
+          consumer_self_perception: state.self,
+          awareness_pre_items: state.awarenessPre
+        }
+      });
+      state.sessionReady = true;
+    }
+
+    async function nextTest() {
       if (state.testIndex < selfQuestions.length - 1) {
         state.testIndex += 1;
         renderTestQuestion();
         return;
+      }
+      const nextButton = document.getElementById("test-next");
+      nextButton.disabled = true;
+      nextButton.textContent = "正在创建匿名研究记录…";
+      try {
+        await createSession();
+      } catch (error) {
+        state.databaseError = error;
+        state.sessionId = null;
+        state.sessionReady = false;
+        console.error("无法创建 Supabase session", error);
       }
       buildFeedProducts();
       renderShopStage();
@@ -807,8 +975,9 @@
 
     function prevTest() {
       if (state.testIndex === 0) {
-        renderProfileQuestion();
-        setStep("profile");
+        state.awarenessIndex = awarenessQuestions.length - 1;
+        renderAwarenessQuestion();
+        setStep("awareness");
         return;
       }
       state.testIndex -= 1;
@@ -998,20 +1167,42 @@
       return Math.min(96, Math.max(8, Math.round((price / budget) * 100)));
     }
 
+    function recordSimulationEvent(event) {
+      if (!state.sessionReady || !state.sessionId) return;
+      supabaseInsert("simulation_events", {
+        session_id: state.sessionId,
+        event_order: state.events.length,
+        stage: event.stage,
+        action: event.action,
+        product_category: event.productCategory,
+        product_name: event.productName,
+        interest_product: event.interestProduct,
+        price: event.price,
+        budget_pressure: event.budgetPressure,
+        time_remaining_seconds: event.timeRemainingSeconds
+      }).catch((error) => {
+        state.databaseError = error;
+        console.error("无法保存模拟操作", error);
+      });
+    }
+
     function handleShopAction(action, productId) {
       stopStageTimer();
       if (productId) state.selectedProduct = state.feedProducts.find((item) => item.id === productId);
       const product = state.selectedProduct || state.feedProducts[0];
       state.lastFeedback = actionFeedback[action] || "操作已完成。";
-      state.events.push({
+      const simulationEvent = {
         stage: stages[state.stageIndex].id,
         action,
         productCategory: product.category,
         productName: product.name,
         interestProduct: product.interest,
         price: product.price,
-        budgetPressure: budgetPressure(product.price)
-      });
+        budgetPressure: budgetPressure(product.price),
+        timeRemainingSeconds: Math.max(0, state.timeLeft)
+      };
+      state.events.push(simulationEvent);
+      recordSimulationEvent(simulationEvent);
       if (state.stageIndex < stages.length - 1) startMiniGame();
       else renderResults();
     }
@@ -1031,6 +1222,39 @@
       const items = selfQuestions.filter((question) => question.dimension === dimension);
       const total = items.reduce((sum, question) => sum + (state.self[question.id] || 0), 0);
       return total / items.length;
+    }
+
+    function profileLabel(dims) {
+      const labels = {
+        budget: "预算敏感型",
+        info: "信息核查型",
+        detail: "结算细节关注型",
+        time: "审慎决策型"
+      };
+      const strongest = Object.entries(dims).sort(([, a], [, b]) => b - a)[0][0];
+      return labels[strongest];
+    }
+
+    function setSaveStatus(message, type = "") {
+      const status = document.getElementById("save-status");
+      status.textContent = message;
+      status.className = `save-status ${type}`.trim();
+    }
+
+    function meanScore(answers) {
+      const values = Object.values(answers).map(Number).filter(Boolean);
+      return values.reduce((sum, value) => sum + value, 0) / values.length;
+    }
+
+    function renderAwarenessPost() {
+      document.getElementById("awareness-post-questions").innerHTML = awarenessQuestions.map((question, index) => `
+        <label for="awareness-post-${question.id}">${index + 1}. ${question.text}
+          <select id="awareness-post-${question.id}" data-awareness-post="${question.id}" required>
+            <option value="" selected disabled>请选择</option>
+            ${scaleLabels.map((label, score) => `<option value="${score + 1}">${score + 1} · ${label}</option>`).join("")}
+          </select>
+        </label>
+      `).join("");
     }
 
     function renderResults() {
@@ -1081,6 +1305,12 @@
         }
       ];
       const mismatchCount = gaps.filter((gap) => !gap.good).length;
+      state.result = {
+        dims,
+        gaps,
+        mismatchCount,
+        profileLabel: profileLabel(dims)
+      };
       document.getElementById("result-summary").innerHTML = `本次 demo 识别出 <strong>${mismatchCount}</strong> 个较明显的自我认知与模拟选择差距。结果只用于研究记录。`;
       document.getElementById("result-grid").innerHTML = gaps.map((gap) => `
         <div class="result-card ${gap.good ? "good" : "mismatch"}">
@@ -1088,14 +1318,75 @@
           <p>${gap.text}</p>
         </div>
       `).join("");
+      document.getElementById("feedback-form").reset();
+      state.awarenessPost = {};
+      renderAwarenessPost();
+      const feedbackButton = document.getElementById("save-feedback");
+      feedbackButton.disabled = !state.sessionReady;
+      feedbackButton.textContent = "提交匿名结果反馈";
+      if (state.databaseError) {
+        setSaveStatus("本次匿名记录未能完整连接到数据库；结果反馈不会提交。", "error");
+      } else {
+        setSaveStatus(state.sessionReady ? "填写后由你主动提交。" : "未创建研究记录，无法提交反馈。", state.sessionReady ? "" : "error");
+      }
       setStep("result");
+    }
+
+    async function saveResultFeedback(event) {
+      event.preventDefault();
+      if (state.feedbackSubmitted) return;
+      const form = document.getElementById("feedback-form");
+      if (!form.reportValidity()) return;
+      if (!state.sessionReady || !state.sessionId || !state.result) {
+        setSaveStatus("未创建研究记录，无法提交反馈。", "error");
+        return;
+      }
+      const submitButton = document.getElementById("save-feedback");
+      submitButton.disabled = true;
+      submitButton.textContent = "正在提交…";
+      try {
+        state.awarenessPost = Object.fromEntries(
+          [...document.querySelectorAll("[data-awareness-post]")].map((select) => [select.dataset.awarenessPost, Number(select.value)])
+        );
+        const awarenessPre = meanScore(state.awarenessPre);
+        const awarenessPost = meanScore(state.awarenessPost);
+        await supabaseInsert("result_feedback", {
+          session_id: state.sessionId,
+          awareness_pre: Number(awarenessPre.toFixed(2)),
+          awareness_post: Number(awarenessPost.toFixed(2)),
+          profile_label: state.result.profileLabel,
+          profile_label_details: {
+            dimension_scores: state.result.dims,
+            mismatch_count: state.result.mismatchCount,
+            awareness_pre_items: state.awarenessPre,
+            awareness_post_items: state.awarenessPost,
+            gap_results: state.result.gaps.map((gap) => ({ title: gap.title, consistent: gap.good })),
+            observed_actions: state.events.map((item) => item.action)
+          },
+          label_fit: Number(document.getElementById("label-fit").value),
+          reflection: document.getElementById("reflection").value.trim() || null,
+          influence_notes: document.getElementById("influence-notes").value.trim() || null
+        });
+        state.feedbackSubmitted = true;
+        submitButton.textContent = "反馈已提交";
+        setSaveStatus("匿名结果反馈已保存。", "success");
+      } catch (error) {
+        state.databaseError = error;
+        submitButton.disabled = false;
+        submitButton.textContent = "重新提交匿名结果反馈";
+        setSaveStatus("反馈未能保存，请检查网络后重试。", "error");
+        console.error("无法保存结果反馈", error);
+      }
     }
 
     function exportData() {
       const payload = {
         project: "高中生消费自我认知与模拟选择差异",
         timestamp: new Date().toISOString(),
+        sessionId: state.sessionId,
         profile: state.profile,
+        awarenessPre: state.awarenessPre,
+        awarenessPost: state.awarenessPost,
         selfPerception: state.self,
         selectedProduct: state.selectedProduct,
         events: state.events
@@ -1126,11 +1417,20 @@
     document.getElementById("profile-next").addEventListener("click", nextProfile);
     document.getElementById("profile-back").addEventListener("click", prevProfile);
 
+    document.getElementById("awareness-options").addEventListener("click", (event) => {
+      const button = event.target.closest(".scale-btn");
+      if (button) chooseAwareness(button.dataset.value);
+    });
+    document.getElementById("awareness-next").addEventListener("click", nextAwareness);
+    document.getElementById("awareness-back").addEventListener("click", prevAwareness);
+
     document.getElementById("test-options").addEventListener("click", (event) => {
       const button = event.target.closest(".scale-btn");
       if (button) chooseTest(button.dataset.value);
     });
-    document.getElementById("test-next").addEventListener("click", nextTest);
+    document.getElementById("test-next").addEventListener("click", async () => {
+      await nextTest();
+    });
     document.getElementById("test-back").addEventListener("click", prevTest);
 
     document.getElementById("phone-body").addEventListener("click", (event) => {
@@ -1146,11 +1446,15 @@
       state.stageIndex += 1;
       renderShopStage();
     });
+    document.getElementById("feedback-form").addEventListener("submit", saveResultFeedback);
     document.getElementById("copy-result").addEventListener("click", exportData);
     document.getElementById("restart").addEventListener("click", () => {
       state.profileIndex = 0;
       state.profile = { categories: [], categoryPrices: {} };
       state.categoryPriceIndex = 0;
+      state.awarenessIndex = 0;
+      state.awarenessPre = {};
+      state.awarenessPost = {};
       state.testIndex = 0;
       state.self = {};
       state.stageIndex = 0;
@@ -1159,6 +1463,11 @@
       state.events = [];
       state.lastFeedback = "";
       state.timeLeft = 60;
+      state.sessionId = null;
+      state.sessionReady = false;
+      state.databaseError = null;
+      state.result = null;
+      state.feedbackSubmitted = false;
       stopStageTimer();
       document.getElementById("export-box").value = "";
       setStep("intro");
