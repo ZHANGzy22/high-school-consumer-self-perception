@@ -207,32 +207,94 @@
     .timer-fill.danger { background: var(--danger); }
     .phone {
       width: min(430px, 100%);
+      min-height: 700px;
       overflow: hidden;
-      min-height: 660px;
-      border: 10px solid #1f2933;
-      border-radius: 30px;
-      background: #f6f7f7;
-      box-shadow: 0 18px 35px rgba(0, 0, 0, 0.18);
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #d8dde4;
+      border-radius: 24px;
+      background: #f5f6f8;
+      box-shadow: 0 18px 35px rgba(20, 27, 38, 0.16);
     }
     .phone-top {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 14px 16px;
+      min-height: 48px;
+      padding: 11px 16px;
       background: #fff;
       border-bottom: 1px solid var(--line);
       font-weight: 800;
     }
-    .phone-body { padding: 14px; }
-    .search-bar {
-      padding: 10px 12px;
-      border-radius: 999px;
-      background: #fff;
-      color: var(--muted);
-      border: 1px solid var(--line);
-      margin-bottom: 12px;
+    .phone-top small { color: var(--muted); font-weight: 600; }
+    .phone-body { flex: 1; min-height: 0; overflow: auto; padding: 0 12px 12px; }
+    .market-tabs {
+      display: flex;
+      gap: 17px;
+      overflow: hidden;
+      padding: 13px 4px 9px;
+      color: #747b87;
+      font-size: 14px;
+      font-weight: 750;
+      white-space: nowrap;
     }
-    .product-list { display: grid; gap: 12px; }
+    .market-tabs .active { position: relative; color: #1e2530; }
+    .market-tabs .active::after {
+      position: absolute;
+      right: 20%;
+      bottom: -9px;
+      left: 20%;
+      height: 3px;
+      content: "";
+      border-radius: 999px;
+      background: #ff6b21;
+    }
+    .market-search {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 0 14px;
+      border: 2px solid #ff6b21;
+      border-radius: 12px;
+      background: #fff;
+      color: #737b86;
+      font-size: 14px;
+    }
+    .market-search b { margin-left: auto; color: #ff5b15; font-size: 15px; }
+    .market-shortcuts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; padding: 13px 0 10px; }
+    .market-shortcuts span {
+      min-height: 50px;
+      display: grid;
+      place-items: center;
+      padding: 6px 3px;
+      border-radius: 8px;
+      background: #fff;
+      color: #4a5260;
+      font-size: 12px;
+      font-weight: 750;
+      text-align: center;
+    }
+    .market-shortcuts span::first-letter { color: #ff6b21; }
+    .promo-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .promo-strip div {
+      min-height: 70px;
+      padding: 10px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #fff1e9, #fff8f3);
+      color: #f15719;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .promo-strip div:last-child { background: linear-gradient(135deg, #edf6ff, #f8fbff); color: #3970ad; }
+    .promo-strip small { display: block; margin-top: 4px; color: #8d97a3; font-weight: 600; }
+    .product-list { display: grid; gap: 10px; }
+    .feed-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
     .product-card, .app-panel {
       display: block;
       width: 100%;
@@ -244,19 +306,55 @@
       text-align: left;
       margin-bottom: 12px;
     }
+    .feed-card { min-width: 0; margin: 0; padding: 0; overflow: hidden; border-radius: 10px; }
+    .feed-card .feed-copy { padding: 9px 10px 11px; }
+    .feed-card strong { display: -webkit-box; overflow: hidden; min-height: 38px; font-size: 13px; line-height: 1.45; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+    .feed-visual {
+      min-height: 132px;
+      display: grid;
+      place-items: end start;
+      padding: 12px;
+      background: linear-gradient(135deg, #dcecff, #f5f8fd);
+      color: #2d5e91;
+      font-size: 13px;
+      font-weight: 850;
+    }
+    .feed-visual.tone-1 { background: linear-gradient(135deg, #fff0e5, #fff8f2); color: #b95423; }
+    .feed-visual.tone-2 { background: linear-gradient(135deg, #eeebff, #faf9ff); color: #5c4ca4; }
+    .feed-visual.tone-3 { background: linear-gradient(135deg, #e8f7ee, #fbfffc); color: #2f8054; }
+    .feed-visual::after {
+      width: 64px;
+      height: 64px;
+      display: grid;
+      place-items: center;
+      align-self: center;
+      justify-self: center;
+      content: "精选";
+      border: 7px solid rgba(255,255,255,0.72);
+      border-radius: 18px 28px 20px 24px;
+      background: rgba(255,255,255,0.42);
+      color: inherit;
+      font-size: 12px;
+      transform: rotate(-8deg);
+    }
+    .feed-meta { margin-top: 7px; color: #ff5c16; font-size: 12px; font-weight: 800; }
     .product-img {
       display: grid;
       place-items: center;
-      height: 110px;
-      margin-bottom: 10px;
+      width: 84px;
+      height: 84px;
+      flex: 0 0 auto;
+      margin: 0;
       border-radius: 8px;
-      background: linear-gradient(135deg, #e9f4ed, #fff5e6);
-      color: var(--accent-dark);
+      background: linear-gradient(135deg, #e8eff9, #fff5e8);
+      color: #4f6680;
+      font-size: 12px;
       font-weight: 800;
+      line-height: 1.35;
       text-align: center;
     }
     .price-line { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; margin: 8px 0; }
-    .price { color: var(--danger); font-size: 24px; font-weight: 900; }
+    .price { color: #ff5916; font-size: 22px; font-weight: 900; }
     .badge {
       display: inline-flex;
       min-height: 26px;
@@ -268,7 +366,41 @@
       font-size: 13px;
       font-weight: 700;
     }
-    .app-actions { display: grid; gap: 9px; margin-top: 12px; }
+    .app-actions { display: grid; gap: 8px; margin-top: 12px; }
+    .app-actions .app-btn:first-child { border-color: #ff6b21; background: #ff6b21; color: #fff; font-weight: 800; }
+    .cart-sheet { padding: 11px; margin-bottom: 10px; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+    .cart-shop { display: flex; align-items: center; gap: 7px; padding-bottom: 9px; font-size: 13px; }
+    .cart-check { width: 18px; height: 18px; flex: 0 0 auto; border: 2px solid #c9d0d9; border-radius: 50%; }
+    .cart-shop .shop-name { color: #ff5d18; font-weight: 900; }
+    .cart-row { display: flex; gap: 10px; align-items: flex-start; }
+    .cart-copy { min-width: 0; flex: 1; }
+    .cart-copy strong { display: -webkit-box; overflow: hidden; font-size: 13px; line-height: 1.45; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+    .cart-copy .price-line { margin: 7px 0 4px; }
+    .cart-copy .price { font-size: 21px; }
+    .cart-copy .muted { font-size: 12px; text-decoration: line-through; }
+    .cart-copy .badge { min-height: 22px; padding: 2px 6px; font-size: 11px; }
+    .cart-total {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 12px;
+      margin: 0 -12px -12px;
+      border-top: 1px solid var(--line);
+      background: #fff;
+      font-size: 13px;
+    }
+    .cart-total strong { color: #ff5d18; font-size: 18px; }
+    .cart-total span:last-child { padding: 8px 13px; border-radius: 8px; background: #ff6b21; color: #fff; font-weight: 850; }
+    .phone-nav {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--line);
+      background: #fff;
+    }
+    .phone-nav span { padding: 8px 2px 9px; color: #7b838d; font-size: 11px; font-weight: 700; text-align: center; }
+    .phone-nav .nav-active { color: #ff5d18; }
+    .phone-nav i { display: block; margin-bottom: 2px; font-style: normal; font-size: 16px; line-height: 1; }
     .budget-bar { height: 12px; overflow: hidden; border-radius: 999px; background: #e9edf0; margin: 8px 0 4px; }
     .budget-fill { height: 100%; background: var(--accent); }
 
@@ -516,9 +648,15 @@
               <div class="phone" aria-label="模拟购物页面">
                 <div class="phone-top">
                   <span>好价集市</span>
-                  <span id="stage-count">1 / 5</span>
+                  <span><small>模拟中 · </small><span id="stage-count">1 / 5</span></span>
                 </div>
                 <div class="phone-body" id="phone-body"></div>
+                <div class="phone-nav" aria-hidden="true">
+                  <span data-nav="home"><i>⌂</i>首页</span>
+                  <span data-nav="discover"><i>◷</i>发现</span>
+                  <span data-nav="cart"><i>▣</i>购物车</span>
+                  <span data-nav="account"><i>◯</i>我的</span>
+                </div>
               </div>
             </div>
           </div>
@@ -1041,6 +1179,9 @@
       document.getElementById("stage-count").textContent = `${state.stageIndex + 1} / ${stages.length}`;
       document.getElementById("stage-task").textContent = `${stage.task}（限时 60 秒）`;
       document.getElementById("phone-body").innerHTML = renderPhone(stage.id);
+      document.querySelectorAll("[data-nav]").forEach((item) => {
+        item.classList.toggle("nav-active", item.dataset.nav === (stage.id === "feed" ? "home" : "cart"));
+      });
       setStep("shop");
       startStageTimer();
     }
@@ -1079,15 +1220,21 @@
     function renderPhone(stageId) {
       if (stageId === "feed") {
         return `
-          <div class="search-bar">搜索 商品 / 优惠 / 评价</div>
-          <div class="product-list">
-            ${state.feedProducts.map((product) => `
-              <button class="product-card" type="button" data-action="open_product" data-product="${product.id}">
-                <div class="product-img">${product.category}<br>${product.name}</div>
-                <strong>${product.name}</strong>
-                <div class="price-line"><span class="price">¥${product.price}</span><span class="muted">原价 ¥${product.original}</span></div>
-                <span class="badge">${product.interest ? "近期接触类别" : "其他类别"}</span>
-                <span class="badge">${product.pressureLabel}</span>
+          <div class="market-tabs"><span>关注</span><span class="active">推荐</span><span>限时</span><span>补贴</span><span>低价</span></div>
+          <div class="market-search"><span>⌕</span><span>搜索商品、优惠或店铺</span><b>搜索</b></div>
+          <div class="market-shortcuts"><span>限时好价</span><span>降价提醒</span><span>购物车</span><span>全部分类</span></div>
+          <div class="promo-strip">
+            <div>今日好物<small>根据你的兴趣生成</small></div>
+            <div>补贴专区<small>查看当前优惠</small></div>
+          </div>
+          <div class="feed-grid">
+            ${state.feedProducts.map((product, index) => `
+              <button class="product-card feed-card" type="button" data-action="open_product" data-product="${product.id}">
+                <div class="feed-visual tone-${index % 4}">${product.category}</div>
+                <div class="feed-copy">
+                  <strong>${product.name}</strong>
+                  <div class="feed-meta">到手 ¥${product.price} · ${product.pressureLabel}</div>
+                </div>
               </button>
             `).join("")}
           </div>
@@ -1099,10 +1246,10 @@
       const product = state.selectedProduct || state.feedProducts[0];
       if (stageId === "popup") {
         return productBlock(product) + `
-          <div class="app-panel" style="border-color:#f0c28a;background:#fff8ee;">
-            <strong>降价提醒</strong>
-            <p>你刚刚看的商品降价了，10 分钟内下单可保留当前价格。</p>
-            <span class="badge">倒计时 09:58</span>
+          <div class="app-panel" style="border-color:#ffd0b4;background:#fff7f2;">
+            <strong style="color:#ff5d18">降价消息</strong>
+            <p>你刚刚浏览的商品现在降价。保留当前价格还剩 09:58。</p>
+            <span class="badge">限时价格</span>
             <div class="app-actions">
               <button class="app-btn" type="button" data-action="popup_view">立即查看</button>
               <button class="app-btn" type="button" data-action="popup_later">稍后再说</button>
@@ -1113,8 +1260,8 @@
       }
       if (stageId === "detail") {
         return productBlock(product) + `
-          <div class="app-panel"><strong>评价摘要</strong><p>总体评分 4.8 / 5。部分用户提到“性价比不错”，也有人提到“实际体验要看规格”。</p></div>
-          <div class="app-panel"><strong>优惠说明</strong><p>补贴价需在倒计时结束前提交，部分服务默认计入结算。</p></div>
+          <div class="app-panel"><strong>商品评价</strong><p>4.8 分 · 多数评价认为性价比不错，也有人提醒要看清规格。</p></div>
+          <div class="app-panel"><strong>优惠说明</strong><p>当前补贴价会在倒计时结束后恢复，部分服务会在结算页默认选中。</p></div>
           <div class="app-actions">
             <button class="app-btn" type="button" data-action="detail_review">查看更多评价</button>
             <button class="app-btn" type="button" data-action="detail_rule">查看活动规则</button>
@@ -1126,8 +1273,8 @@
       if (stageId === "checkout") {
         const pressure = budgetPressure(product.price);
         return productBlock(product) + `
-          <div class="app-panel"><strong>结算页</strong><p>商品价 ¥${product.price} · 运费 ¥0 · 优惠 -¥12</p></div>
-          <div class="app-panel" style="border-color:#f0c28a;background:#fff8ee;"><strong>✓ 默认勾选：购物保障服务 ¥19</strong><p class="muted">包含优先客服和退换保障。</p></div>
+          <div class="app-panel"><strong>订单明细</strong><p>商品 ¥${product.price} · 运费 ¥0 · 优惠 -¥12</p></div>
+          <div class="app-panel" style="border-color:#ffd0b4;background:#fff7f2;"><strong>✓ 默认选中：购物保障服务 ¥19</strong><p class="muted">包含优先客服和退换保障。</p></div>
           <div class="app-panel"><strong>预算进度</strong><div class="budget-bar"><div class="budget-fill" style="width:${pressure}%"></div></div><p class="muted">本次消费约占你月可支配金额的 ${pressure}%</p></div>
           <div class="app-actions">
             <button class="app-btn" type="button" data-action="checkout_keep">保留默认服务并提交</button>
@@ -1135,12 +1282,13 @@
             <button class="app-btn" type="button" data-action="checkout_info">查看服务说明</button>
             <button class="app-btn" type="button" data-action="checkout_back">返回购物车</button>
           </div>
+          <div class="cart-total"><span>合计</span><strong>¥${Math.max(0, product.price - 12 + 19)}</strong><span>结算</span></div>
         `;
       }
       const pressure = Math.min(96, budgetPressure(product.price) + 24);
       return productBlock(product) + `
-        <div class="app-panel"><strong>购买前确认</strong><p>总体评分较高，但部分评价提到“和描述有差距”“售后处理较慢”。</p></div>
-        <div class="app-panel" style="border-color:#efc7c7;background:#fff6f6;"><strong>预算提醒</strong><div class="budget-bar"><div class="budget-fill" style="width:${pressure}%;background:#9b2c2c"></div></div><p>如果继续提交，预算压力将接近上限。</p></div>
+        <div class="app-panel"><strong>购买前确认</strong><p>整体评分较高，但部分评价提到“和描述有差距”“售后处理较慢”。</p></div>
+        <div class="app-panel" style="border-color:#f4c7c7;background:#fff6f6;"><strong style="color:#b83232">预算提醒</strong><div class="budget-bar"><div class="budget-fill" style="width:${pressure}%;background:#d94a3b"></div></div><p>如果继续提交，预算压力将接近上限。</p></div>
         <div class="app-actions">
           <button class="app-btn" type="button" data-action="review_submit">继续提交</button>
           <button class="app-btn" type="button" data-action="review_more">查看更多评价</button>
@@ -1152,12 +1300,18 @@
 
     function productBlock(product) {
       return `
-        <div class="product-card">
-          <div class="product-img">${product.category}<br>${product.name}</div>
-          <strong>${product.name}</strong>
-          <div class="price-line"><span class="price">¥${product.price}</span><span class="muted">原价 ¥${product.original}</span></div>
-          <span class="badge">${product.interest ? "近期接触类别" : "其他类别"}</span>
-          <span class="badge">${product.pressureLabel}</span>
+        <div class="cart-sheet">
+          <div class="cart-shop"><span class="cart-check"></span><span class="shop-name">精选好物店</span><span>›</span></div>
+          <div class="cart-row">
+            <span class="cart-check"></span>
+            <div class="product-img">${product.category}<br>推荐商品</div>
+            <div class="cart-copy">
+              <strong>${product.name}</strong>
+              <span class="badge">${product.interest ? "近期接触类别" : "其他类别"}</span>
+              <div class="price-line"><span class="price">¥${product.price}</span><span class="muted">¥${product.original}</span></div>
+              <span class="badge">${product.pressureLabel}</span>
+            </div>
+          </div>
         </div>
       `;
     }
