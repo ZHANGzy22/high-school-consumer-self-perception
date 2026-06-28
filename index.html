@@ -36,6 +36,54 @@
       line-height: 1.62;
     }
 
+    body.consent-pending main { display: none; }
+
+    .consent-screen {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 22px;
+      background: var(--bg);
+    }
+    body:not(.consent-pending) .consent-screen { display: none; }
+    .consent-card {
+      width: min(720px, 100%);
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+    .consent-card h1 { font-size: clamp(28px, 5vw, 42px); }
+    .consent-list {
+      display: grid;
+      gap: 12px;
+      margin: 20px 0;
+      padding: 0;
+      list-style: none;
+    }
+    .consent-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 13px 14px;
+      border: 1px solid #bad8c6;
+      border-radius: 8px;
+      background: #f4fbf7;
+    }
+    .consent-list strong { color: var(--accent-dark); }
+    .consent-icon, .card-icon, .step-icon {
+      display: inline-grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      font-weight: 900;
+      line-height: 1;
+    }
+    .consent-icon { width: 34px; height: 34px; margin-top: 1px; font-size: 14px; }
+
     main {
       max-width: 1120px;
       margin: 0 auto;
@@ -50,16 +98,26 @@
     button, input, textarea { font: inherit; }
     button { cursor: pointer; }
 
-    .shell { display: grid; gap: 18px; }
+    .shell { display: flex; flex-direction: column; gap: 18px; }
     .hero, .section, .tool {
       border: 1px solid var(--line);
       border-radius: 8px;
       background: var(--paper);
       box-shadow: var(--shadow);
     }
-    .hero { padding: 34px; }
+    .hero {
+      order: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+      gap: 26px;
+      align-items: center;
+      padding: 34px;
+    }
     .section { padding: 24px; }
-    .tool { overflow: hidden; }
+    .tool { order: 2; overflow: hidden; }
+    .overview-section { order: 3; }
+    #research-section { order: 4; }
+    .analysis-section { order: 5; }
     .muted { color: var(--muted); }
 
     .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
@@ -75,6 +133,79 @@
       font-weight: 700;
     }
     .subtitle { max-width: 860px; margin-top: 16px; color: var(--muted); font-size: 18px; }
+    .hero-copy { min-width: 0; }
+    .hero-visual {
+      min-height: 360px;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      border: 1px solid #d9e4dc;
+      border-radius: 8px;
+      background:
+        radial-gradient(circle at 20% 15%, rgba(31,122,90,0.16), transparent 30%),
+        linear-gradient(135deg, #f7fbf8, #fff7ee);
+    }
+    .mock-phone {
+      width: min(310px, 100%);
+      padding: 14px;
+      border: 1px solid #d5dbe0;
+      border-radius: 26px;
+      background: #fff;
+      box-shadow: 0 18px 34px rgba(20, 27, 38, 0.14);
+    }
+    .mock-top { display: flex; justify-content: space-between; align-items: center; color: #1d2630; font-weight: 900; }
+    .mock-search {
+      margin: 12px 0;
+      padding: 8px 10px;
+      border: 2px solid #ff6b21;
+      border-radius: 12px;
+      color: #69727c;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .mock-products { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .mock-product {
+      min-height: 118px;
+      padding: 10px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #edf4ff, #ffffff);
+      color: #285a8b;
+      font-size: 12px;
+      font-weight: 850;
+    }
+    .mock-product:nth-child(2) { background: linear-gradient(135deg, #fff0e8, #fffaf5); color: #b95423; }
+    .mock-product:nth-child(3) { background: linear-gradient(135deg, #eef8f1, #ffffff); color: #28764c; }
+    .mock-product:nth-child(4) { background: linear-gradient(135deg, #f2efff, #ffffff); color: #5d4a9e; }
+    .mock-price { display: block; margin-top: 46px; color: #ff5d18; font-size: 18px; }
+    .mock-result {
+      margin-top: 12px;
+      padding: 10px;
+      border: 1px solid #bad8c6;
+      border-radius: 10px;
+      background: #f4fbf7;
+      color: var(--accent-dark);
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .quick-steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .quick-step {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 12px;
+      border: 1px solid #bad8c6;
+      border-radius: 8px;
+      background: #f4fbf7;
+      color: var(--accent-dark);
+      font-weight: 700;
+    }
+    .step-icon { width: 30px; height: 30px; background: #fff; border: 1px solid #bad8c6; }
     .callout {
       margin-top: 22px;
       padding: 16px 18px;
@@ -84,6 +215,14 @@
     }
     .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
     .card { min-height: 100%; padding: 15px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }
+    .card-icon {
+      width: 38px;
+      height: 38px;
+      margin-bottom: 10px;
+      border: 1px solid #bad8c6;
+      background: #fff;
+      font-size: 15px;
+    }
 
     table { width: 100%; margin-top: 16px; border-collapse: collapse; font-size: 15px; }
     th, td { padding: 11px 12px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
@@ -179,6 +318,10 @@
 
     .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
     .primary, .secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
       min-height: 42px;
       padding: 9px 14px;
       border-radius: 8px;
@@ -188,6 +331,7 @@
     .primary { background: var(--accent); color: #fff; }
     .primary:disabled { opacity: 0.45; cursor: not-allowed; }
     .secondary { border-color: var(--line); background: #fff; color: var(--text); }
+    .privacy-note { margin-top: 10px; color: var(--muted); font-size: 14px; }
 
     .phone-wrap { display: grid; place-items: center; margin-top: 18px; }
     .task-panel {
@@ -470,43 +614,92 @@
     footer { margin-top: 18px; color: var(--muted); font-size: 14px; text-align: center; }
 
     @media (max-width: 860px) {
+      .consent-card { padding: 22px; }
       .hero, .section, .tool-body, .tool-header { padding: 20px; }
-      .grid, .research-grid, .result-grid { grid-template-columns: 1fr; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-visual { min-height: 300px; padding: 12px; }
+      .grid, .research-grid, .result-grid, .quick-steps { grid-template-columns: 1fr; }
       .stepper { min-width: 0; justify-content: flex-start; }
       .scale-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 30px; }
+      .subtitle { font-size: 16px; }
+      .hero-actions .primary, .hero-actions .secondary, .actions .primary, .actions .secondary { width: 100%; }
+      .phone { min-height: 620px; border-radius: 18px; }
     }
   </style>
 </head>
-<body>
+<body class="consent-pending">
+  <section class="consent-screen" id="consent-screen" aria-labelledby="consent-title">
+    <div class="consent-card">
+      <h1 id="consent-title">开始前，请先确认知情同意</h1>
+      <p class="subtitle">这是一个课堂研究用的模拟购物小实验。你读完下面四点，再决定要不要继续。</p>
+      <ul class="consent-list">
+        <li><span class="consent-icon" aria-hidden="true">匿</span><span><strong>匿名：</strong>我们不会收集你的姓名、手机号、学号等能认出你是谁的信息。</span></li>
+        <li><span class="consent-icon" aria-hidden="true">选</span><span><strong>自愿：</strong>参不参加完全由你决定。你不参加也没有任何影响。</span></li>
+        <li><span class="consent-icon" aria-hidden="true">退</span><span><strong>随时可退出：</strong>中途不想填了，直接关掉页面离开就可以。</span></li>
+        <li><span class="consent-icon" aria-hidden="true">研</span><span><strong>数据用途：</strong>你的回答只用于这个课堂研究，不会用作其他用途。</span></li>
+      </ul>
+      <div class="actions">
+        <button class="primary" id="consent-accept" type="button">我同意，进入体验</button>
+      </div>
+      <p class="privacy-note">如果你不同意，直接关闭这个页面即可。</p>
+    </div>
+  </section>
+
   <main>
     <div class="shell">
       <section class="hero">
-        <div class="tags">
-          <span class="tag">AI for Social Sciences</span>
-          <span class="tag">Interactive MVP</span>
-          <span class="tag">Shopping Platform Prototype</span>
+        <div class="hero-copy">
+          <div class="tags">
+            <span class="tag">AI for Social Sciences</span>
+            <span class="tag">Interactive MVP</span>
+            <span class="tag">Shopping Platform Prototype</span>
+          </div>
+          <h1>消费选择差距测试</h1>
+          <p class="subtitle">
+            这是一个给高中生玩的模拟购物小实验。你先判断自己平时会怎么消费，再进入一个仿购物页面做选择，最后看“我以为的自己”和“我实际点了什么”有没有差距。
+          </p>
+          <div class="hero-actions">
+            <a class="primary" href="#demo-tool">开始体验（约 5 分钟）</a>
+            <a class="secondary" href="#research-section">先看研究说明</a>
+          </div>
+          <div class="quick-steps" aria-label="体验步骤">
+            <div class="quick-step"><span class="step-icon" aria-hidden="true">1</span><span>先回答几题基础信息</span></div>
+            <div class="quick-step"><span class="step-icon" aria-hidden="true">2</span><span>再像逛购物软件一样点击</span></div>
+            <div class="quick-step"><span class="step-icon" aria-hidden="true">3</span><span>最后查看你的差距结果</span></div>
+          </div>
+          <p class="privacy-note">不会真实付款，不收集姓名、手机号、支付信息。提交的是匿名研究记录。</p>
         </div>
-        <h1>高中生消费自我认知与模拟选择差异</h1>
-        <p class="subtitle">
-          上海市平和学校 · 高二项目。这个作品关注高中生如何理解自己的消费判断能力，以及模拟购物页面如何暴露这种自我理解和实际选择之间的差距。
-        </p>
-        <div class="callout">
-          <p><strong>一句话概括：</strong>用户按一题一页填写客观消费基础信息，并完成五档消费自我认知测试；随后进入一个模拟购物平台页面，在商品流、降价弹窗、商品详情、结算页、默认加购和评价冲突中自然点击。系统在后台比较“我以为的自己”和“我实际模拟选择”的差距。</p>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="mock-phone">
+            <div class="mock-top"><span>好价集市</span><span>模拟中</span></div>
+            <div class="mock-search">搜索商品、优惠或店铺</div>
+            <div class="mock-products">
+              <div class="mock-product">兴趣商品<span class="mock-price">¥79</span></div>
+              <div class="mock-product">限时降价<span class="mock-price">¥129</span></div>
+              <div class="mock-product">评价分歧<span class="mock-price">¥58</span></div>
+              <div class="mock-product">默认服务<span class="mock-price">+¥19</span></div>
+            </div>
+            <div class="mock-result">自我判断 → 实际点击 → 差距结果</div>
+          </div>
         </div>
       </section>
 
-      <section class="section">
+      <section class="section overview-section">
         <h2>作品说明</h2>
         <div class="grid">
           <div class="card">
+            <span class="card-icon" aria-hidden="true">议</span>
             <h3>社会议题</h3>
             <p>项目关注高中生消费判断中的知行不一。用户可能认为自己会控制预算、核查信息、注意页面细节，但在接近真实的购物页面里选择可能发生偏离。</p>
           </div>
           <div class="card">
+            <span class="card-icon" aria-hidden="true">人</span>
             <h3>目标用户</h3>
             <p>项目主要面向高中生。它观察用户如何描述自己的消费判断能力，以及他们在模拟购物页面里是否仍然按这种自我认知行动。</p>
           </div>
           <div class="card">
+            <span class="card-icon" aria-hidden="true">页</span>
             <h3>产品形式</h3>
             <p>网页互动工具：逐题基础信息 + 五档自我认知测试 + 模拟购物平台页面 + 填空小游戏缓冲 + 差距结果页。后台记录点击数据。</p>
           </div>
@@ -562,11 +755,11 @@
         </div>
       </section>
 
-      <section class="tool" aria-labelledby="tool-title">
+      <section class="tool" id="demo-tool" aria-labelledby="tool-title">
         <div class="tool-header">
           <div>
-            <h2 id="tool-title">互动 Demo：模拟购物平台消费决策</h2>
-            <p class="muted">逐题填写基础信息，完成短版五档自测，再进入购物页面。匿名研究记录会保存到项目数据库。</p>
+            <h2 id="tool-title">现在开始试玩</h2>
+            <p class="muted">按顺序选答案即可。前面是自我判断，后面是模拟购物页面，最后会显示你的差距结果。</p>
           </div>
           <div class="stepper" aria-label="进度">
             <span class="step-pill active" data-step-label="intro">说明</span>
@@ -584,11 +777,12 @@
             <p>你将进入一个模拟购物平台页面。这里不会发生真实付款，也不会收集姓名、手机号、真实消费记录或支付信息。</p>
             <p>系统会保存匿名回答、点击选择及结果反馈，用于课程研究。你可以随时关闭页面退出；已提交的匿名记录不会包含你的身份信息。</p>
             <div class="callout">
-              <p><strong>你的任务：</strong>每个购物页面限时 60 秒。你需要像平时逛购物平台一样完成一个选择：点开、查看、关闭、加入购物车、取消服务、降低规格或暂时不买。</p>
+              <p><strong>怎么玩：</strong>前面每题选一个最接近你的答案；进入购物页面后，每轮限时 60 秒，像平时逛购物软件一样点开、查看、加入购物车、取消服务或暂时不买。</p>
             </div>
             <div class="actions">
-              <button class="primary" id="start-btn" type="button">开始并同意保存匿名研究记录</button>
+              <button class="primary" id="start-btn" type="button">我知道了，开始第一题</button>
             </div>
+            <p class="privacy-note">点击开始表示你同意保存匿名研究记录。</p>
           </div>
 
           <div class="screen" id="screen-profile">
@@ -719,7 +913,7 @@
         </div>
       </section>
 
-      <section class="section">
+      <section class="section analysis-section">
         <h2>后续可以分析什么</h2>
         <div class="grid">
           <div class="card">
@@ -741,6 +935,40 @@
   </main>
 
   <script>
+    const CONSENT_STORAGE_KEY = "consumer_choice_gap_consent_v1";
+    const consentScreen = document.getElementById("consent-screen");
+    const consentAccept = document.getElementById("consent-accept");
+
+    function getStoredConsent() {
+      try {
+        return localStorage.getItem(CONSENT_STORAGE_KEY);
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function storeConsent() {
+      try {
+        localStorage.setItem(CONSENT_STORAGE_KEY, "accepted");
+      } catch (error) {
+        // If storage is blocked, the current page can still continue after consent.
+      }
+    }
+
+    function showMainContent() {
+      document.body.classList.remove("consent-pending");
+      consentScreen.setAttribute("aria-hidden", "true");
+    }
+
+    if (getStoredConsent() === "accepted") {
+      showMainContent();
+    }
+
+    consentAccept.addEventListener("click", () => {
+      storeConsent();
+      showMainContent();
+    });
+
     // Publishable keys are designed for browser use; row-level security controls access.
     const SUPABASE_URL = "https://hqrqfimdcktrollahndh.supabase.co";
     const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_MNWBBbAucPlRND1Fgq0PzQ_CAziQeIn";
