@@ -34,6 +34,7 @@
         "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
       font-size: 16px;
       line-height: 1.62;
+      overflow-x: hidden;
     }
 
     body.consent-pending main { display: none; }
@@ -299,13 +300,14 @@
     .progress-line { color: var(--muted); font-size: 14px; margin-bottom: 10px; }
     .option-grid { display: grid; gap: 10px; margin-top: 16px; }
     .option-btn, .scale-btn, .app-btn {
-      min-height: 42px;
+      min-height: 44px;
       border: 1px solid var(--line);
       border-radius: 8px;
       background: #fff;
       color: var(--text);
       padding: 10px 12px;
       text-align: left;
+      touch-action: manipulation;
     }
     .option-btn.selected, .scale-btn.selected, .app-btn.selected {
       border-color: var(--accent);
@@ -333,7 +335,7 @@
     .secondary { border-color: var(--line); background: #fff; color: var(--text); }
     .privacy-note { margin-top: 10px; color: var(--muted); font-size: 14px; }
 
-    .phone-wrap { display: grid; place-items: center; margin-top: 18px; }
+    .phone-wrap { display: grid; place-items: center; width: 100%; margin-top: 18px; overflow: hidden; }
     .task-panel {
       display: grid;
       gap: 8px;
@@ -351,6 +353,7 @@
     .timer-fill.danger { background: var(--danger); }
     .phone {
       width: min(430px, 100%);
+      max-width: 100%;
       min-height: 700px;
       overflow: hidden;
       display: flex;
@@ -450,6 +453,8 @@
       text-align: left;
       margin-bottom: 12px;
     }
+    .product-card { cursor: pointer; }
+    .product-card:active, .app-btn:active { transform: translateY(1px); }
     .feed-card { min-width: 0; margin: 0; padding: 0; overflow: hidden; border-radius: 10px; }
     .feed-card .feed-copy { padding: 9px 10px 11px; }
     .feed-card strong { display: -webkit-box; overflow: hidden; min-height: 38px; font-size: 13px; line-height: 1.45; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
@@ -510,7 +515,12 @@
       font-size: 13px;
       font-weight: 700;
     }
-    .app-actions { display: grid; gap: 8px; margin-top: 12px; }
+    .app-actions {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+      padding-top: 4px;
+    }
     .app-actions .app-btn:first-child { border-color: #ff6b21; background: #ff6b21; color: #fff; font-weight: 800; }
     .cart-sheet { padding: 11px; margin-bottom: 10px; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
     .cart-shop { display: flex; align-items: center; gap: 7px; padding-bottom: 9px; font-size: 13px; }
@@ -615,7 +625,8 @@
 
     @media (max-width: 860px) {
       .consent-card { padding: 22px; }
-      .hero, .section, .tool-body, .tool-header { padding: 20px; }
+      main { padding: 18px 12px 42px; }
+      .hero, .section, .tool-body, .tool-header { padding: 18px; }
       .hero { grid-template-columns: 1fr; }
       .hero-visual { min-height: 300px; padding: 12px; }
       .grid, .research-grid, .result-grid, .quick-steps { grid-template-columns: 1fr; }
@@ -624,7 +635,32 @@
       h1 { font-size: 30px; }
       .subtitle { font-size: 16px; }
       .hero-actions .primary, .hero-actions .secondary, .actions .primary, .actions .secondary { width: 100%; }
-      .phone { min-height: 620px; border-radius: 18px; }
+      .timer-row { align-items: flex-start; flex-direction: column; gap: 4px; }
+      .phone {
+        width: min(390px, calc(100vw - 42px));
+        min-height: 590px;
+        border-radius: 18px;
+      }
+      .phone-top { min-height: 44px; padding: 10px 12px; font-size: 14px; }
+      .phone-body { padding: 0 10px 10px; }
+      .market-tabs { gap: 13px; overflow-x: auto; padding-bottom: 10px; }
+      .market-search { min-height: 44px; padding: 0 10px; font-size: 13px; }
+      .market-shortcuts { grid-template-columns: repeat(2, 1fr); }
+      .promo-strip { grid-template-columns: 1fr; }
+      .feed-grid { grid-template-columns: 1fr; }
+      .feed-visual { min-height: 96px; }
+      .feed-card strong { min-height: auto; font-size: 14px; }
+      .app-btn { min-height: 48px; text-align: center; font-weight: 750; }
+      .cart-row { gap: 8px; }
+      .product-img { width: 72px; height: 72px; }
+      .cart-copy strong { font-size: 14px; }
+      .cart-total {
+        position: sticky;
+        bottom: -10px;
+        margin-top: 10px;
+        box-shadow: 0 -8px 20px rgba(20, 27, 38, 0.08);
+      }
+      .phone-nav span { min-height: 48px; padding: 7px 2px 8px; font-size: 11px; }
     }
   </style>
 </head>
