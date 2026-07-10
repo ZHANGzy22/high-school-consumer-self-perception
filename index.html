@@ -701,7 +701,7 @@
           <div class="card">
             <span class="card-icon" aria-hidden="true">页</span>
             <h3>产品形式</h3>
-            <p>网页互动工具：逐题基础信息 + 五档自我认知测试 + 模拟购物平台页面 + 填空小游戏缓冲 + 差距结果页。后台记录点击数据。</p>
+            <p>网页互动工具：2 题基础信息 + 3 题开始前判断 + 4 题自我认知测试 + 模拟购物页面 + 填空小游戏缓冲 + 差距结果页。后台记录点击数据。</p>
           </div>
         </div>
         <table>
@@ -759,7 +759,7 @@
         <div class="tool-header">
           <div>
             <h2 id="tool-title">现在开始试玩</h2>
-            <p class="muted">按顺序选答案即可。前面是自我判断，后面是模拟购物页面，最后会显示你的差距结果。</p>
+            <p class="muted">按顺序选答案即可。前面共 9 个简短选择题，后面是模拟购物页面，最后会显示你的差距结果。</p>
           </div>
           <div class="stepper" aria-label="进度">
             <span class="step-pill active" data-step-label="intro">说明</span>
@@ -787,7 +787,7 @@
 
           <div class="screen" id="screen-profile">
             <h3>第一部分：客观消费基础信息</h3>
-            <p class="muted">一题一页。你的回答只用于生成商品类别和价格压力。</p>
+            <p class="muted">共 2 题。你的回答只用于生成商品类别和价格压力。</p>
             <div class="question-card">
               <div class="progress-line" id="profile-progress"></div>
               <h3 id="profile-question"></h3>
@@ -802,7 +802,7 @@
 
           <div class="screen" id="screen-test">
             <h3>第三部分：消费自我认知测试</h3>
-            <p class="muted">短版测试，一题一页。选择最接近日常情况的一项。</p>
+            <p class="muted">共 4 题。选择最接近日常情况的一项。</p>
             <div class="question-card">
               <div class="progress-line" id="test-progress"></div>
               <h3 id="test-question"></h3>
@@ -1060,28 +1060,6 @@
         type: "multi",
         options: categories.map((item) => [item, item])
       },
-      {
-        id: "entry",
-        title: "你最近更常从哪里进入购物页面？",
-        help: "选择最常见的一类即可。",
-        type: "single",
-        options: [
-          ["综合电商平台", "综合电商平台"],
-          ["短视频 / 直播带货", "短视频 / 直播带货"],
-          ["社交平台推荐", "社交平台推荐"],
-          ["游戏 / 会员内购", "游戏 / 会员内购"],
-          ["线下门店或活动", "线下门店或活动"]
-        ]
-      }
-    ];
-
-    const priceOptions = [
-      ["40", "50 元以下"],
-      ["80", "50–100 元"],
-      ["200", "100–300 元"],
-      ["450", "300–600 元"],
-      ["800", "600–1000 元"],
-      ["1200", "1000 元以上"]
     ];
 
     const pressureProfiles = [
@@ -1093,12 +1071,8 @@
 
     const selfQuestions = [
       { id: "budget_impact", dimension: "budget", text: "如果某次消费会影响我接下来几天的安排，我通常会注意到。" },
-      { id: "category_price", dimension: "budget", text: "如果某个商品价格比我平时在同类商品上的花费高，我通常会重新考虑。" },
-      { id: "key_info", dimension: "info", text: "商品页面信息很多时，我通常会先看几个关键信息再继续。" },
       { id: "review_split", dimension: "info", text: "如果评价里出现明显分歧，我通常会再看几条。" },
-      { id: "final_price", dimension: "detail", text: "结算前我通常会注意最终金额有没有变化。" },
       { id: "extra_service", dimension: "detail", text: "如果页面里出现额外服务或附加选项，我通常会看一下。" },
-      { id: "countdown", dimension: "time", text: "如果页面提示活动快结束，我通常会先停一下再决定。" },
       { id: "price_drop", dimension: "time", text: "如果价格突然变低，我通常会先确认这是不是我原本就需要的东西。" }
     ];
 
@@ -1150,32 +1124,22 @@
     }
 
     function currentProfileQuestion() {
-      if (state.profileIndex < baseProfileQuestions.length) return baseProfileQuestions[state.profileIndex];
-      const category = state.profile.categories[state.categoryPriceIndex];
-      return {
-        id: `price_${category}`,
-        title: `你看到「${category}」商品时，哪个价格区间会认真考虑？`,
-        help: "这个问题只用于设置后面同类商品的价格压力。",
-        type: "single",
-        options: priceOptions
-      };
+      return baseProfileQuestions[state.profileIndex];
     }
 
     function profileTotal() {
-      return baseProfileQuestions.length + state.profile.categories.length;
+      return baseProfileQuestions.length;
     }
 
     function renderProfileQuestion() {
       const question = currentProfileQuestion();
-      const total = Math.max(profileTotal(), baseProfileQuestions.length + 1);
-      const current = state.profileIndex < baseProfileQuestions.length
-        ? state.profileIndex + 1
-        : baseProfileQuestions.length + state.categoryPriceIndex + 1;
+      const total = profileTotal();
+      const current = state.profileIndex + 1;
       document.getElementById("profile-progress").textContent = `基础信息 ${current} / ${total}`;
       document.getElementById("profile-question").textContent = question.title;
       document.getElementById("profile-help").textContent = question.help;
       document.getElementById("profile-next").disabled = true;
-      document.getElementById("profile-next").textContent = current >= total ? "进入自我认知测试" : "下一题";
+      document.getElementById("profile-next").textContent = current >= total ? "进入开始前判断" : "下一题";
       document.getElementById("profile-options").innerHTML = question.options.map(([value, label]) => `
         <button class="option-btn" type="button" data-value="${value}">${label}</button>
       `).join("");
@@ -1200,11 +1164,6 @@
         return;
       }
       if (question.id === "budget") state.profile.budget = Number(value);
-      else if (question.id === "entry") state.profile.entry = value;
-      else if (question.id.startsWith("price_")) {
-        const category = state.profile.categories[state.categoryPriceIndex];
-        state.profile.categoryPrices[category] = Number(value);
-      }
       document.querySelectorAll("#profile-options .option-btn").forEach((button) => {
         button.classList.toggle("selected", button.dataset.value === value);
       });
@@ -1218,17 +1177,6 @@
         renderProfileQuestion();
         return;
       }
-      if (state.profileIndex === totalBase - 1) {
-        state.profileIndex += 1;
-        state.categoryPriceIndex = 0;
-        renderProfileQuestion();
-        return;
-      }
-      if (state.categoryPriceIndex < state.profile.categories.length - 1) {
-        state.categoryPriceIndex += 1;
-        renderProfileQuestion();
-        return;
-      }
       state.awarenessIndex = 0;
       renderAwarenessQuestion();
       setStep("awareness");
@@ -1239,13 +1187,7 @@
         setStep("intro");
         return;
       }
-      if (state.profileIndex <= baseProfileQuestions.length) {
-        if (state.profileIndex === baseProfileQuestions.length && state.categoryPriceIndex > 0) {
-          state.categoryPriceIndex -= 1;
-        } else {
-          state.profileIndex -= 1;
-        }
-      }
+      state.profileIndex -= 1;
       renderProfileQuestion();
     }
 
@@ -1308,7 +1250,7 @@
       state.sessionId = crypto.randomUUID();
       await supabaseInsert("sessions", {
         id: state.sessionId,
-        app_version: "mvp-1",
+        app_version: "mvp-2-short",
         profile: state.profile,
         self_assessment: {
           consumer_self_perception: state.self,
