@@ -401,6 +401,243 @@
     .secondary { border-color: var(--line); background: #fff; color: var(--text); }
     .privacy-note { margin-top: 10px; color: var(--muted); font-size: 14px; }
 
+    .shop-game {
+      display: grid;
+      grid-template-columns: minmax(0, 1.65fr) minmax(300px, 0.72fr);
+      gap: 20px;
+      align-items: stretch;
+      margin-top: 18px;
+    }
+    .shopping-surface,
+    .decision-panel {
+      overflow: hidden;
+      border: 1px solid #dde4df;
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: 0 16px 38px rgba(20, 27, 38, 0.08);
+    }
+    .shopping-surface {
+      display: flex;
+      min-height: 660px;
+      flex-direction: column;
+    }
+    .shop-app-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      min-height: 68px;
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .shop-app-title { display: flex; align-items: center; gap: 12px; font-size: 27px; font-weight: 900; }
+    .shop-back {
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: #59616b;
+      font-size: 20px;
+      font-weight: 700;
+    }
+    .shop-tools { display: flex; gap: 10px; color: #68717d; font-size: 13px; font-weight: 750; }
+    .shop-tools span { padding: 6px 9px; border: 1px solid var(--line); border-radius: 999px; background: #fafafa; }
+    .cart-layout {
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      min-height: 0;
+      flex: 1;
+      background: #fff;
+    }
+    .cart-search-row {
+      display: flex;
+      justify-content: flex-end;
+      padding: 16px 22px 10px;
+    }
+    .cart-search {
+      width: min(360px, 100%);
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: #838b94;
+      background: #fbfbfb;
+    }
+    .cart-table-head {
+      display: grid;
+      grid-template-columns: 52px minmax(260px, 1fr) 100px 120px 100px;
+      gap: 12px;
+      align-items: center;
+      padding: 0 22px 11px;
+      border-bottom: 1px solid var(--line);
+      color: #69717c;
+      font-size: 14px;
+      font-weight: 750;
+    }
+    .cart-items { overflow: auto; }
+    .cart-item {
+      display: grid;
+      grid-template-columns: 52px minmax(260px, 1fr) 100px 120px 100px;
+      gap: 12px;
+      align-items: center;
+      padding: 18px 22px;
+      border-bottom: 1px solid #edf0f2;
+      background: #fff;
+      color: var(--text);
+      text-align: left;
+    }
+    .cart-item.clickable { cursor: pointer; }
+    .cart-item.clickable:hover { background: #fbfdfb; }
+    .cart-radio {
+      width: 24px;
+      height: 24px;
+      border: 2px solid #cfd5dc;
+      border-radius: 50%;
+      background: #fff;
+    }
+    .cart-product-main { display: flex; align-items: center; gap: 16px; min-width: 0; }
+    .cart-thumb {
+      width: 96px;
+      height: 96px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #f0f4f1, #fbf7ef);
+      color: #436356;
+      font-size: 13px;
+      font-weight: 850;
+      text-align: center;
+    }
+    .cart-product-copy { min-width: 0; }
+    .cart-store { margin-bottom: 4px; color: #1f2a34; font-size: 13px; font-weight: 850; }
+    .cart-name { display: -webkit-box; overflow: hidden; font-size: 15px; font-weight: 800; line-height: 1.45; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+    .cart-badges { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 7px; }
+    .cart-badge {
+      min-height: 22px;
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 7px;
+      border: 1px solid #c9dfcf;
+      border-radius: 6px;
+      color: var(--accent-dark);
+      background: #f5fbf7;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .cart-price { color: #f05a18; font-size: 20px; font-weight: 900; }
+    .cart-stepper {
+      width: fit-content;
+      display: grid;
+      grid-template-columns: 34px 42px 34px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      text-align: center;
+      background: #fff;
+    }
+    .cart-stepper span { min-height: 34px; display: grid; place-items: center; border-right: 1px solid var(--line); }
+    .cart-stepper span:last-child { border-right: 0; }
+    .cart-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 22px;
+      border-top: 1px solid var(--line);
+      background: rgba(255,255,255,0.96);
+      box-shadow: 0 -8px 24px rgba(20, 27, 38, 0.06);
+    }
+    .cart-total-left { display: flex; align-items: center; gap: 10px; color: #39414b; font-weight: 800; }
+    .cart-total-right { display: flex; align-items: center; gap: 18px; font-weight: 850; }
+    .cart-total-right strong { color: #f05a18; font-size: 25px; }
+    .cart-checkout {
+      min-width: 128px;
+      min-height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: #f05a18;
+      color: #fff;
+      font-weight: 900;
+    }
+    .decision-panel {
+      display: flex;
+      flex-direction: column;
+      padding: 22px;
+    }
+    .decision-title { text-align: center; font-size: 25px; font-weight: 950; }
+    .decision-timer { margin-top: 18px; color: var(--accent); text-align: center; font-size: 52px; font-weight: 950; letter-spacing: 0; line-height: 1; }
+    .decision-task { margin: 12px 0 18px; text-align: center; color: #333b44; font-size: 17px; font-weight: 750; }
+    .decision-actions { display: grid; gap: 12px; }
+    .decision-btn {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 1px solid #d8e0dc;
+      border-radius: 10px;
+      background: #fff;
+      color: #1f2a34;
+      font-size: 18px;
+      font-weight: 850;
+    }
+    .decision-btn.primary-action {
+      border-color: #f05a18;
+      background: #f05a18;
+      color: #fff;
+      box-shadow: 0 10px 22px rgba(240, 90, 24, 0.18);
+    }
+    .decision-note {
+      margin-top: 18px;
+      padding: 12px;
+      border: 1px solid #cfe3d5;
+      border-radius: 10px;
+      background: #f6fbf7;
+      color: var(--accent-dark);
+      font-size: 13px;
+      font-weight: 700;
+      text-align: center;
+    }
+    .decision-progress {
+      margin-top: auto;
+      padding-top: 22px;
+    }
+    .decision-progress-line {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      color: #707985;
+      font-size: 12px;
+      font-weight: 750;
+      text-align: center;
+    }
+    .decision-progress-line span {
+      position: relative;
+      padding-top: 16px;
+    }
+    .decision-progress-line span::before {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 9px;
+      height: 9px;
+      content: "";
+      border-radius: 50%;
+      background: #cfd5dc;
+      transform: translateX(-50%);
+    }
+    .decision-progress-line span.done,
+    .decision-progress-line span.active { color: var(--accent-dark); }
+    .decision-progress-line span.done::before,
+    .decision-progress-line span.active::before { background: var(--accent); }
     .phone-wrap { display: grid; place-items: center; width: 100%; margin-top: 18px; overflow: hidden; }
     .task-panel {
       display: grid;
@@ -722,6 +959,29 @@
       .feed-card strong { min-height: auto; font-size: 14px; }
       .app-btn { min-height: 48px; text-align: center; font-weight: 750; }
       .cart-row { gap: 8px; }
+      .shop-game { grid-template-columns: 1fr; }
+      .shopping-surface { min-height: auto; }
+      .shop-app-bar { align-items: flex-start; flex-direction: column; padding: 14px; }
+      .shop-app-title { font-size: 22px; }
+      .shop-tools { flex-wrap: wrap; }
+      .cart-search-row { padding: 12px 14px 8px; }
+      .cart-table-head { display: none; }
+      .cart-item {
+        grid-template-columns: 32px minmax(0, 1fr);
+        gap: 10px;
+        padding: 14px;
+      }
+      .cart-item > .cart-price,
+      .cart-item > .cart-stepper,
+      .cart-item > .cart-price:last-child { display: none; }
+      .cart-product-main { align-items: flex-start; gap: 10px; }
+      .cart-thumb { width: 72px; height: 72px; }
+      .cart-bottom { padding: 12px 14px; }
+      .cart-total-right { gap: 10px; }
+      .cart-checkout { min-width: 96px; }
+      .decision-panel { padding: 16px; }
+      .decision-title { font-size: 21px; }
+      .decision-timer { font-size: 42px; }
       .product-img { width: 72px; height: 72px; }
       .cart-copy strong { font-size: 14px; }
       .cart-total {
@@ -939,29 +1199,30 @@
           </div>
 
           <div class="screen" id="screen-shop">
-            <h3 id="shop-title">第三部分：模拟购物页面</h3>
-            <p class="muted" id="shop-desc"></p>
-            <div class="task-panel">
-              <div class="timer-row">
-                <span id="stage-task">本轮任务：在 60 秒内完成一个选择</span>
-                <span id="stage-timer">60s</span>
-              </div>
-              <div class="timer-track" aria-hidden="true"><div class="timer-fill" id="timer-fill"></div></div>
-            </div>
-            <div class="phone-wrap">
-              <div class="phone" aria-label="模拟购物页面">
-                <div class="phone-top">
-                  <span>好价集市</span>
-                  <span><small>模拟中 · </small><span id="stage-count">1 / 5</span></span>
+            <div class="shop-game">
+              <div class="shopping-surface" aria-label="模拟购物平台页面">
+                <div class="shop-app-bar">
+                  <div class="shop-app-title"><span class="shop-back">‹</span><span id="shop-title">购物车</span></div>
+                  <div class="shop-tools"><span>降价</span><span>收藏</span><span>管理</span></div>
                 </div>
                 <div class="phone-body" id="phone-body"></div>
-                <div class="phone-nav" aria-hidden="true">
-                  <span data-nav="home"><i>⌂</i>首页</span>
-                  <span data-nav="discover"><i>◷</i>发现</span>
-                  <span data-nav="cart"><i>▣</i>购物车</span>
-                  <span data-nav="account"><i>◯</i>我的</span>
-                </div>
               </div>
+              <aside class="decision-panel" aria-label="本轮操作面板">
+                <h3 class="decision-title" id="decision-title">第 1 轮：购物选择</h3>
+                <div class="decision-timer" id="stage-timer">60</div>
+                <div class="timer-track" aria-hidden="true"><div class="timer-fill" id="timer-fill"></div></div>
+                <p class="decision-task" id="stage-task">请选择你最可能采取的操作</p>
+                <div class="decision-actions" id="decision-actions"></div>
+                <div class="decision-note">匿名记录中。你的选择只用于课堂研究。</div>
+                <div class="decision-progress">
+                  <div class="decision-progress-line">
+                    <span class="done">基础信息</span>
+                    <span class="done">判断</span>
+                    <span class="active">购物</span>
+                    <span>结果</span>
+                  </div>
+                </div>
+              </aside>
             </div>
           </div>
 
@@ -1454,14 +1715,11 @@
 
     function renderShopStage() {
       const stage = stages[state.stageIndex];
-      document.getElementById("shop-title").textContent = `第三部分：${stage.title}`;
-      document.getElementById("shop-desc").textContent = stage.desc;
-      document.getElementById("stage-count").textContent = `${state.stageIndex + 1} / ${stages.length}`;
-      document.getElementById("stage-task").textContent = `${stage.task}（限时 60 秒）`;
+      document.getElementById("shop-title").textContent = stage.id === "feed" ? "推荐商品" : "购物车";
+      document.getElementById("decision-title").textContent = `第 ${state.stageIndex + 1} 轮：${stage.title}`;
+      document.getElementById("stage-task").textContent = stage.task;
+      document.getElementById("decision-actions").innerHTML = renderDecisionActions(stage.id);
       document.getElementById("phone-body").innerHTML = renderPhone(stage.id);
-      document.querySelectorAll("[data-nav]").forEach((item) => {
-        item.classList.toggle("nav-active", item.dataset.nav === (stage.id === "feed" ? "home" : "cart"));
-      });
       setStep("shop");
       startStageTimer();
     }
@@ -1491,109 +1749,142 @@
       const fill = document.getElementById("timer-fill");
       if (!timer || !fill) return;
       const safeTime = Math.max(0, state.timeLeft);
-      timer.textContent = `${safeTime}s`;
+      timer.textContent = `00:${String(safeTime).padStart(2, "0")}`;
       fill.style.width = `${(safeTime / 60) * 100}%`;
       fill.classList.toggle("warn", safeTime <= 20 && safeTime > 10);
       fill.classList.toggle("danger", safeTime <= 10);
     }
 
+    function renderDecisionActions(stageId) {
+      const product = state.selectedProduct || state.feedProducts[0];
+      const actionsByStage = {
+        feed: [
+          ["open_product", "查看推荐商品", true, product?.id],
+          ["feed_skip", "暂时不看这些推荐", false]
+        ],
+        popup: [
+          ["popup_view", "立即查看降价", true],
+          ["popup_later", "稍后再说", false],
+          ["popup_close", "关闭提醒", false]
+        ],
+        detail: [
+          ["detail_buy", "立即购买", true],
+          ["detail_review", "查看更多评价", false],
+          ["detail_rule", "查看活动规则", false],
+          ["detail_cart", "加入购物车", false]
+        ],
+        checkout: [
+          ["checkout_keep", "保留默认服务并提交", true],
+          ["checkout_cancel", "取消默认服务", false],
+          ["checkout_info", "查看服务说明", false],
+          ["checkout_back", "返回购物车", false]
+        ],
+        review: [
+          ["review_submit", "继续提交", true],
+          ["review_more", "查看更多评价", false],
+          ["review_cheaper", "选择更低规格", false],
+          ["review_stop", "暂时不买", false]
+        ]
+      };
+      return (actionsByStage[stageId] || []).map(([action, label, primary, productId]) => `
+        <button class="decision-btn ${primary ? "primary-action" : ""}" type="button" data-action="${action}" ${productId ? `data-product="${productId}"` : ""}>${label}</button>
+      `).join("");
+    }
+
     function renderPhone(stageId) {
+      const product = state.selectedProduct || state.feedProducts[0];
+      const stagePanel = renderStagePanel(stageId, product);
+      return `
+        <div class="cart-layout">
+          <div class="cart-search-row"><div class="cart-search"><span>⌕</span><span>搜索商品、优惠或店铺</span></div></div>
+          ${stagePanel}
+          <div class="cart-table-head"><span></span><span>商品信息</span><span>单价</span><span>数量</span><span>小计</span></div>
+          <div class="cart-items">
+            ${state.feedProducts.map((item, index) => renderCartRow(item, stageId === "feed", index)).join("")}
+          </div>
+          <div class="cart-bottom">
+            <div class="cart-total-left"><span class="cart-radio"></span><span>全选</span></div>
+            <div class="cart-total-right"><span>合计</span><strong>¥${cartTotal()}</strong><span class="cart-checkout">结算</span></div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderStagePanel(stageId, product) {
       if (stageId === "feed") {
         return `
-          <div class="market-tabs"><span>关注</span><span class="active">推荐</span><span>限时</span><span>补贴</span><span>低价</span></div>
-          <div class="market-search"><span>⌕</span><span>搜索商品、优惠或店铺</span><b>搜索</b></div>
-          <div class="market-shortcuts"><span>限时好价</span><span>降价提醒</span><span>购物车</span><span>全部分类</span></div>
-          <div class="promo-strip">
-            <div>今日好物<small>根据你的兴趣生成</small></div>
-            <div>补贴专区<small>查看当前优惠</small></div>
-          </div>
-          <div class="feed-grid">
-            ${state.feedProducts.map((product, index) => `
-              <button class="product-card feed-card" type="button" data-action="open_product" data-product="${product.id}">
-                <div class="feed-visual tone-${index % 4}">${product.category}</div>
-                <div class="feed-copy">
-                  <strong>${product.name}</strong>
-                  <div class="feed-meta">到手 ¥${product.price} · ${product.pressureLabel}</div>
-                </div>
-              </button>
-            `).join("")}
-          </div>
-          <div class="app-actions">
-            <button class="app-btn" type="button" data-action="feed_skip">暂时不看这些推荐</button>
+          <div class="app-panel" style="margin:0 22px 12px;border-color:#d7eadc;background:#f7fcf8;">
+            <strong>本轮提示</strong>
+            <p class="muted">商品列表根据你前面选择的类别生成。你可以点开一个商品，也可以在右侧选择暂时不看。</p>
           </div>
         `;
       }
-      const product = state.selectedProduct || state.feedProducts[0];
       if (stageId === "popup") {
-        return productBlock(product) + `
-          <div class="app-panel" style="border-color:#ffd0b4;background:#fff7f2;">
+        return `
+          <div class="app-panel" style="margin:0 22px 12px;border-color:#ffd0b4;background:#fff7f2;">
             <strong style="color:#ff5d18">降价消息</strong>
-            <p>你刚刚浏览的商品现在降价。保留当前价格还剩 09:58。</p>
+            <p>你刚刚浏览的「${product.name}」出现降价提醒。保留当前价格还剩 09:58。</p>
             <span class="badge">限时价格</span>
-            <div class="app-actions">
-              <button class="app-btn" type="button" data-action="popup_view">立即查看</button>
-              <button class="app-btn" type="button" data-action="popup_later">稍后再说</button>
-              <button class="app-btn" type="button" data-action="popup_close">关闭弹窗</button>
-            </div>
           </div>
         `;
       }
       if (stageId === "detail") {
-        return productBlock(product) + `
-          <div class="app-panel"><strong>商品评价</strong><p>4.8 分 · 多数评价认为性价比不错，也有人提醒要看清规格。</p></div>
-          <div class="app-panel"><strong>优惠说明</strong><p>当前补贴价会在倒计时结束后恢复，部分服务会在结算页默认选中。</p></div>
-          <div class="app-actions">
-            <button class="app-btn" type="button" data-action="detail_review">查看更多评价</button>
-            <button class="app-btn" type="button" data-action="detail_rule">查看活动规则</button>
-            <button class="app-btn" type="button" data-action="detail_cart">加入购物车</button>
-            <button class="app-btn" type="button" data-action="detail_buy">立即购买</button>
+        return `
+          <div class="app-panel" style="margin:0 22px 12px;">
+            <strong>商品评价</strong>
+            <p>4.8 分 · 多数评价认为性价比不错，也有人提醒要看清规格。</p>
+            <strong>优惠说明</strong>
+            <p class="muted">当前补贴价会在倒计时结束后恢复，部分服务会在结算页默认选中。</p>
           </div>
         `;
       }
       if (stageId === "checkout") {
         const pressure = budgetPressure(product.price);
-        return productBlock(product) + `
-          <div class="app-panel"><strong>订单明细</strong><p>商品 ¥${product.price} · 运费 ¥0 · 优惠 -¥12</p></div>
-          <div class="app-panel" style="border-color:#ffd0b4;background:#fff7f2;"><strong>✓ 默认选中：购物保障服务 ¥19</strong><p class="muted">包含优先客服和退换保障。</p></div>
-          <div class="app-panel"><strong>预算进度</strong><div class="budget-bar"><div class="budget-fill" style="width:${pressure}%"></div></div><p class="muted">本次消费约占你月可支配金额的 ${pressure}%</p></div>
-          <div class="app-actions">
-            <button class="app-btn" type="button" data-action="checkout_keep">保留默认服务并提交</button>
-            <button class="app-btn" type="button" data-action="checkout_cancel">取消默认服务</button>
-            <button class="app-btn" type="button" data-action="checkout_info">查看服务说明</button>
-            <button class="app-btn" type="button" data-action="checkout_back">返回购物车</button>
+        return `
+          <div class="app-panel" style="margin:0 22px 12px;">
+            <strong>订单明细</strong>
+            <p>商品 ¥${product.price} · 运费 ¥0 · 优惠 -¥12</p>
+            <p style="color:#ff5d18;font-weight:800;">✓ 默认选中：购物保障服务 ¥19</p>
+            <div class="budget-bar"><div class="budget-fill" style="width:${pressure}%"></div></div>
+            <p class="muted">本次消费约占你月可支配金额的 ${pressure}%</p>
           </div>
-          <div class="cart-total"><span>合计</span><strong>¥${Math.max(0, product.price - 12 + 19)}</strong><span>结算</span></div>
         `;
       }
       const pressure = Math.min(96, budgetPressure(product.price) + 24);
-      return productBlock(product) + `
-        <div class="app-panel"><strong>购买前确认</strong><p>整体评分较高，但部分评价提到“和描述有差距”“售后处理较慢”。</p></div>
-        <div class="app-panel" style="border-color:#f4c7c7;background:#fff6f6;"><strong style="color:#b83232">预算提醒</strong><div class="budget-bar"><div class="budget-fill" style="width:${pressure}%;background:#d94a3b"></div></div><p>如果继续提交，预算压力将接近上限。</p></div>
-        <div class="app-actions">
-          <button class="app-btn" type="button" data-action="review_submit">继续提交</button>
-          <button class="app-btn" type="button" data-action="review_more">查看更多评价</button>
-          <button class="app-btn" type="button" data-action="review_cheaper">选择更低规格</button>
-          <button class="app-btn" type="button" data-action="review_stop">暂时不买</button>
+      return `
+        <div class="app-panel" style="margin:0 22px 12px;border-color:#f4c7c7;background:#fff8f8;">
+          <strong style="color:#b83232">购买前确认</strong>
+          <p>整体评分较高，但部分评价提到“和描述有差距”“售后处理较慢”。</p>
+          <div class="budget-bar"><div class="budget-fill" style="width:${pressure}%;background:#d94a3b"></div></div>
+          <p>如果继续提交，预算压力将接近上限。</p>
         </div>
       `;
     }
 
-    function productBlock(product) {
+    function renderCartRow(product, clickable, index) {
       return `
-        <div class="cart-sheet">
-          <div class="cart-shop"><span class="cart-check"></span><span class="shop-name">精选好物店</span><span>›</span></div>
-          <div class="cart-row">
-            <span class="cart-check"></span>
-            <div class="product-img">${product.category}<br>推荐商品</div>
-            <div class="cart-copy">
-              <strong>${product.name}</strong>
-              <span class="badge">${product.interest ? "近期接触类别" : "其他类别"}</span>
-              <div class="price-line"><span class="price">¥${product.price}</span><span class="muted">¥${product.original}</span></div>
-              <span class="badge">${product.pressureLabel}</span>
-            </div>
-          </div>
-        </div>
+        <button class="cart-item ${clickable ? "clickable" : ""}" type="button" ${clickable ? `data-action="open_product" data-product="${product.id}"` : ""}>
+          <span class="cart-radio"></span>
+          <span class="cart-product-main">
+            <span class="cart-thumb">${product.category}</span>
+            <span class="cart-product-copy">
+              <span class="cart-store">${["清风生活馆", "优选小店", "元气零食铺", "学习用品社"][index % 4]} ›</span>
+              <span class="cart-name">${product.name}</span>
+              <span class="cart-badges">
+                <span class="cart-badge">${product.pressureLabel}</span>
+                <span class="cart-badge">${product.interest ? "近期接触类别" : "其他类别"}</span>
+              </span>
+            </span>
+          </span>
+          <span class="cart-price">¥${product.price}</span>
+          <span class="cart-stepper"><span>−</span><span>1</span><span>＋</span></span>
+          <span class="cart-price">¥${product.price}</span>
+        </button>
       `;
+    }
+
+    function cartTotal() {
+      return state.feedProducts.reduce((sum, product) => sum + product.price, 0);
     }
 
     function budgetPressure(price) {
@@ -1868,6 +2159,11 @@
     document.getElementById("test-back").addEventListener("click", prevTest);
 
     document.getElementById("phone-body").addEventListener("click", (event) => {
+      const button = event.target.closest("[data-action]");
+      if (!button) return;
+      handleShopAction(button.dataset.action, button.dataset.product);
+    });
+    document.getElementById("decision-actions").addEventListener("click", (event) => {
       const button = event.target.closest("[data-action]");
       if (!button) return;
       handleShopAction(button.dataset.action, button.dataset.product);
