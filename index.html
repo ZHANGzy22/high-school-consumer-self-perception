@@ -38,6 +38,9 @@
     }
 
     body.consent-pending main { display: none; }
+    body.game-active {
+      background: #eef5ef;
+    }
 
     .consent-screen {
       min-height: 100vh;
@@ -90,6 +93,10 @@
       margin: 0 auto;
       padding: 34px 18px 56px;
     }
+    body.game-active main {
+      max-width: none;
+      padding: 0;
+    }
 
     h1, h2, h3 { margin: 0; line-height: 1.24; letter-spacing: 0; }
     h1 { max-width: 900px; font-size: clamp(30px, 5vw, 52px); }
@@ -115,7 +122,24 @@
       padding: 34px;
     }
     .section { padding: 24px; }
-    .tool { order: 2; overflow: hidden; }
+    .tool { order: 2; overflow: hidden; display: none; }
+    body.game-active .hero,
+    body.game-active .overview-section,
+    body.game-active #research-section,
+    body.game-active .analysis-section,
+    body.game-active footer {
+      display: none;
+    }
+    body.game-active .tool {
+      display: block;
+      min-height: 100vh;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+      background:
+        radial-gradient(circle at 20% 8%, rgba(31,122,90,0.10), transparent 28%),
+        linear-gradient(180deg, #eef5ef, #f8faf7);
+    }
     .overview-section { order: 3; }
     #research-section { order: 4; }
     .analysis-section { order: 5; }
@@ -272,7 +296,35 @@
       border-bottom: 1px solid var(--line);
       background: #fbfcfa;
     }
+    body.game-active .tool-header {
+      position: sticky;
+      top: 0;
+      z-index: 4;
+      padding: 16px 24px;
+      background: rgba(251, 252, 250, 0.94);
+      backdrop-filter: blur(14px);
+    }
     .tool-body { padding: 24px; }
+    body.game-active .tool-body {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 20px 52px;
+    }
+    .game-title-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .back-home {
+      min-height: 36px;
+      padding: 7px 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--text);
+      font-weight: 700;
+      white-space: nowrap;
+    }
     .stepper { display: flex; flex-wrap: wrap; gap: 7px; justify-content: flex-end; min-width: 310px; }
     .step-pill {
       display: inline-flex;
@@ -296,6 +348,20 @@
       border: 1px solid var(--line);
       border-radius: 8px;
       background: var(--panel);
+    }
+    body.game-active .question-card,
+    body.game-active .mini-card,
+    body.game-active .feedback-form {
+      margin-right: auto;
+      margin-left: auto;
+      background: #fff;
+      box-shadow: 0 14px 35px rgba(20, 27, 38, 0.08);
+    }
+    body.game-active .screen > h3,
+    body.game-active .screen > p {
+      max-width: 760px;
+      margin-right: auto;
+      margin-left: auto;
     }
     .progress-line { color: var(--muted); font-size: 14px; margin-bottom: 10px; }
     .option-grid { display: grid; gap: 10px; margin-top: 16px; }
@@ -627,6 +693,10 @@
       .consent-card { padding: 22px; }
       main { padding: 18px 12px 42px; }
       .hero, .section, .tool-body, .tool-header { padding: 18px; }
+      body.game-active .tool-header { padding: 12px; }
+      body.game-active .tool-body { padding: 18px 12px 42px; }
+      .game-title-row { flex-direction: column; gap: 8px; }
+      .back-home { width: 100%; }
       .hero { grid-template-columns: 1fr; }
       .hero-visual { min-height: 300px; padding: 12px; }
       .grid, .research-grid, .result-grid, .quick-steps { grid-template-columns: 1fr; }
@@ -697,7 +767,7 @@
             先做几个判断题，再进入一个模拟购物页。完成后，你会看到自己“以为会怎么选”和“实际点了什么”之间的差距。
           </p>
           <div class="hero-actions">
-            <a class="primary" href="#demo-tool">马上开始测试</a>
+            <button class="primary" id="enter-game" type="button">马上开始测试</button>
             <a class="secondary" href="#research-section">查看研究说明</a>
           </div>
           <div class="quick-steps" aria-label="体验步骤">
@@ -794,9 +864,12 @@
 
       <section class="tool" id="demo-tool" aria-labelledby="tool-title">
         <div class="tool-header">
-          <div>
-            <h2 id="tool-title">开始消费判断测试</h2>
-            <p class="muted">按顺序作答即可。先回答 9 个短问题，再完成模拟购物点击，最后查看差距结果。</p>
+          <div class="game-title-row">
+            <button class="back-home" id="back-home" type="button">← 返回首页</button>
+            <div>
+              <h2 id="tool-title">开始消费判断测试</h2>
+              <p class="muted">按顺序作答即可。先回答 9 个短问题，再完成模拟购物点击，最后查看差距结果。</p>
+            </div>
           </div>
           <div class="stepper" aria-label="进度">
             <span class="step-pill active" data-step-label="intro">说明</span>
@@ -975,6 +1048,8 @@
     const CONSENT_STORAGE_KEY = "consumer_choice_gap_consent_v1";
     const consentScreen = document.getElementById("consent-screen");
     const consentAccept = document.getElementById("consent-accept");
+    const enterGame = document.getElementById("enter-game");
+    const backHome = document.getElementById("back-home");
 
     function getStoredConsent() {
       try {
@@ -1004,7 +1079,23 @@
     consentAccept.addEventListener("click", () => {
       storeConsent();
       showMainContent();
+      openGame();
     });
+
+    function openGame() {
+      document.body.classList.add("game-active");
+      setStep("intro");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function closeGame() {
+      stopStageTimer();
+      document.body.classList.remove("game-active");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    enterGame.addEventListener("click", openGame);
+    backHome.addEventListener("click", closeGame);
 
     // Publishable keys are designed for browser use; row-level security controls access.
     const SUPABASE_URL = "https://hqrqfimdcktrollahndh.supabase.co";
