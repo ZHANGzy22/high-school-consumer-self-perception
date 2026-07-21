@@ -397,6 +397,102 @@
       color: var(--accent-dark);
       font-weight: 700;
     }
+    .range-card {
+      display: grid;
+      gap: 16px;
+      margin-top: 16px;
+      padding: 16px;
+      border: 1px solid #bad8c6;
+      border-radius: 14px;
+      background: #fff;
+    }
+    .range-value {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 14px;
+      color: var(--accent-dark);
+      font-weight: 900;
+    }
+    .range-value strong { font-size: 34px; line-height: 1; }
+    .budget-slider {
+      width: 100%;
+      accent-color: var(--accent);
+    }
+    .range-labels {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .bubble-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .bubble-btn {
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 9px 14px;
+      font-weight: 750;
+    }
+    .scale-list {
+      display: grid;
+      gap: 0;
+      margin-top: 12px;
+    }
+    .scale-question {
+      padding: 26px 0;
+      border-top: 1px solid #e8ecef;
+      transition: opacity 0.2s ease, filter 0.2s ease;
+    }
+    .scale-question:first-child { border-top: 0; padding-top: 4px; }
+    .scale-question.answered:not(.active-question) { opacity: 0.42; }
+    .scale-question h3 { font-size: 19px; }
+    .likert-row {
+      display: grid;
+      grid-template-columns: 110px 1fr 130px;
+      gap: 18px;
+      align-items: center;
+      margin-top: 18px;
+    }
+    .likert-end {
+      color: var(--accent);
+      font-size: 17px;
+      font-weight: 850;
+      text-align: center;
+    }
+    .likert-end.disagree { color: #7d5592; }
+    .likert-options {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+    }
+    .likert-dot {
+      width: var(--dot-size, 42px);
+      height: var(--dot-size, 42px);
+      min-height: 0;
+      display: grid;
+      place-items: center;
+      padding: 0;
+      border: 4px solid var(--dot-color, #9aa1aa);
+      border-radius: 999px;
+      background: #fff;
+      color: transparent;
+      text-align: center;
+    }
+    .likert-dot.selected {
+      background: var(--dot-color, var(--accent));
+      color: #fff;
+      font-weight: 950;
+    }
+    .likert-dot.selected::before { content: "✓"; color: #fff; font-size: 20px; }
     .scale-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; margin-top: 16px; }
     .scale-btn { text-align: center; font-size: 14px; }
 
@@ -997,6 +1093,20 @@
       .grid, .research-grid, .result-grid, .quick-steps { grid-template-columns: 1fr; }
       .stepper { min-width: 0; justify-content: flex-start; }
       .scale-grid { grid-template-columns: 1fr; }
+      .likert-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-top: 14px;
+      }
+      .likert-options { gap: 10px; }
+      .likert-end { text-align: left; }
+      .likert-end.disagree { text-align: right; }
+      .likert-dot {
+        width: min(var(--dot-size), 52px);
+        height: min(var(--dot-size), 52px);
+        border-width: 3px;
+      }
+      .range-value strong { font-size: 30px; }
       h1 { font-size: 30px; }
       .subtitle { font-size: 16px; }
       .hero-actions .primary, .hero-actions .secondary, .actions .primary, .actions .secondary { width: 100%; }
@@ -1242,29 +1352,27 @@
 
           <div class="screen" id="screen-test">
             <h3>第三部分：消费自我认知测试</h3>
-            <p class="muted">共 4 题。选择最接近日常情况的一项。</p>
+            <p class="muted">共 4 题。选完一题会自动跳到下一题，全部完成后进入模拟购物页。</p>
             <div class="question-card">
               <div class="progress-line" id="test-progress"></div>
-              <h3 id="test-question"></h3>
-              <div class="scale-grid" id="test-options"></div>
+              <div class="scale-list" id="test-options"></div>
             </div>
             <div class="actions">
               <button class="secondary" type="button" id="test-back">上一步</button>
-              <button class="primary" type="button" id="test-next" disabled>下一题</button>
+              <button class="primary" type="button" id="test-next" disabled>进入购物页面</button>
             </div>
           </div>
 
           <div class="screen" id="screen-awareness">
             <h3>第二部分：开始前判断</h3>
-            <p class="muted">请按你此刻的真实想法作答。没有正确答案。</p>
+            <p class="muted">请按你此刻的真实想法作答。选完一题会自动跳到下一题。</p>
             <div class="question-card">
               <div class="progress-line" id="awareness-progress"></div>
-              <h3 id="awareness-question"></h3>
-              <div class="scale-grid" id="awareness-options"></div>
+              <div class="scale-list" id="awareness-options"></div>
             </div>
             <div class="actions">
               <button class="secondary" type="button" id="awareness-back">上一步</button>
-              <button class="primary" type="button" id="awareness-next" disabled>下一题</button>
+              <button class="primary" type="button" id="awareness-next" disabled>进入自我认知测试</button>
             </div>
           </div>
 
@@ -1499,17 +1607,12 @@
       {
         id: "budget",
         title: "你每月大概可自由支配金额是多少？",
-        help: "这个问题只用于计算后面的价格压力。",
-        type: "single",
-        options: [
-          ["200", "300 元以下"],
-          ["550", "300–800 元"],
-          ["1150", "800–1500 元"],
-          ["2250", "1500–3000 元"],
-          ["4000", "3000–5000 元"],
-          ["6000", "5000 元以上"],
-          ["1500", "不方便透露"]
-        ]
+        help: "拖动滑杆，填一个大概数字即可。这个数字只用于计算后面商品的价格压力。",
+        type: "range",
+        min: 100,
+        max: 8000,
+        step: 50,
+        defaultValue: 1200
       },
       {
         id: "categories",
@@ -1598,8 +1701,30 @@
       document.getElementById("profile-help").textContent = question.help;
       document.getElementById("profile-next").disabled = true;
       document.getElementById("profile-next").textContent = current >= total ? "进入开始前判断" : "下一题";
+
+      if (question.type === "range") {
+        document.getElementById("profile-options").className = "option-grid";
+        const value = Number(state.profile.budget || question.defaultValue);
+        state.profile.budget = value;
+        document.getElementById("profile-options").innerHTML = `
+          <div class="range-card">
+            <div class="range-value">
+              <span>大约</span>
+              <strong id="budget-output">¥${value}</strong>
+            </div>
+            <input class="budget-slider" id="budget-slider" type="range" min="${question.min}" max="${question.max}" step="${question.step}" value="${value}" aria-label="每月可自由支配金额">
+            <div class="range-labels"><span>¥${question.min}</span><span>¥${question.max}+</span></div>
+          </div>
+        `;
+        document.getElementById("profile-next").disabled = false;
+        return;
+      }
+
+      document.getElementById("profile-options").className = question.type === "multi" ? "bubble-grid" : "option-grid";
       document.getElementById("profile-options").innerHTML = question.options.map(([value, label]) => `
-        <button class="option-btn" type="button" data-value="${value}">${label}</button>
+        <button class="option-btn ${question.type === "multi" ? "bubble-btn" : ""}" type="button" data-value="${value}">
+          ${question.type === "multi" ? `<span>${categoryIcon(value)}</span>` : ""}${label}
+        </button>
       `).join("");
 
       if (question.type === "multi") {
@@ -1611,6 +1736,13 @@
       }
     }
 
+    function updateBudget(value) {
+      state.profile.budget = Number(value);
+      const output = document.getElementById("budget-output");
+      if (output) output.textContent = `¥${state.profile.budget}`;
+      document.getElementById("profile-next").disabled = false;
+    }
+
     function chooseProfile(value) {
       const question = currentProfileQuestion();
       if (question.type === "multi") {
@@ -1619,6 +1751,10 @@
         else set.add(value);
         state.profile.categories = [...set];
         renderProfileQuestion();
+        return;
+      }
+      if (question.type === "range") {
+        updateBudget(value);
         return;
       }
       if (question.id === "budget") state.profile.budget = Number(value);
@@ -1650,58 +1786,79 @@
     }
 
     function renderAwarenessQuestion() {
-      const question = awarenessQuestions[state.awarenessIndex];
-      document.getElementById("awareness-progress").textContent = `开始前判断 ${state.awarenessIndex + 1} / ${awarenessQuestions.length}`;
-      document.getElementById("awareness-question").textContent = question.text;
-      document.getElementById("awareness-next").disabled = !state.awarenessPre[question.id];
-      document.getElementById("awareness-next").textContent = state.awarenessIndex === awarenessQuestions.length - 1 ? "进入自我认知测试" : "下一题";
-      document.getElementById("awareness-options").innerHTML = scaleLabels.map((label, index) => `
-        <button class="scale-btn ${state.awarenessPre[question.id] === index + 1 ? "selected" : ""}" type="button" data-value="${index + 1}">${label}</button>
+      const answered = awarenessQuestions.filter((question) => state.awarenessPre[question.id]).length;
+      document.getElementById("awareness-progress").textContent = `开始前判断 ${answered} / ${awarenessQuestions.length}`;
+      document.getElementById("awareness-next").disabled = answered < awarenessQuestions.length;
+      document.getElementById("awareness-options").innerHTML = awarenessQuestions.map((question, index) => `
+        <div class="scale-question ${state.awarenessPre[question.id] ? "answered" : ""}" data-scale-question="${question.id}">
+          <h3>${index + 1}. ${question.text}</h3>
+          ${renderLikertButtons(question.id, state.awarenessPre[question.id])}
+        </div>
       `).join("");
     }
 
-    function chooseAwareness(value) {
-      const question = awarenessQuestions[state.awarenessIndex];
-      state.awarenessPre[question.id] = Number(value);
+    function renderLikertButtons(questionId, selectedValue) {
+      const sizes = [58, 48, 34, 48, 58];
+      const values = [5, 4, 3, 2, 1];
+      const colors = ["#2f9e72", "#2f9e72", "#cfd5dc", "#8b5a9b", "#8b5a9b"];
+      return `
+        <div class="likert-row">
+          <span class="likert-end">符合</span>
+          <div class="likert-options">
+            ${values.map((value, index) => `
+              <button class="likert-dot scale-btn ${selectedValue === value ? "selected" : ""}" style="--dot-size:${sizes[index]}px;--dot-color:${colors[index]}" type="button" data-question="${questionId}" data-value="${value}" aria-label="${scaleLabels[value - 1]}"></button>
+            `).join("")}
+          </div>
+          <span class="likert-end disagree">不符合</span>
+        </div>
+      `;
+    }
+
+    function focusNextScaleQuestion(containerId, questions, currentId, answers) {
+      const currentIndex = questions.findIndex((question) => question.id === currentId);
+      const next = questions.slice(currentIndex + 1).find((question) => !answers[question.id]);
+      const fallback = questions.find((question) => !answers[question.id]);
+      const target = next || fallback;
+      if (!target) return;
+      window.setTimeout(() => {
+        document.querySelector(`#${containerId} [data-scale-question="${target.id}"]`)?.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 80);
+    }
+
+    function chooseAwareness(questionId, value) {
+      state.awarenessPre[questionId] = Number(value);
       renderAwarenessQuestion();
+      focusNextScaleQuestion("awareness-options", awarenessQuestions, questionId, state.awarenessPre);
     }
 
     function nextAwareness() {
-      if (state.awarenessIndex < awarenessQuestions.length - 1) {
-        state.awarenessIndex += 1;
-        renderAwarenessQuestion();
-        return;
-      }
       state.testIndex = 0;
       renderTestQuestion();
       setStep("test");
     }
 
     function prevAwareness() {
-      if (state.awarenessIndex > 0) {
-        state.awarenessIndex -= 1;
-        renderAwarenessQuestion();
-        return;
-      }
       renderProfileQuestion();
       setStep("profile");
     }
 
     function renderTestQuestion() {
-      const question = selfQuestions[state.testIndex];
-      document.getElementById("test-progress").textContent = `自我认知 ${state.testIndex + 1} / ${selfQuestions.length}`;
-      document.getElementById("test-question").textContent = question.text;
-      document.getElementById("test-next").disabled = !state.self[question.id];
-      document.getElementById("test-next").textContent = state.testIndex === selfQuestions.length - 1 ? "进入购物页面" : "下一题";
-      document.getElementById("test-options").innerHTML = scaleLabels.map((label, index) => `
-        <button class="scale-btn ${state.self[question.id] === index + 1 ? "selected" : ""}" type="button" data-value="${index + 1}">${label}</button>
+      const answered = selfQuestions.filter((question) => state.self[question.id]).length;
+      document.getElementById("test-progress").textContent = `自我认知 ${answered} / ${selfQuestions.length}`;
+      document.getElementById("test-next").disabled = answered < selfQuestions.length;
+      document.getElementById("test-next").textContent = "进入购物页面";
+      document.getElementById("test-options").innerHTML = selfQuestions.map((question, index) => `
+        <div class="scale-question ${state.self[question.id] ? "answered" : ""}" data-scale-question="${question.id}">
+          <h3>${index + 1}. ${question.text}</h3>
+          ${renderLikertButtons(question.id, state.self[question.id])}
+        </div>
       `).join("");
     }
 
-    function chooseTest(value) {
-      const question = selfQuestions[state.testIndex];
-      state.self[question.id] = Number(value);
+    function chooseTest(questionId, value) {
+      state.self[questionId] = Number(value);
       renderTestQuestion();
+      focusNextScaleQuestion("test-options", selfQuestions, questionId, state.self);
     }
 
     async function createSession() {
@@ -1719,11 +1876,6 @@
     }
 
     async function nextTest() {
-      if (state.testIndex < selfQuestions.length - 1) {
-        state.testIndex += 1;
-        renderTestQuestion();
-        return;
-      }
       const nextButton = document.getElementById("test-next");
       nextButton.disabled = true;
       nextButton.textContent = "正在创建匿名研究记录…";
@@ -1740,14 +1892,8 @@
     }
 
     function prevTest() {
-      if (state.testIndex === 0) {
-        state.awarenessIndex = awarenessQuestions.length - 1;
-        renderAwarenessQuestion();
-        setStep("awareness");
-        return;
-      }
-      state.testIndex -= 1;
-      renderTestQuestion();
+      renderAwarenessQuestion();
+      setStep("awareness");
     }
 
     function buildFeedProducts() {
@@ -2225,19 +2371,22 @@
       const button = event.target.closest(".option-btn");
       if (button) chooseProfile(button.dataset.value);
     });
+    document.getElementById("profile-options").addEventListener("input", (event) => {
+      if (event.target.matches("#budget-slider")) updateBudget(event.target.value);
+    });
     document.getElementById("profile-next").addEventListener("click", nextProfile);
     document.getElementById("profile-back").addEventListener("click", prevProfile);
 
     document.getElementById("awareness-options").addEventListener("click", (event) => {
       const button = event.target.closest(".scale-btn");
-      if (button) chooseAwareness(button.dataset.value);
+      if (button) chooseAwareness(button.dataset.question, button.dataset.value);
     });
     document.getElementById("awareness-next").addEventListener("click", nextAwareness);
     document.getElementById("awareness-back").addEventListener("click", prevAwareness);
 
     document.getElementById("test-options").addEventListener("click", (event) => {
       const button = event.target.closest(".scale-btn");
-      if (button) chooseTest(button.dataset.value);
+      if (button) chooseTest(button.dataset.question, button.dataset.value);
     });
     document.getElementById("test-next").addEventListener("click", async () => {
       await nextTest();
