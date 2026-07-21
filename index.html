@@ -6,15 +6,18 @@
   <title>高中生消费自我认知与模拟选择差异</title>
   <style>
     :root {
-      --bg: #f6f4ef;
+      --background: #fbfbfe;
+      --bg: var(--background);
       --paper: #ffffff;
-      --panel: #fbfaf6;
-      --text: #1f2328;
-      --muted: #68707a;
-      --line: #e3e0d8;
-      --accent: #f05a18;
-      --accent-dark: #b94210;
-      --accent-soft: #fff1e8;
+      --panel: #f7f7ff;
+      --text: #050315;
+      --muted: #625f78;
+      --line: #e5e3ff;
+      --primary: #3930ed;
+      --secondary: #dedcff;
+      --accent: #5d56f3;
+      --accent-dark: #2d25c8;
+      --accent-soft: #efefff;
       --trust: #1f7a5a;
       --trust-dark: #165a43;
       --trust-soft: #e8f4ed;
@@ -22,11 +25,9 @@
       --warn-soft: #fff5e6;
       --danger: #9b2c2c;
       --danger-soft: #fff0f0;
-      --blue: #245b9d;
-      --blue-soft: #edf4ff;
-      --shadow: 0 18px 45px rgba(38, 31, 24, 0.08);
-      --orange: #ff641f;
-      --orange-dark: #df4f12;
+      --blue: var(--primary);
+      --blue-soft: var(--secondary);
+      --shadow: 0 18px 45px rgba(5, 3, 21, 0.06);
       --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
         "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
       --font-heading: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -60,14 +61,14 @@
     }
 
     body.consent-pending main { display: none; }
-    body.game-active { background: #f7f1e9; }
+    body.game-active { background: var(--bg); }
 
     .consent-screen {
       min-height: 100vh;
       display: grid;
       place-items: center;
       padding: 22px;
-      background: linear-gradient(180deg, #f8f5ef, #f1f5ee);
+      background: var(--bg);
     }
     body:not(.consent-pending) .consent-screen { display: none; }
     .consent-card {
@@ -176,9 +177,7 @@
       border: 0;
       border-radius: 0;
       box-shadow: none;
-      background:
-        radial-gradient(circle at 20% 8%, rgba(240,90,24,0.10), transparent 28%),
-        linear-gradient(180deg, #fff6ef, #f7f2ea);
+      background: var(--bg);
     }
     .overview-section { order: 3; }
     #research-section { order: 4; }
@@ -204,11 +203,11 @@
       display: grid;
       place-items: center;
       padding: 18px;
-      border: 1px solid #ead8cc;
+      border: 1px solid var(--line);
       border-radius: 14px;
       background:
-        radial-gradient(circle at 20% 15%, rgba(240,90,24,0.14), transparent 30%),
-        linear-gradient(135deg, #fff8f3, #f8f4ec);
+        radial-gradient(circle at 20% 15%, rgba(93, 86, 243, 0.12), transparent 30%),
+        linear-gradient(135deg, var(--accent-soft), #ffffff);
     }
     .mock-phone {
       width: min(320px, 100%);
@@ -230,7 +229,7 @@
     .mock-search {
       margin: 12px 0;
       padding: 8px 10px;
-      border: 2px solid var(--orange);
+      border: 2px solid var(--primary);
       border-radius: 12px;
       color: #69727c;
       font-size: 13px;
@@ -246,14 +245,14 @@
       font-size: 12px;
       font-weight: 850;
     }
-    .mock-product:nth-child(2) { background: linear-gradient(135deg, #fff0e8, #fffaf5); color: #b95423; }
+    .mock-product:nth-child(2) { background: linear-gradient(135deg, var(--secondary), #ffffff); color: var(--primary); }
     .mock-product:nth-child(3) { background: linear-gradient(135deg, #eef8f1, #ffffff); color: #28764c; }
     .mock-product:nth-child(4) { background: linear-gradient(135deg, #f2efff, #ffffff); color: #5d4a9e; }
-    .mock-price { display: block; margin-top: 46px; color: var(--orange); font-size: 18px; }
+    .mock-price { display: block; margin-top: 46px; color: var(--primary); font-size: 18px; }
     .mock-result {
       margin-top: 12px;
       padding: 10px;
-      border: 1px solid #f2ccb7;
+      border: 1px solid var(--line);
       border-radius: 10px;
       background: var(--accent-soft);
       color: var(--accent-dark);
@@ -272,17 +271,17 @@
       align-items: center;
       gap: 9px;
       padding: 12px;
-      border: 1px solid #f2ccb7;
+      border: 1px solid var(--line);
       border-radius: 8px;
       background: var(--accent-soft);
       color: var(--accent-dark);
       font-weight: 700;
     }
-    .step-icon { width: 30px; height: 30px; background: #fff; border: 1px solid #f2ccb7; }
+    .step-icon { width: 30px; height: 30px; background: #fff; border: 1px solid var(--line); }
     .callout {
       margin-top: 22px;
       padding: 16px 18px;
-      border: 1px solid #f2ccb7;
+      border: 1px solid var(--line);
       border-radius: 8px;
       background: var(--accent-soft);
     }
@@ -448,7 +447,7 @@
       gap: 16px;
       margin-top: 16px;
       padding: 16px;
-      border: 1px solid #f0c7b1;
+      border: 1px solid var(--line);
       border-radius: 14px;
       background: #fff;
     }
@@ -484,9 +483,9 @@
       padding: 18px;
       border-radius: 28px;
       background:
-        radial-gradient(circle at 18% 18%, rgba(240, 90, 24, 0.09), transparent 26%),
-        radial-gradient(circle at 82% 70%, rgba(36, 91, 157, 0.08), transparent 26%),
-        #fffdf9;
+        radial-gradient(circle at 18% 18%, rgba(57, 48, 237, 0.07), transparent 26%),
+        radial-gradient(circle at 82% 70%, rgba(93, 86, 243, 0.08), transparent 26%),
+        #ffffff;
     }
     .bubble-btn {
       width: 142px;
@@ -499,10 +498,10 @@
       gap: 7px;
       border-radius: 999px;
       padding: 14px;
-      border-color: rgba(240, 90, 24, 0.20);
+      border-color: rgba(93, 86, 243, 0.22);
       background:
         radial-gradient(circle at 32% 24%, rgba(255,255,255,0.9), transparent 34%),
-        linear-gradient(135deg, #ffffff, #fff2e9);
+        linear-gradient(135deg, #ffffff, var(--secondary));
       box-shadow: 0 16px 34px rgba(45, 37, 28, 0.08);
       color: #28313a;
       font-size: 15px;
@@ -520,9 +519,9 @@
       border-color: var(--accent);
       background:
         radial-gradient(circle at 32% 24%, rgba(255,255,255,0.85), transparent 34%),
-        linear-gradient(135deg, #ff7a2b, #f05a18);
+        linear-gradient(135deg, var(--accent), var(--primary));
       color: #fff;
-      box-shadow: 0 18px 42px rgba(240, 90, 24, 0.22);
+      box-shadow: 0 18px 42px rgba(93, 86, 243, 0.18);
     }
     .scale-list {
       display: grid;
@@ -607,7 +606,7 @@
     .shopping-surface,
     .decision-panel {
       overflow: hidden;
-      border: 1px solid #eaded5;
+      border: 1px solid var(--line);
       border-radius: 22px;
       background: #fff;
       box-shadow: 0 20px 44px rgba(20, 27, 38, 0.10);
@@ -626,6 +625,7 @@
       flex: 1;
       min-height: 0;
       display: flex;
+      flex-direction: column;
       padding: 0;
       overflow: hidden;
     }
@@ -659,7 +659,7 @@
       grid-template-rows: auto auto auto 1fr auto;
       min-height: 0;
       flex: 1;
-      background: #f7f3ed;
+      background: var(--secondary);
     }
     .phone-stage-status {
       display: flex;
@@ -706,7 +706,7 @@
       height: 3px;
       content: "";
       border-radius: 999px;
-      background: var(--orange);
+      background: var(--primary);
     }
     .cart-search-row {
       display: flex;
@@ -720,7 +720,7 @@
       align-items: center;
       gap: 8px;
       padding: 0 16px;
-      border: 2px solid var(--orange);
+      border: 2px solid var(--primary);
       border-radius: 14px;
       color: #838b94;
       background: #fff;
@@ -729,7 +729,7 @@
     .cart-search b {
       margin-left: auto;
       color: #fff;
-      background: var(--orange);
+      background: var(--primary);
       padding: 6px 13px;
       border-radius: 10px;
     }
@@ -766,8 +766,8 @@
     }
     .cart-item.clickable { cursor: pointer; }
     .cart-item.clickable:hover {
-      border-color: rgba(240, 90, 24, 0.35);
-      background: #fffaf6;
+      border-color: rgba(93, 86, 243, 0.28);
+      background: var(--accent-soft);
       transform: translateY(-2px);
       box-shadow: 0 12px 26px rgba(20, 27, 38, 0.08);
     }
@@ -797,7 +797,7 @@
       gap: 5px;
       flex: 0 0 auto;
       border-radius: 18px;
-      background: linear-gradient(135deg, #fff7ed, #f4f7fb);
+      background: linear-gradient(135deg, var(--secondary), #f4f7fb);
       color: #436356;
       font-size: 12px;
       font-weight: 850;
@@ -818,14 +818,14 @@
       display: inline-flex;
       align-items: center;
       padding: 2px 7px;
-      border: 1px solid #f2ccb7;
+      border: 1px solid var(--line);
       border-radius: 6px;
       color: var(--accent-dark);
-      background: #fff8f3;
+      background: var(--accent-soft);
       font-size: 12px;
       font-weight: 700;
     }
-    .cart-price { color: var(--orange); font-size: 24px; font-weight: 950; line-height: 1.2; }
+    .cart-price { color: var(--primary); font-size: 24px; font-weight: 950; line-height: 1.2; }
     .cart-item > .cart-price:last-child { display: none; }
     .cart-stepper {
       width: fit-content;
@@ -851,14 +851,14 @@
     }
     .cart-total-left { display: flex; align-items: center; gap: 10px; color: #39414b; font-weight: 800; }
     .cart-total-right { display: flex; align-items: center; gap: 18px; font-weight: 850; }
-    .cart-total-right strong { color: var(--orange); font-size: 25px; }
+    .cart-total-right strong { color: var(--primary); font-size: 25px; }
     .cart-checkout {
       min-width: 128px;
       min-height: 46px;
       display: grid;
       place-items: center;
       border-radius: 10px;
-      background: var(--orange);
+      background: var(--primary);
       color: #fff;
       font-weight: 900;
     }
@@ -890,15 +890,15 @@
       font-weight: 850;
     }
     .decision-btn.primary-action {
-      border-color: #f05a18;
-      background: #f05a18;
+      border-color: var(--primary);
+      background: var(--primary);
       color: #fff;
-      box-shadow: 0 10px 22px rgba(240, 90, 24, 0.18);
+      box-shadow: 0 10px 22px rgba(93, 86, 243, 0.16);
     }
     .decision-note {
       margin-top: 18px;
       padding: 12px;
-      border: 1px solid #f2ccb7;
+      border: 1px solid var(--line);
       border-radius: 10px;
       background: var(--accent-soft);
       color: var(--accent-dark);
@@ -921,7 +921,7 @@
       flex: 1;
       overflow: hidden;
       border-radius: 999px;
-      background: #eee3d8;
+      background: var(--secondary);
     }
     .decision-progress-fill {
       width: 60%;
@@ -988,7 +988,7 @@
       height: 3px;
       content: "";
       border-radius: 999px;
-      background: #ff6b21;
+      background: var(--primary);
     }
     .market-search {
       display: flex;
@@ -996,13 +996,13 @@
       gap: 8px;
       min-height: 42px;
       padding: 0 14px;
-      border: 2px solid #ff6b21;
+      border: 2px solid var(--primary);
       border-radius: 12px;
       background: #fff;
       color: #737b86;
       font-size: 14px;
     }
-    .market-search b { margin-left: auto; color: #ff5b15; font-size: 15px; }
+    .market-search b { margin-left: auto; color: var(--primary); font-size: 15px; }
     .market-shortcuts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; padding: 13px 0 10px; }
     .market-shortcuts span {
       min-height: 50px;
@@ -1016,7 +1016,7 @@
       font-weight: 750;
       text-align: center;
     }
-    .market-shortcuts span::first-letter { color: #ff6b21; }
+    .market-shortcuts span::first-letter { color: var(--primary); }
     .promo-strip {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1027,8 +1027,8 @@
       min-height: 70px;
       padding: 10px;
       border-radius: 10px;
-      background: linear-gradient(135deg, #fff1e9, #fff8f3);
-      color: #f15719;
+      background: linear-gradient(135deg, var(--secondary), var(--accent-soft));
+      color: var(--primary);
       font-size: 13px;
       font-weight: 800;
     }
@@ -1062,7 +1062,7 @@
       font-size: 13px;
       font-weight: 850;
     }
-    .feed-visual.tone-1 { background: linear-gradient(135deg, #fff0e5, #fff8f2); color: #b95423; }
+    .feed-visual.tone-1 { background: linear-gradient(135deg, var(--secondary), #ffffff); color: var(--primary); }
     .feed-visual.tone-2 { background: linear-gradient(135deg, #eeebff, #faf9ff); color: #5c4ca4; }
     .feed-visual.tone-3 { background: linear-gradient(135deg, #e8f7ee, #fbfffc); color: #2f8054; }
     .feed-visual::after {
@@ -1080,7 +1080,7 @@
       font-size: 12px;
       transform: rotate(-8deg);
     }
-    .feed-meta { margin-top: 7px; color: #ff5c16; font-size: 12px; font-weight: 800; }
+    .feed-meta { margin-top: 7px; color: var(--primary); font-size: 12px; font-weight: 800; }
     .product-img {
       display: grid;
       place-items: center;
@@ -1089,7 +1089,7 @@
       flex: 0 0 auto;
       margin: 0;
       border-radius: 8px;
-      background: linear-gradient(135deg, #e8eff9, #fff5e8);
+      background: linear-gradient(135deg, #e8eff9, #ffffff);
       color: #4f6680;
       font-size: 12px;
       font-weight: 800;
@@ -1097,7 +1097,7 @@
       text-align: center;
     }
     .price-line { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; margin: 8px 0; }
-    .price { color: #ff5916; font-size: 22px; font-weight: 900; }
+    .price { color: var(--primary); font-size: 22px; font-weight: 900; }
     .badge {
       display: inline-flex;
       min-height: 26px;
@@ -1133,10 +1133,10 @@
     .phone-alert {
       margin: 0 14px 10px;
       padding: 12px;
-      border: 1px solid #ffd0b4;
+      border: 1px solid var(--line);
       border-radius: 16px;
-      background: #fff7f2;
-      box-shadow: 0 10px 24px rgba(240, 90, 24, 0.08);
+      background: var(--accent-soft);
+      box-shadow: 0 10px 24px rgba(93, 86, 243, 0.08);
     }
     .phone-alert-title {
       display: flex;
@@ -1149,7 +1149,7 @@
     .phone-notice {
       padding: 11px 14px;
       margin: 0 14px 10px;
-      border: 1px solid #e8ded4;
+      border: 1px solid var(--line);
       border-radius: 16px;
       background: #fff;
       color: #4b5563;
@@ -1163,7 +1163,7 @@
       min-height: 0;
       overflow: auto;
       padding: 14px;
-      background: #f7f3ed;
+      background: var(--secondary);
     }
     .detail-hero {
       overflow: hidden;
@@ -1172,16 +1172,16 @@
       box-shadow: 0 10px 24px rgba(20, 27, 38, 0.06);
     }
     .detail-art {
-      min-height: 260px;
+      min-height: 280px;
       display: grid;
       place-items: center;
       background:
-        radial-gradient(circle at 72% 28%, rgba(240,90,24,0.15), transparent 25%),
-        linear-gradient(135deg, #fff8f3, #eef4ff);
+        radial-gradient(circle at 72% 28%, rgba(93, 86, 243, 0.12), transparent 25%),
+        linear-gradient(135deg, #ffffff, var(--secondary));
     }
     .detail-art .product-art { width: 150px; height: 150px; }
     .detail-copy { padding: 16px; }
-    .detail-price { color: var(--orange); font-size: 34px; font-weight: 950; line-height: 1; }
+    .detail-price { color: var(--primary); font-size: 34px; font-weight: 950; line-height: 1; }
     .detail-name { margin: 10px 0 8px; font-size: 21px; font-weight: 950; line-height: 1.3; }
     .detail-meta { color: var(--muted); font-size: 13px; font-weight: 750; }
     .detail-section {
@@ -1193,6 +1193,12 @@
       box-shadow: 0 8px 20px rgba(20, 27, 38, 0.04);
     }
     .detail-section strong { display: block; margin-bottom: 4px; }
+    .detail-section p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
     .phone-action-bar {
       position: sticky;
       bottom: 0;
@@ -1232,11 +1238,11 @@
       display: grid;
       place-items: center;
       border-radius: 14px;
-      background: #fff8f3;
+      background: var(--accent-soft);
     }
     .order-thumb .product-art { width: 64px; height: 64px; }
     .order-name { font-size: 15px; font-weight: 900; line-height: 1.35; }
-    .order-price { color: var(--orange); font-size: 22px; font-weight: 950; white-space: nowrap; }
+    .order-price { color: var(--primary); font-size: 22px; font-weight: 950; white-space: nowrap; }
     .order-row {
       display: flex;
       justify-content: space-between;
@@ -1259,11 +1265,11 @@
       background: var(--accent);
       color: #fff;
     }
-    .app-actions .app-btn:first-child { border-color: #ff6b21; background: #ff6b21; color: #fff; font-weight: 800; }
+    .app-actions .app-btn:first-child { border-color: var(--primary); background: var(--primary); color: #fff; font-weight: 800; }
     .cart-sheet { padding: 11px; margin-bottom: 10px; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
     .cart-shop { display: flex; align-items: center; gap: 7px; padding-bottom: 9px; font-size: 13px; }
     .cart-check { width: 18px; height: 18px; flex: 0 0 auto; border: 2px solid #c9d0d9; border-radius: 50%; }
-    .cart-shop .shop-name { color: #ff5d18; font-weight: 900; }
+    .cart-shop .shop-name { color: var(--primary); font-weight: 900; }
     .cart-row { display: flex; gap: 10px; align-items: flex-start; }
     .cart-copy { min-width: 0; flex: 1; }
     .cart-copy strong { display: -webkit-box; overflow: hidden; font-size: 13px; line-height: 1.45; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
@@ -1282,8 +1288,8 @@
       background: #fff;
       font-size: 13px;
     }
-    .cart-total strong { color: #ff5d18; font-size: 18px; }
-    .cart-total span:last-child { padding: 8px 13px; border-radius: 8px; background: #ff6b21; color: #fff; font-weight: 850; }
+    .cart-total strong { color: var(--primary); font-size: 18px; }
+    .cart-total span:last-child { padding: 8px 13px; border-radius: 8px; background: var(--primary); color: #fff; font-weight: 850; }
     .phone-nav {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -1291,7 +1297,7 @@
       background: #fff;
     }
     .phone-nav span { padding: 8px 2px 9px; color: #7b838d; font-size: 11px; font-weight: 700; text-align: center; }
-    .phone-nav .nav-active { color: #ff5d18; }
+    .phone-nav .nav-active { color: var(--primary); }
     .phone-nav i { display: block; margin-bottom: 2px; font-style: normal; font-size: 16px; line-height: 1; }
     .budget-bar { height: 12px; overflow: hidden; border-radius: 999px; background: #e9edf0; margin: 8px 0 4px; }
     .budget-fill { height: 100%; background: var(--accent); }
@@ -1330,8 +1336,8 @@
       padding: 22px;
       border-radius: 22px;
       background:
-        radial-gradient(circle at 22% 14%, rgba(240, 90, 24, 0.12), transparent 30%),
-        linear-gradient(180deg, #fff9f5, #f7f0e8);
+        radial-gradient(circle at 22% 14%, rgba(93, 86, 243, 0.10), transparent 30%),
+        linear-gradient(180deg, #ffffff, var(--secondary));
     }
     .mini-icon {
       width: 82px;
@@ -1350,7 +1356,7 @@
       max-width: 100%;
       margin-top: 0;
       padding: 12px 14px;
-      border: 1px solid #f2ccb7;
+      border: 1px solid var(--line);
       border-radius: 8px;
       background: var(--accent-soft);
       color: var(--accent-dark);
@@ -1372,6 +1378,7 @@
       border-radius: 8px;
       background: #fff;
     }
+    .mini-hint { margin-top: 8px; color: var(--muted); font-size: 12px; }
     .result-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 16px 0; }
     .result-card { padding: 15px; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
     .result-card.mismatch { border-color: #efc7c7; background: var(--danger-soft); }
@@ -1394,6 +1401,18 @@
       border: 1px solid var(--line);
       border-radius: 8px;
       background: #fff;
+    }
+    .feedback-form .scale-question {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--line);
+      background: transparent;
+      box-shadow: none;
+    }
+    .feedback-form .scale-question:last-child { border-bottom: 0; }
+    .feedback-form .scale-question h3 {
+      margin-bottom: 10px;
+      font-size: 18px;
+      line-height: 1.45;
     }
     .feedback-field textarea { min-height: 92px; resize: vertical; }
     .save-status { min-height: 24px; margin: 0; color: var(--muted); }
@@ -1771,7 +1790,7 @@
                 <div class="mini-feedback" id="mini-feedback">上一轮操作已完成。</div>
                 <div class="mini-card">
                   <p id="mini-question"></p>
-                  <input class="mini-input" id="mini-input" inputmode="numeric" placeholder="请输入答案" />
+                  <input class="mini-input" id="mini-input" inputmode="numeric" placeholder="请输入计算结果" />
                 </div>
                 <div class="actions">
                   <button class="primary" id="mini-next" type="button" disabled>继续</button>
@@ -1793,15 +1812,7 @@
                 <div id="awareness-post-questions"></div>
               </div>
               <div class="feedback-field">
-                <label for="label-fit">结果中的消费画像符合你的感受吗？</label>
-                <select id="label-fit" required>
-                  <option value="" selected disabled>请选择</option>
-                  <option value="1">1: 完全不符合</option>
-                  <option value="2">2: 不太符合</option>
-                  <option value="3">3: 一般</option>
-                  <option value="4">4: 比较符合</option>
-                  <option value="5">5: 非常符合</option>
-                </select>
+                <div id="label-fit-question"></div>
               </div>
               <div class="feedback-field">
                 <label for="reflection">你从这次模拟中发现了什么？（可选）</label>
@@ -1943,12 +1954,25 @@
       "演出 / 电影 / 线下活动": ["电影兑换券组合", "展览早鸟票", "活动限定纪念票"]
     };
 
+    const productPrices = {
+      "零食饮料": [19, 39, 29],
+      "文具 / 学习用品": [29, 35, 49],
+      "服饰 / 饰品": [89, 129, 59],
+      "数码配件": [19, 29, 39],
+      "游戏 / 会员 / 虚拟商品": [30, 68, 98],
+      "美妆护肤": [29, 49, 69],
+      "盲盒 / 周边 / IP 商品": [19, 39, 59],
+      "运动 / 户外用品": [39, 49, 69],
+      "演出 / 电影 / 线下活动": [39, 79, 99]
+    };
+
     const state = {
       profileIndex: 0,
       profile: { categories: [] },
       awarenessIndex: 0,
       awarenessPre: {},
       awarenessPost: {},
+      labelFit: null,
       testIndex: 0,
       self: {},
       stageIndex: 0,
@@ -1963,7 +1987,18 @@
       sessionReady: false,
       databaseError: null,
       result: null,
-      feedbackSubmitted: false
+      feedbackSubmitted: false,
+      currentStep: null,
+      screenEnteredAt: performance.now(),
+      stageStartedAt: null,
+      miniStartedAt: null,
+      promptStartedAt: {},
+      lastBudgetCommitted: null,
+      telemetrySequence: 0,
+      telemetryEvents: [],
+      pendingTelemetry: [],
+      telemetryWrite: Promise.resolve(),
+      experienceStartedAt: null
     };
 
     const baseProfileQuestions = [
@@ -2037,14 +2072,140 @@
       timeout: "本轮时间结束，已进入下一步。"
     };
 
+    function elapsedMs(startedAt) {
+      if (!Number.isFinite(startedAt)) return null;
+      return Math.max(0, Math.round(performance.now() - startedAt));
+    }
+
+    function markPromptStart(scope, elementId) {
+      const key = `${scope}:${elementId}`;
+      if (!state.promptStartedAt[key]) state.promptStartedAt[key] = performance.now();
+      return key;
+    }
+
+    function eventPayload(event) {
+      return {
+        session_id: state.sessionId,
+        event_order: event.eventOrder,
+        stage: event.stage,
+        action: event.action,
+        event_type: event.eventType,
+        element_id: event.elementId,
+        choice_value: event.choiceValue,
+        previous_value: event.previousValue,
+        decision_time_ms: event.decisionTimeMs,
+        product_category: event.productCategory,
+        product_name: event.productName,
+        interest_product: event.interestProduct,
+        price: event.price,
+        budget_pressure: event.budgetPressure,
+        time_remaining_seconds: event.timeRemainingSeconds,
+        metadata: event.metadata,
+        occurred_at: event.occurredAt
+      };
+    }
+
+    function persistTelemetry(events) {
+      if (!state.sessionReady || !state.sessionId || !events.length) return Promise.resolve();
+      const rows = events.map(eventPayload);
+      state.telemetryWrite = state.telemetryWrite
+        .then(() => supabaseInsert("simulation_events", rows.length === 1 ? rows[0] : rows))
+        .catch((error) => {
+          state.databaseError = error;
+          console.error("无法保存行为记录", error);
+        });
+      return state.telemetryWrite;
+    }
+
+    function trackEvent({
+      eventType = "interaction",
+      stage = state.currentStep || "unknown",
+      action = eventType,
+      elementId = null,
+      choiceValue = null,
+      previousValue = null,
+      decisionTimeMs = null,
+      product = null,
+      timeRemainingSeconds = null,
+      metadata = {}
+    } = {}) {
+      const activeProduct = product || state.selectedProduct;
+      const event = {
+        eventOrder: ++state.telemetrySequence,
+        eventType,
+        stage,
+        action,
+        elementId,
+        choiceValue: choiceValue == null ? null : String(choiceValue),
+        previousValue: previousValue == null ? null : String(previousValue),
+        decisionTimeMs,
+        productCategory: activeProduct?.category || null,
+        productName: activeProduct?.name || null,
+        interestProduct: activeProduct?.interest ?? null,
+        price: activeProduct?.price ?? null,
+        budgetPressure: activeProduct ? budgetPressure(activeProduct.price) : null,
+        timeRemainingSeconds,
+        metadata: {
+          stage_index: state.stageIndex,
+          viewport_width: window.innerWidth,
+          device_class: window.innerWidth < 700 ? "mobile" : "desktop",
+          ...metadata
+        },
+        occurredAt: new Date().toISOString()
+      };
+      state.telemetryEvents.push(event);
+      if (state.sessionReady) persistTelemetry([event]);
+      else state.pendingTelemetry.push(event);
+      return event;
+    }
+
+    async function flushPendingTelemetry() {
+      const pending = state.pendingTelemetry.splice(0);
+      await persistTelemetry(pending);
+    }
+
+    function trackQuestionChoice(scope, questionId, value, previousValue) {
+      const key = markPromptStart(scope, questionId);
+      trackEvent({
+        eventType: previousValue == null ? "answer" : "answer_change",
+        stage: scope,
+        action: "select_response",
+        elementId: questionId,
+        choiceValue: value,
+        previousValue,
+        decisionTimeMs: elapsedMs(state.promptStartedAt[key]),
+        metadata: { response_scale: "1-5" }
+      });
+      state.promptStartedAt[key] = performance.now();
+    }
+
     function setStep(step) {
       if (step !== "shop") stopStageTimer();
+      if (state.currentStep && state.currentStep !== step) {
+        trackEvent({
+          eventType: "screen_exit",
+          stage: state.currentStep,
+          action: "leave_screen",
+          elementId: `screen-${state.currentStep}`,
+          decisionTimeMs: elapsedMs(state.screenEnteredAt)
+        });
+      }
       document.querySelectorAll(".screen").forEach((screen) => {
         screen.classList.toggle("active", screen.id === `screen-${step}`);
       });
       document.querySelectorAll(".step-pill").forEach((pill) => {
         pill.classList.toggle("active", pill.dataset.stepLabel === step);
       });
+      if (state.currentStep !== step) {
+        state.currentStep = step;
+        state.screenEnteredAt = performance.now();
+        trackEvent({
+          eventType: "screen_enter",
+          stage: step,
+          action: "view_screen",
+          elementId: `screen-${step}`
+        });
+      }
     }
 
     function currentProfileQuestion() {
@@ -2057,6 +2218,7 @@
 
     function renderProfileQuestion() {
       const question = currentProfileQuestion();
+      markPromptStart("profile", question.id);
       const total = profileTotal();
       const current = state.profileIndex + 1;
       document.getElementById("profile-progress").textContent = `基础信息 ${current} / ${total}`;
@@ -2069,6 +2231,7 @@
         document.getElementById("profile-options").className = "option-grid";
         const value = Number(state.profile.budget || question.defaultValue);
         state.profile.budget = value;
+        if (state.lastBudgetCommitted == null) state.lastBudgetCommitted = value;
         document.getElementById("profile-options").innerHTML = `
           <div class="range-card">
             <div class="range-value">
@@ -2110,9 +2273,22 @@
       const question = currentProfileQuestion();
       if (question.type === "multi") {
         const set = new Set(state.profile.categories);
-        if (set.has(value)) set.delete(value);
+        const wasSelected = set.has(value);
+        if (wasSelected) set.delete(value);
         else set.add(value);
         state.profile.categories = [...set];
+        const key = markPromptStart("profile", question.id);
+        trackEvent({
+          eventType: "answer_change",
+          stage: "profile",
+          action: wasSelected ? "remove_category" : "add_category",
+          elementId: question.id,
+          choiceValue: value,
+          previousValue: wasSelected,
+          decisionTimeMs: elapsedMs(state.promptStartedAt[key]),
+          metadata: { selected_count: state.profile.categories.length }
+        });
+        state.promptStartedAt[key] = performance.now();
         renderProfileQuestion();
         return;
       }
@@ -2149,6 +2325,7 @@
     }
 
     function renderAwarenessQuestion() {
+      awarenessQuestions.forEach((question) => markPromptStart("awareness_pre", question.id));
       const answered = awarenessQuestions.filter((question) => state.awarenessPre[question.id]).length;
       document.getElementById("awareness-progress").textContent = `开始前判断 ${answered} / ${awarenessQuestions.length}`;
       document.getElementById("awareness-next").disabled = answered < awarenessQuestions.length;
@@ -2160,7 +2337,7 @@
       `).join("");
     }
 
-    function renderLikertButtons(questionId, selectedValue) {
+    function renderLikertButtons(questionId, selectedValue, attributeName = "data-question") {
       const sizes = [58, 48, 34, 48, 58];
       const values = [5, 4, 3, 2, 1];
       const colors = ["#2f9e72", "#2f9e72", "#cfd5dc", "#8b5a9b", "#8b5a9b"];
@@ -2169,7 +2346,7 @@
           <span class="likert-end">符合</span>
           <div class="likert-options">
             ${values.map((value, index) => `
-              <button class="likert-dot scale-btn ${selectedValue === value ? "selected" : ""}" style="--dot-size:${sizes[index]}px;--dot-color:${colors[index]}" type="button" data-question="${questionId}" data-value="${value}" aria-label="${scaleLabels[value - 1]}"></button>
+              <button class="likert-dot scale-btn ${selectedValue === value ? "selected" : ""}" style="--dot-size:${sizes[index]}px;--dot-color:${colors[index]}" type="button" ${attributeName}="${questionId}" data-value="${value}" aria-label="${scaleLabels[value - 1]}"></button>
             `).join("")}
           </div>
           <span class="likert-end disagree">不符合</span>
@@ -2189,9 +2366,25 @@
     }
 
     function chooseAwareness(questionId, value) {
+      const previousValue = state.awarenessPre[questionId];
+      trackQuestionChoice("awareness_pre", questionId, value, previousValue);
       state.awarenessPre[questionId] = Number(value);
       renderAwarenessQuestion();
       focusNextScaleQuestion("awareness-options", awarenessQuestions, questionId, state.awarenessPre);
+    }
+
+    function chooseAwarenessPost(questionId, value) {
+      const previousValue = state.awarenessPost[questionId];
+      trackQuestionChoice("awareness_post", questionId, value, previousValue);
+      state.awarenessPost[questionId] = Number(value);
+      renderAwarenessPost();
+      focusNextScaleQuestion("awareness-post-questions", awarenessQuestions, questionId, state.awarenessPost);
+    }
+
+    function chooseLabelFit(value) {
+      trackQuestionChoice("result_feedback", "label_fit", value, state.labelFit);
+      state.labelFit = Number(value);
+      renderAwarenessPost();
     }
 
     function nextAwareness() {
@@ -2206,6 +2399,7 @@
     }
 
     function renderTestQuestion() {
+      selfQuestions.forEach((question) => markPromptStart("self_assessment", question.id));
       const answered = selfQuestions.filter((question) => state.self[question.id]).length;
       document.getElementById("test-progress").textContent = `自我认知 ${answered} / ${selfQuestions.length}`;
       document.getElementById("test-next").disabled = answered < selfQuestions.length;
@@ -2219,6 +2413,8 @@
     }
 
     function chooseTest(questionId, value) {
+      const previousValue = state.self[questionId];
+      trackQuestionChoice("self_assessment", questionId, value, previousValue);
       state.self[questionId] = Number(value);
       renderTestQuestion();
       focusNextScaleQuestion("test-options", selfQuestions, questionId, state.self);
@@ -2228,7 +2424,7 @@
       state.sessionId = crypto.randomUUID();
       await supabaseInsert("sessions", {
         id: state.sessionId,
-        app_version: "mvp-2-short",
+        app_version: "mvp-3-telemetry",
         profile: state.profile,
         self_assessment: {
           consumer_self_perception: state.self,
@@ -2236,6 +2432,7 @@
         }
       });
       state.sessionReady = true;
+      await flushPendingTelemetry();
     }
 
     async function nextTest() {
@@ -2271,15 +2468,14 @@
       state.feedProducts = pool.slice(0, 4).map((category, index) => {
         const names = productNames[category] || productNames["数码配件"];
         const profile = pressureProfiles[index % pressureProfiles.length];
-        const budgetAnchor = state.profile.budget || 1500;
-        const budgetTarget = budgetAnchor * profile.budgetRatio;
-        const price = roundPrice(budgetTarget);
+        const prices = productPrices[category] || productPrices["数码配件"];
+        const price = prices[index % prices.length];
         return {
           id: `p${index}`,
           category,
           name: names[index % names.length],
           price,
-          original: roundPrice(price * 1.35),
+          original: roundPrice(price * 1.25),
           interest: selected.includes(category),
           pressureLabel: profile.label
         };
@@ -2309,11 +2505,21 @@
       document.getElementById("phone-body").innerHTML = renderPhone(stage.id);
       setStep("shop");
       startStageTimer();
+      trackEvent({
+        eventType: "round_start",
+        stage: stage.id,
+        action: "show_shopping_stage",
+        elementId: `round-${state.stageIndex + 1}`,
+        product: state.selectedProduct || state.feedProducts[0],
+        timeRemainingSeconds: 60,
+        metadata: { round_number: state.stageIndex + 1, round_title: stage.title }
+      });
     }
 
     function startStageTimer() {
       stopStageTimer();
       state.timeLeft = 60;
+      state.stageStartedAt = performance.now();
       updateTimerUI();
       state.timerId = window.setInterval(() => {
         state.timeLeft -= 1;
@@ -2374,17 +2580,9 @@
     }
 
     function renderPhoneStatus(stageId) {
-      const stage = stages[state.stageIndex];
-      const shortText = {
-        feed: "浏览推荐",
-        popup: "降价提醒",
-        detail: "商品详情",
-        checkout: "确认订单",
-        review: "提交前确认"
-      }[stageId] || stage.title;
       return `
         <div class="phone-stage-status">
-          <span class="stage-chip">⏱ <span>${shortText}</span></span>
+          <span class="stage-chip">⏱ <span>剩余时间</span></span>
           <span class="phone-stage-timer">${document.getElementById("stage-timer")?.textContent || "01:00"}</span>
         </div>
       `;
@@ -2421,7 +2619,7 @@
             <div class="detail-copy">
               <div class="detail-price">¥${product.price}</div>
               <div class="detail-name">${product.name}</div>
-              <div class="detail-meta">${shortCategoryName(product.category)} · ${product.interest ? "近期接触类别" : "推荐类别"} · 已售 ${120 + product.price}</div>
+              <div class="detail-meta">${shortCategoryName(product.category)} · ${product.interest ? "近期接触类别" : "推荐类别"} · 已售 ${260 + Number(product.id.replace("p", "")) * 87}</div>
             </div>
           </div>
           <div class="detail-section">
@@ -2476,7 +2674,7 @@
           <div class="order-card">
             <div class="order-row"><span>商品金额</span><span>¥${product.price}</span></div>
             <div class="order-row"><span>附加服务</span><span>¥19</span></div>
-            <div class="order-row"><span>合计</span><span style="color:#ff5d18;font-weight:950;">¥${finalPrice}</span></div>
+            <div class="order-row"><span>合计</span><span style="color:var(--primary);font-weight:950;">¥${finalPrice}</span></div>
           </div>
           <div class="phone-action-bar">
             <button class="app-btn" type="button" data-action="checkout_cancel">取消服务</button>
@@ -2556,16 +2754,16 @@
     function productArt(category) {
       const icon = categoryIcon(category);
       const palette = {
-        "零食饮料": ["#fff3d7", "#f5a623", "#63b36d"],
-        "文具 / 学习用品": ["#eaf5ff", "#4a90e2", "#f5a623"],
+        "零食饮料": ["#eef8f4", "#2f9d72", "#79c59c"],
+        "文具 / 学习用品": ["#eaf5ff", "#4a90e2", "#72a7f5"],
         "服饰 / 饰品": ["#f2efff", "#8b5cf6", "#ff7aa2"],
         "数码配件": ["#e8f4ed", "#1f7a5a", "#57b38c"],
-        "游戏 / 会员 / 虚拟商品": ["#eef2ff", "#536dfe", "#ffb020"],
+        "游戏 / 会员 / 虚拟商品": ["#eef2ff", "#536dfe", "#8ea2ff"],
         "美妆护肤": ["#fff0f3", "#ef5da8", "#ffb6c8"],
-        "盲盒 / 周边 / IP 商品": ["#fff7e8", "#ff7a1a", "#7c4dff"],
-        "运动 / 户外用品": ["#ecfff5", "#20a76b", "#ffd166"],
-        "演出 / 电影 / 线下活动": ["#f5f1ff", "#7f56d9", "#ff6b21"]
-      }[category] || ["#eef4f2", "#1f7a5a", "#f5a623"];
+        "盲盒 / 周边 / IP 商品": ["#f3f1ff", "#7c4dff", "#9b8cff"],
+        "运动 / 户外用品": ["#ecfff5", "#20a76b", "#7bd4a3"],
+        "演出 / 电影 / 线下活动": ["#f5f1ff", "#7f56d9", "var(--primary)"]
+      }[category] || ["#eef4f2", "#1f7a5a", "#57b38c"];
       return `
         <svg class="product-art" viewBox="0 0 96 96" aria-hidden="true" focusable="false">
           <rect x="8" y="10" width="80" height="76" rx="22" fill="${palette[0]}"></rect>
@@ -2602,25 +2800,6 @@
       return Math.min(96, Math.max(8, Math.round((price / budget) * 100)));
     }
 
-    function recordSimulationEvent(event) {
-      if (!state.sessionReady || !state.sessionId) return;
-      supabaseInsert("simulation_events", {
-        session_id: state.sessionId,
-        event_order: state.events.length,
-        stage: event.stage,
-        action: event.action,
-        product_category: event.productCategory,
-        product_name: event.productName,
-        interest_product: event.interestProduct,
-        price: event.price,
-        budget_pressure: event.budgetPressure,
-        time_remaining_seconds: event.timeRemainingSeconds
-      }).catch((error) => {
-        state.databaseError = error;
-        console.error("无法保存模拟操作", error);
-      });
-    }
-
     function handleShopAction(action, productId) {
       stopStageTimer();
       if (productId) state.selectedProduct = state.feedProducts.find((item) => item.id === productId);
@@ -2637,7 +2816,21 @@
         timeRemainingSeconds: Math.max(0, state.timeLeft)
       };
       state.events.push(simulationEvent);
-      recordSimulationEvent(simulationEvent);
+      trackEvent({
+        eventType: action === "timeout" ? "timeout" : "shopping_decision",
+        stage: simulationEvent.stage,
+        action,
+        elementId: productId || action,
+        choiceValue: action,
+        decisionTimeMs: elapsedMs(state.stageStartedAt),
+        product,
+        timeRemainingSeconds: simulationEvent.timeRemainingSeconds,
+        metadata: {
+          round_number: state.stageIndex + 1,
+          selected_product_id: product.id,
+          source: productId ? "product_card" : "stage_control"
+        }
+      });
       if (state.stageIndex < stages.length - 1) startMiniGame();
       else renderResults();
     }
@@ -2650,7 +2843,15 @@
       document.getElementById("mini-question").textContent = `快速心算：${a} + ${b} = ?`;
       document.getElementById("mini-input").value = "";
       document.getElementById("mini-next").disabled = true;
+      state.miniStartedAt = performance.now();
       setStep("mini");
+      trackEvent({
+        eventType: "mini_task_start",
+        stage: "mini",
+        action: "show_math_check",
+        elementId: `mini-after-${state.stageIndex + 1}`,
+        metadata: { after_round: state.stageIndex + 1 }
+      });
     }
 
     function scoreDimension(dimension) {
@@ -2682,14 +2883,20 @@
     }
 
     function renderAwarenessPost() {
+      awarenessQuestions.forEach((question) => markPromptStart("awareness_post", question.id));
+      markPromptStart("result_feedback", "label_fit");
       document.getElementById("awareness-post-questions").innerHTML = awarenessQuestions.map((question, index) => `
-        <label for="awareness-post-${question.id}">${index + 1}. ${question.text}
-          <select id="awareness-post-${question.id}" data-awareness-post="${question.id}" required>
-            <option value="" selected disabled>请选择</option>
-            ${scaleLabels.map((label, score) => `<option value="${score + 1}">${score + 1}: ${label}</option>`).join("")}
-          </select>
-        </label>
+        <div class="scale-question ${state.awarenessPost[question.id] ? "answered" : ""}" data-scale-question="${question.id}">
+          <h3>${index + 1}. ${question.text}</h3>
+          ${renderLikertButtons(question.id, state.awarenessPost[question.id], "data-awareness-post")}
+        </div>
       `).join("");
+      document.getElementById("label-fit-question").innerHTML = `
+        <div class="scale-question ${state.labelFit ? "answered" : ""}" data-scale-question="label-fit">
+          <h3>结果中的消费画像符合你的感受吗？</h3>
+          ${renderLikertButtons("label-fit", state.labelFit, "data-label-fit")}
+        </div>
+      `;
     }
 
     function renderResults() {
@@ -2755,6 +2962,7 @@
       `).join("");
       document.getElementById("feedback-form").reset();
       state.awarenessPost = {};
+      state.labelFit = null;
       renderAwarenessPost();
       const feedbackButton = document.getElementById("save-feedback");
       feedbackButton.disabled = !state.sessionReady;
@@ -2776,13 +2984,15 @@
         setSaveStatus("未创建研究记录，无法提交反馈。", "error");
         return;
       }
+      const missingPost = awarenessQuestions.some((question) => !state.awarenessPost[question.id]);
+      if (missingPost || !state.labelFit) {
+        setSaveStatus("请先完成结果反馈里的圆点题。", "error");
+        return;
+      }
       const submitButton = document.getElementById("save-feedback");
       submitButton.disabled = true;
       submitButton.textContent = "正在提交…";
       try {
-        state.awarenessPost = Object.fromEntries(
-          [...document.querySelectorAll("[data-awareness-post]")].map((select) => [select.dataset.awarenessPost, Number(select.value)])
-        );
         const awarenessPre = meanScore(state.awarenessPre);
         const awarenessPost = meanScore(state.awarenessPost);
         await supabaseInsert("result_feedback", {
@@ -2796,13 +3006,29 @@
             awareness_pre_items: state.awarenessPre,
             awareness_post_items: state.awarenessPost,
             gap_results: state.result.gaps.map((gap) => ({ title: gap.title, consistent: gap.good })),
-            observed_actions: state.events.map((item) => item.action)
+            observed_actions: state.events.map((item) => item.action),
+            telemetry_summary: {
+              event_count: state.telemetryEvents.length,
+              total_experience_ms: elapsedMs(state.experienceStartedAt),
+              shopping_decision_times_ms: state.telemetryEvents
+                .filter((item) => item.eventType === "shopping_decision")
+                .map((item) => item.decisionTimeMs)
+            }
           },
-          label_fit: Number(document.getElementById("label-fit").value),
+          label_fit: state.labelFit,
           reflection: document.getElementById("reflection").value.trim() || null,
           influence_notes: document.getElementById("influence-notes").value.trim() || null
         });
         state.feedbackSubmitted = true;
+        trackEvent({
+          eventType: "feedback_submit",
+          stage: "result_feedback",
+          action: "submit_result_feedback",
+          elementId: "save-feedback",
+          decisionTimeMs: elapsedMs(state.screenEnteredAt),
+          metadata: { label_fit: state.labelFit }
+        });
+        await state.telemetryWrite;
         submitButton.textContent = "反馈已提交";
         setSaveStatus("匿名结果反馈已保存。", "success");
       } catch (error) {
@@ -2840,6 +3066,13 @@
     });
 
     document.getElementById("start-btn").addEventListener("click", () => {
+      state.experienceStartedAt = performance.now();
+      trackEvent({
+        eventType: "navigation",
+        stage: "intro",
+        action: "start_test",
+        elementId: "start-btn"
+      });
       state.profileIndex = 0;
       renderProfileQuestion();
       setStep("profile");
@@ -2852,24 +3085,57 @@
     document.getElementById("profile-options").addEventListener("input", (event) => {
       if (event.target.matches("#budget-slider")) updateBudget(event.target.value);
     });
-    document.getElementById("profile-next").addEventListener("click", nextProfile);
-    document.getElementById("profile-back").addEventListener("click", prevProfile);
+    document.getElementById("profile-options").addEventListener("change", (event) => {
+      if (!event.target.matches("#budget-slider")) return;
+      const value = Number(event.target.value);
+      const key = markPromptStart("profile", "budget");
+      trackEvent({
+        eventType: "answer",
+        stage: "profile",
+        action: "set_budget",
+        elementId: "budget",
+        choiceValue: value,
+        previousValue: state.lastBudgetCommitted,
+        decisionTimeMs: elapsedMs(state.promptStartedAt[key]),
+        metadata: { unit: "CNY", input_type: "range" }
+      });
+      state.lastBudgetCommitted = value;
+      state.promptStartedAt[key] = performance.now();
+    });
+    document.getElementById("profile-next").addEventListener("click", () => {
+      trackEvent({ eventType: "navigation", stage: "profile", action: "next", elementId: "profile-next" });
+      nextProfile();
+    });
+    document.getElementById("profile-back").addEventListener("click", () => {
+      trackEvent({ eventType: "navigation", stage: "profile", action: "back", elementId: "profile-back" });
+      prevProfile();
+    });
 
     document.getElementById("awareness-options").addEventListener("click", (event) => {
       const button = event.target.closest(".scale-btn");
       if (button) chooseAwareness(button.dataset.question, button.dataset.value);
     });
-    document.getElementById("awareness-next").addEventListener("click", nextAwareness);
-    document.getElementById("awareness-back").addEventListener("click", prevAwareness);
+    document.getElementById("awareness-next").addEventListener("click", () => {
+      trackEvent({ eventType: "navigation", stage: "awareness_pre", action: "next", elementId: "awareness-next" });
+      nextAwareness();
+    });
+    document.getElementById("awareness-back").addEventListener("click", () => {
+      trackEvent({ eventType: "navigation", stage: "awareness_pre", action: "back", elementId: "awareness-back" });
+      prevAwareness();
+    });
 
     document.getElementById("test-options").addEventListener("click", (event) => {
       const button = event.target.closest(".scale-btn");
       if (button) chooseTest(button.dataset.question, button.dataset.value);
     });
     document.getElementById("test-next").addEventListener("click", async () => {
+      trackEvent({ eventType: "navigation", stage: "self_assessment", action: "start_simulation", elementId: "test-next" });
       await nextTest();
     });
-    document.getElementById("test-back").addEventListener("click", prevTest);
+    document.getElementById("test-back").addEventListener("click", () => {
+      trackEvent({ eventType: "navigation", stage: "self_assessment", action: "back", elementId: "test-back" });
+      prevTest();
+    });
 
     document.getElementById("phone-body").addEventListener("click", (event) => {
       const button = event.target.closest("[data-action]");
@@ -2885,18 +3151,47 @@
     document.getElementById("mini-input").addEventListener("input", (event) => {
       document.getElementById("mini-next").disabled = Number(event.target.value) !== state.miniAnswer;
     });
+    document.getElementById("mini-input").addEventListener("change", (event) => {
+      const answer = event.target.value.trim();
+      if (!answer) return;
+      trackEvent({
+        eventType: "mini_task_attempt",
+        stage: "mini",
+        action: "enter_math_answer",
+        elementId: "mini-input",
+        choiceValue: answer,
+        decisionTimeMs: elapsedMs(state.miniStartedAt),
+        metadata: { correct: Number(answer) === state.miniAnswer, after_round: state.stageIndex + 1 }
+      });
+    });
     document.getElementById("mini-next").addEventListener("click", () => {
+      trackEvent({
+        eventType: "mini_task_complete",
+        stage: "mini",
+        action: "continue_after_math",
+        elementId: "mini-next",
+        decisionTimeMs: elapsedMs(state.miniStartedAt),
+        metadata: { after_round: state.stageIndex + 1 }
+      });
       state.stageIndex += 1;
       renderShopStage();
+    });
+    document.getElementById("feedback-form").addEventListener("click", (event) => {
+      const postButton = event.target.closest("[data-awareness-post]");
+      if (postButton) chooseAwarenessPost(postButton.dataset.awarenessPost, postButton.dataset.value);
+      const labelButton = event.target.closest("[data-label-fit]");
+      if (labelButton) chooseLabelFit(labelButton.dataset.value);
     });
     document.getElementById("feedback-form").addEventListener("submit", saveResultFeedback);
     document.getElementById("copy-result").addEventListener("click", exportData);
     document.getElementById("restart").addEventListener("click", () => {
+      trackEvent({ eventType: "navigation", stage: "result", action: "restart", elementId: "restart" });
       state.profileIndex = 0;
       state.profile = { categories: [] };
       state.awarenessIndex = 0;
       state.awarenessPre = {};
       state.awarenessPost = {};
+      state.labelFit = null;
       state.testIndex = 0;
       state.self = {};
       state.stageIndex = 0;
@@ -2910,6 +3205,17 @@
       state.databaseError = null;
       state.result = null;
       state.feedbackSubmitted = false;
+      state.currentStep = null;
+      state.screenEnteredAt = performance.now();
+      state.stageStartedAt = null;
+      state.miniStartedAt = null;
+      state.promptStartedAt = {};
+      state.lastBudgetCommitted = null;
+      state.telemetrySequence = 0;
+      state.telemetryEvents = [];
+      state.pendingTelemetry = [];
+      state.telemetryWrite = Promise.resolve();
+      state.experienceStartedAt = null;
       stopStageTimer();
       document.getElementById("export-box").value = "";
       setStep("intro");
