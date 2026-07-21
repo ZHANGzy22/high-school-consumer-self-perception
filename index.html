@@ -562,8 +562,8 @@
 
     .shop-game {
       display: grid;
-      grid-template-columns: minmax(340px, 520px) minmax(300px, 340px);
-      gap: 20px;
+      grid-template-columns: minmax(320px, 430px);
+      gap: 0;
       align-items: stretch;
       justify-content: center;
       margin-top: 0;
@@ -578,22 +578,32 @@
     }
     .shopping-surface {
       display: flex;
-      min-height: 720px;
-      max-width: 520px;
+      width: min(430px, calc(100vw - 28px));
+      min-height: 740px;
+      max-height: min(780px, calc(100vh - 124px));
+      max-width: 430px;
       flex-direction: column;
+      border-radius: 34px;
       animation: surfaceIn 0.35s ease both;
+    }
+    .shopping-surface > .phone-body {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      padding: 0;
+      overflow: hidden;
     }
     .shop-app-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 14px;
-      min-height: 74px;
-      padding: 18px 24px;
+      min-height: 62px;
+      padding: 14px 18px;
       border-bottom: 1px solid var(--line);
       background: #fff;
     }
-    .shop-app-title { display: flex; align-items: center; gap: 12px; font-size: 27px; font-weight: 900; }
+    .shop-app-title { display: flex; align-items: center; gap: 12px; font-size: 23px; font-weight: 900; }
     .shop-back {
       width: 32px;
       height: 32px;
@@ -605,17 +615,41 @@
       font-size: 20px;
       font-weight: 700;
     }
-    .shop-tools { display: flex; gap: 10px; color: #68717d; font-size: 13px; font-weight: 750; }
+    .shop-tools { display: none; gap: 10px; color: #68717d; font-size: 13px; font-weight: 750; }
     .shop-tools span { padding: 6px 10px; border: 1px solid var(--line); border-radius: 999px; background: #fafafa; }
     .cart-layout {
+      width: 100%;
       display: grid;
       grid-template-rows: auto auto auto 1fr auto;
       min-height: 0;
       flex: 1;
       background: #f7f3ed;
     }
-    .cart-tabs {
+    .phone-stage-status {
       display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 18px;
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+      color: #6b7280;
+      font-size: 12px;
+      font-weight: 850;
+    }
+    .stage-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--accent-dark);
+    }
+    .phone-stage-timer {
+      color: var(--accent);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0;
+    }
+    .cart-tabs {
+      display: none;
       gap: 18px;
       overflow-x: auto;
       padding: 16px 24px 6px;
@@ -678,7 +712,7 @@
       display: grid;
       gap: 12px;
       overflow: auto;
-      padding: 0 18px 18px;
+      padding: 12px 14px 18px;
     }
     .cart-item {
       display: grid;
@@ -708,6 +742,13 @@
       border: 2px solid #cfd5dc;
       border-radius: 50%;
       background: #fff;
+    }
+    .cart-item.clickable:active .cart-radio,
+    .cart-item.selected .cart-radio {
+      border-color: var(--accent);
+      background:
+        radial-gradient(circle at center, #fff 0 28%, transparent 29%),
+        var(--accent);
     }
     .cart-product-main { display: flex; align-items: flex-start; gap: 16px; min-width: 0; }
     .cart-thumb {
@@ -786,7 +827,7 @@
       font-weight: 900;
     }
     .decision-panel {
-      display: flex;
+      display: none;
       flex-direction: column;
       padding: 24px;
       max-width: 340px;
@@ -1044,6 +1085,134 @@
       gap: 9px;
       margin-top: 14px;
     }
+    .inline-actions.compact {
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .inline-actions.compact .app-btn {
+      min-height: 42px;
+      padding: 8px 9px;
+      font-size: 14px;
+    }
+    .phone-alert {
+      margin: 0 14px 10px;
+      padding: 12px;
+      border: 1px solid #ffd0b4;
+      border-radius: 16px;
+      background: #fff7f2;
+      box-shadow: 0 10px 24px rgba(240, 90, 24, 0.08);
+    }
+    .phone-alert-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent-dark);
+      font-weight: 950;
+    }
+    .phone-alert p { margin: 6px 0 0; font-size: 13px; line-height: 1.45; }
+    .phone-notice {
+      padding: 11px 14px;
+      margin: 0 14px 10px;
+      border: 1px solid #e8ded4;
+      border-radius: 16px;
+      background: #fff;
+      color: #4b5563;
+      font-size: 13px;
+      font-weight: 750;
+    }
+    .detail-page,
+    .checkout-page {
+      width: 100%;
+      flex: 1;
+      min-height: 0;
+      overflow: auto;
+      padding: 14px;
+      background: #f7f3ed;
+    }
+    .detail-hero {
+      overflow: hidden;
+      border-radius: 22px;
+      background: #fff;
+      box-shadow: 0 10px 24px rgba(20, 27, 38, 0.06);
+    }
+    .detail-art {
+      min-height: 260px;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 72% 28%, rgba(240,90,24,0.15), transparent 25%),
+        linear-gradient(135deg, #fff8f3, #eef4ff);
+    }
+    .detail-art .product-art { width: 150px; height: 150px; }
+    .detail-copy { padding: 16px; }
+    .detail-price { color: var(--orange); font-size: 34px; font-weight: 950; line-height: 1; }
+    .detail-name { margin: 10px 0 8px; font-size: 21px; font-weight: 950; line-height: 1.3; }
+    .detail-meta { color: var(--muted); font-size: 13px; font-weight: 750; }
+    .detail-section {
+      margin-top: 10px;
+      padding: 13px 15px;
+      border-radius: 16px;
+      background: #fff;
+      font-size: 14px;
+      box-shadow: 0 8px 20px rgba(20, 27, 38, 0.04);
+    }
+    .detail-section strong { display: block; margin-bottom: 4px; }
+    .phone-action-bar {
+      position: sticky;
+      bottom: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      padding: 12px 14px 14px;
+      margin: 12px -14px -14px;
+      border-top: 1px solid var(--line);
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(12px);
+    }
+    .phone-action-bar .app-btn { text-align: center; font-weight: 900; }
+    .order-card {
+      margin-bottom: 10px;
+      padding: 15px;
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 8px 20px rgba(20, 27, 38, 0.04);
+    }
+    .order-address {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 9px;
+      align-items: start;
+      font-weight: 850;
+    }
+    .order-product {
+      display: grid;
+      grid-template-columns: 86px 1fr auto;
+      gap: 12px;
+      align-items: start;
+    }
+    .order-thumb {
+      width: 86px;
+      height: 86px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: #fff8f3;
+    }
+    .order-thumb .product-art { width: 64px; height: 64px; }
+    .order-name { font-size: 15px; font-weight: 900; line-height: 1.35; }
+    .order-price { color: var(--orange); font-size: 22px; font-weight: 950; white-space: nowrap; }
+    .order-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 0;
+      border-top: 1px solid #edf0f2;
+      color: #1f2937;
+      font-weight: 800;
+    }
+    .order-row:first-child { border-top: 0; }
+    .order-row span:last-child { color: var(--muted); text-align: right; }
+    .order-row.warning span:last-child { color: var(--accent-dark); }
     .inline-actions .app-btn {
       min-height: 48px;
       text-align: center;
@@ -1260,12 +1429,14 @@
       .cart-row { gap: 8px; }
       .shop-game { grid-template-columns: 1fr; }
       .shopping-surface {
-        min-height: 0;
-        max-height: 380px;
+        width: min(390px, calc(100vw - 28px));
+        min-height: 680px;
+        max-height: none;
       }
-      .shop-app-bar { align-items: flex-start; flex-direction: column; padding: 14px; }
-      .shop-app-title { font-size: 22px; }
+      .shop-app-bar { padding: 12px 14px; }
+      .shop-app-title { font-size: 21px; }
       .shop-tools { flex-wrap: wrap; }
+      .phone-stage-status { padding: 9px 14px; }
       .cart-search-row { padding: 12px 14px 8px; }
       .cart-table-head { display: none; }
       .cart-item {
@@ -1560,14 +1731,14 @@
               <div class="mini-phone-screen">
                 <div class="mini-icon" aria-hidden="true">↻</div>
                 <div class="mini-title">加载下一页</div>
-                <p class="mini-subtitle">做一个很短的无关任务，让前后购物选择隔开一点。</p>
+                <p class="mini-subtitle">页面加载中，请完成一个快速验证。</p>
                 <div class="mini-feedback" id="mini-feedback">上一轮操作已完成。</div>
                 <div class="mini-card">
                   <p id="mini-question"></p>
                   <input class="mini-input" id="mini-input" inputmode="numeric" placeholder="请输入答案" />
                 </div>
                 <div class="actions">
-                  <button class="primary" id="mini-next" type="button" disabled>继续购物</button>
+                  <button class="primary" id="mini-next" type="button" disabled>继续</button>
                 </div>
               </div>
             </div>
@@ -2087,7 +2258,13 @@
 
     function renderShopStage() {
       const stage = stages[state.stageIndex];
-      document.getElementById("shop-title").textContent = stage.id === "feed" ? "推荐商品" : "购物车";
+      document.getElementById("shop-title").textContent = {
+        feed: "好价集市",
+        popup: "好价集市",
+        detail: "商品详情",
+        checkout: "确认订单",
+        review: "提交确认"
+      }[stage.id] || "好价集市";
       document.getElementById("decision-title").textContent = `第 ${state.stageIndex + 1} 轮：${stage.title}`;
       document.getElementById("stage-count").textContent = `${state.stageIndex + 1}/${stages.length}`;
       document.querySelector(".decision-progress-fill").style.width = `${((state.stageIndex + 1) / stages.length) * 100}%`;
@@ -2121,12 +2298,17 @@
     function updateTimerUI() {
       const timer = document.getElementById("stage-timer");
       const fill = document.getElementById("timer-fill");
-      if (!timer || !fill) return;
       const safeTime = Math.max(0, state.timeLeft);
-      timer.textContent = `00:${String(safeTime).padStart(2, "0")}`;
-      fill.style.width = `${(safeTime / 60) * 100}%`;
-      fill.classList.toggle("warn", safeTime <= 20 && safeTime > 10);
-      fill.classList.toggle("danger", safeTime <= 10);
+      const formatted = `00:${String(safeTime).padStart(2, "0")}`;
+      if (timer) timer.textContent = formatted;
+      if (fill) {
+        fill.style.width = `${(safeTime / 60) * 100}%`;
+        fill.classList.toggle("warn", safeTime <= 20 && safeTime > 10);
+        fill.classList.toggle("danger", safeTime <= 10);
+      }
+      document.querySelectorAll(".phone-stage-timer").forEach((item) => {
+        item.textContent = formatted;
+      });
     }
 
     function renderDecisionActions(stageId) {
@@ -2135,13 +2317,15 @@
 
     function renderPhone(stageId) {
       const product = state.selectedProduct || state.feedProducts[0];
+      if (stageId === "detail") return renderDetailPage(product);
+      if (stageId === "checkout") return renderCheckoutPage(product);
+      if (stageId === "review") return renderReviewPage(product);
       const stagePanel = renderStagePanel(stageId, product);
       return `
         <div class="cart-layout">
-          <div class="cart-tabs"><span>推荐</span><span>闪购</span><span>补贴</span><span>同城</span><span>收藏</span></div>
+          ${renderPhoneStatus(stageId)}
           <div class="cart-search-row"><div class="cart-search"><span>⌕</span><span>搜索商品、优惠或店铺</span><b>搜索</b></div></div>
           ${stagePanel}
-          <div class="cart-table-head"><span></span><span>商品信息</span><span>单价</span><span>数量</span><span>小计</span></div>
           <div class="cart-items">
             ${state.feedProducts.map((item, index) => renderCartRow(item, stageId === "feed", index)).join("")}
           </div>
@@ -2153,26 +2337,35 @@
       `;
     }
 
+    function renderPhoneStatus(stageId) {
+      const stage = stages[state.stageIndex];
+      const shortText = {
+        feed: "浏览推荐",
+        popup: "降价提醒",
+        detail: "商品详情",
+        checkout: "确认订单",
+        review: "提交前确认"
+      }[stageId] || stage.title;
+      return `
+        <div class="phone-stage-status">
+          <span class="stage-chip">⏱ <span>${shortText}</span></span>
+          <span class="phone-stage-timer">${document.getElementById("stage-timer")?.textContent || "01:00"}</span>
+        </div>
+      `;
+    }
+
     function renderStagePanel(stageId, product) {
       if (stageId === "feed") {
         return `
-          <div class="app-panel" style="margin:0 22px 12px;border-color:#f2ccb7;background:#fff8f3;">
-            <strong>今日推荐</strong>
-            <p class="muted">下面是系统为你推荐的商品。可以点开一个，也可以继续逛。</p>
-            <div class="inline-actions">
-              <button class="app-btn" type="button" data-action="feed_skip">继续逛</button>
-              <button class="app-btn primary-inline" type="button" data-action="open_product" data-product="${product.id}">点开默认推荐</button>
-            </div>
-          </div>
+          <div class="phone-notice">选一个你此刻最想点开的商品，或继续浏览。</div>
         `;
       }
       if (stageId === "popup") {
         return `
-          <div class="app-panel" style="margin:0 22px 12px;border-color:#ffd0b4;background:#fff7f2;">
-            <strong style="color:#ff5d18">降价消息</strong>
-            <p>你刚刚浏览的「${product.name}」出现降价提醒。当前价格保留还剩 09:58。</p>
-            <span class="badge">限时价格</span>
-            <div class="inline-actions">
+          <div class="phone-alert">
+            <div class="phone-alert-title">⏰ 降价提醒</div>
+            <p>「${product.name}」出现新价格，当前价格保留 09:58。</p>
+            <div class="inline-actions compact">
               <button class="app-btn primary-inline" type="button" data-action="popup_view">马上看降价</button>
               <button class="app-btn" type="button" data-action="popup_later">稍后再说</button>
               <button class="app-btn" type="button" data-action="popup_close">关闭提醒</button>
@@ -2180,52 +2373,113 @@
           </div>
         `;
       }
-      if (stageId === "detail") {
-        return `
-          <div class="app-panel" style="margin:0 22px 12px;">
-            <strong>商品评价</strong>
-            <p>4.8 分。多数评价认为性价比不错，也有人提醒要看清规格。</p>
-            <strong>优惠说明</strong>
-            <p class="muted">当前补贴价会在倒计时结束后恢复，部分服务将在结算页显示。</p>
-            <div class="inline-actions">
-              <button class="app-btn primary-inline" type="button" data-action="detail_buy">立即购买</button>
-              <button class="app-btn" type="button" data-action="detail_review">看评价</button>
-              <button class="app-btn" type="button" data-action="detail_rule">看规则</button>
-              <button class="app-btn" type="button" data-action="detail_cart">加购物车</button>
+      return "";
+    }
+
+    function renderDetailPage(product) {
+      return `
+        ${renderPhoneStatus("detail")}
+        <div class="detail-page">
+          <div class="detail-hero">
+            <div class="detail-art">${productArt(product.category)}</div>
+            <div class="detail-copy">
+              <div class="detail-price">¥${product.price}</div>
+              <div class="detail-name">${product.name}</div>
+              <div class="detail-meta">${shortCategoryName(product.category)} · ${product.interest ? "近期接触类别" : "推荐类别"} · 已售 ${120 + product.price}</div>
             </div>
           </div>
-        `;
-      }
-      if (stageId === "checkout") {
-        const pressure = budgetPressure(product.price);
-        return `
-          <div class="app-panel" style="margin:0 22px 12px;">
-            <strong>订单明细</strong>
-            <p>商品 ¥${product.price}，运费 ¥0，优惠 -¥12</p>
-            <p style="color:#ff5d18;font-weight:800;">✓ 默认选中：购物保障服务 ¥19</p>
-            <div class="budget-bar"><div class="budget-fill" style="width:${pressure}%"></div></div>
-            <p class="muted">本次消费约占你月可支配金额的 ${pressure}%</p>
-            <div class="inline-actions">
-              <button class="app-btn primary-inline" type="button" data-action="checkout_keep">直接提交</button>
-              <button class="app-btn" type="button" data-action="checkout_cancel">取消服务</button>
-              <button class="app-btn" type="button" data-action="checkout_info">服务说明</button>
-              <button class="app-btn" type="button" data-action="checkout_back">返回购物车</button>
+          <div class="detail-section">
+            <strong>评价</strong>
+            <p>多数评价认为质感不错，也有人提醒要看清规格和售后说明。</p>
+          </div>
+          <div class="detail-section">
+            <strong>活动</strong>
+            <p>当前价格有时间限制，部分服务会在结算页显示。</p>
+          </div>
+          <div class="phone-action-bar">
+            <button class="app-btn" type="button" data-action="detail_review">看评价</button>
+            <button class="app-btn" type="button" data-action="detail_rule">看规则</button>
+            <button class="app-btn" type="button" data-action="detail_cart">加入购物车</button>
+            <button class="app-btn primary-inline" type="button" data-action="detail_buy">立即购买</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderCheckoutPage(product) {
+      const pressure = budgetPressure(product.price);
+      const finalPrice = product.price + 19;
+      return `
+        ${renderPhoneStatus("checkout")}
+        <div class="checkout-page">
+          <div class="order-card order-address">
+            <span>⌖</span>
+            <span>模拟地址 90 号<br><span class="muted">匿名用户</span></span>
+            <span>›</span>
+          </div>
+          <div class="order-card">
+            <div class="cart-store">优选小店 ›</div>
+            <div class="order-product">
+              <span class="order-thumb">${productArt(product.category)}</span>
+              <span>
+                <span class="order-name">${product.name}</span>
+                <span class="cart-badges">
+                  <span class="cart-badge">${product.pressureLabel}</span>
+                  <span class="cart-badge">${shortCategoryName(product.category)}</span>
+                </span>
+              </span>
+              <span class="order-price">¥${product.price}</span>
             </div>
           </div>
-        `;
-      }
+          <div class="order-card">
+            <div class="order-row"><span>配送</span><span>预计明天送达</span></div>
+            <div class="order-row warning"><span>附加服务</span><span>已默认选择 · ¥19</span></div>
+            <div class="order-row"><span>备注</span><span>无备注</span></div>
+            <div class="order-row"><span>预算占比</span><span>${pressure}%</span></div>
+          </div>
+          <div class="order-card">
+            <div class="order-row"><span>商品金额</span><span>¥${product.price}</span></div>
+            <div class="order-row"><span>附加服务</span><span>¥19</span></div>
+            <div class="order-row"><span>合计</span><span style="color:#ff5d18;font-weight:950;">¥${finalPrice}</span></div>
+          </div>
+          <div class="phone-action-bar">
+            <button class="app-btn" type="button" data-action="checkout_cancel">取消服务</button>
+            <button class="app-btn" type="button" data-action="checkout_info">服务说明</button>
+            <button class="app-btn" type="button" data-action="checkout_back">返回</button>
+            <button class="app-btn primary-inline" type="button" data-action="checkout_keep">提交 ¥${finalPrice}</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderReviewPage(product) {
       const pressure = Math.min(96, budgetPressure(product.price) + 24);
       return `
-        <div class="app-panel" style="margin:0 22px 12px;border-color:#f4c7c7;background:#fff8f8;">
-          <strong style="color:#b83232">购买前确认</strong>
-          <p>整体评分较高，但部分评价提到“和描述有差距”“售后处理较慢”。</p>
-          <div class="budget-bar"><div class="budget-fill" style="width:${pressure}%;background:#d94a3b"></div></div>
-          <p>如果继续提交，预算压力将接近上限。</p>
-          <div class="inline-actions">
-            <button class="app-btn primary-inline" type="button" data-action="review_submit">继续提交</button>
-            <button class="app-btn" type="button" data-action="review_more">查看更多评价</button>
+        ${renderPhoneStatus("review")}
+        <div class="checkout-page">
+          <div class="order-card">
+            <strong style="color:#b83232">提交前提醒</strong>
+            <p>部分评价提到“和描述有差距”“售后处理较慢”。</p>
+          </div>
+          <div class="order-card">
+            <div class="order-product">
+              <span class="order-thumb">${productArt(product.category)}</span>
+              <span>
+                <span class="order-name">${product.name}</span>
+                <span class="detail-meta">当前选择仍会占用较多预算</span>
+              </span>
+              <span class="order-price">¥${product.price}</span>
+            </div>
+          </div>
+          <div class="order-card">
+            <div class="budget-bar"><div class="budget-fill" style="width:${pressure}%;background:#d94a3b"></div></div>
+            <p class="muted">预算压力 ${pressure}%</p>
+          </div>
+          <div class="phone-action-bar">
+            <button class="app-btn" type="button" data-action="review_more">看评价</button>
             <button class="app-btn" type="button" data-action="review_cheaper">换低规格</button>
             <button class="app-btn" type="button" data-action="review_stop">暂时不买</button>
+            <button class="app-btn primary-inline" type="button" data-action="review_submit">继续提交</button>
           </div>
         </div>
       `;
