@@ -3059,6 +3059,26 @@
       try { document.execCommand("copy"); } catch (error) {}
     }
 
+    document.addEventListener("click", (event) => {
+      const control = event.target.closest("button, [role='button']");
+      if (!control) return;
+      const isGameControl = document.body.classList.contains("game-active");
+      if (!isGameControl && !control.matches("#consent-accept, #enter-game")) return;
+      const label = (control.textContent || control.getAttribute("aria-label") || "")
+        .replace(/\s+/g, " ")
+        .trim()
+        .slice(0, 80);
+      trackEvent({
+        eventType: "ui_click",
+        stage: state.currentStep || (control.id === "consent-accept" ? "consent" : "home"),
+        action: "click_control",
+        elementId: control.id || control.dataset.action || control.dataset.value || control.getAttribute("role") || "button",
+        choiceValue: control.dataset.value || control.dataset.action || null,
+        decisionTimeMs: elapsedMs(state.screenEnteredAt),
+        metadata: { control_label: label }
+      });
+    }, true);
+
     document.getElementById("research-toggle").addEventListener("click", () => {
       const panel = document.getElementById("research-panel");
       const open = panel.classList.toggle("open");
