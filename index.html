@@ -1982,7 +1982,6 @@
       selectedProduct: null,
       feedProducts: [],
       events: [],
-      miniAnswer: null,
       timerId: null,
       timeLeft: SHOP_STAGE_SECONDS,
       lastFeedback: "",
@@ -2841,7 +2840,6 @@
     function startMiniGame() {
       const a = Math.floor(Math.random() * 8) + 3;
       const b = Math.floor(Math.random() * 8) + 2;
-      state.miniAnswer = a + b;
       document.getElementById("mini-feedback").textContent = state.lastFeedback || "上一轮操作已完成。";
       document.getElementById("mini-question").textContent = `快速心算：${a} + ${b} = ?`;
       document.getElementById("mini-input").value = "";
@@ -3172,7 +3170,7 @@
     });
 
     document.getElementById("mini-input").addEventListener("input", (event) => {
-      document.getElementById("mini-next").disabled = Number(event.target.value) !== state.miniAnswer;
+      document.getElementById("mini-next").disabled = event.target.value.trim() === "";
     });
     document.getElementById("mini-input").addEventListener("change", (event) => {
       const answer = event.target.value.trim();
@@ -3184,7 +3182,7 @@
         elementId: "mini-input",
         choiceValue: answer,
         decisionTimeMs: elapsedMs(state.miniStartedAt),
-        metadata: { correct: Number(answer) === state.miniAnswer, after_round: state.stageIndex + 1 }
+        metadata: { after_round: state.stageIndex + 1 }
       });
     });
     document.getElementById("mini-next").addEventListener("click", () => {
