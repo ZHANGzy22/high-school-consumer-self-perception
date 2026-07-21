@@ -1764,7 +1764,7 @@
               </div>
               <aside class="decision-panel" aria-label="本轮操作面板">
                 <h3 class="decision-title" id="decision-title">第 1 轮：购物选择</h3>
-                <div class="decision-timer" id="stage-timer">60</div>
+                <div class="decision-timer" id="stage-timer">00:30</div>
                 <div class="timer-track" aria-hidden="true"><div class="timer-fill" id="timer-fill"></div></div>
                 <p class="decision-task" id="stage-task">在左侧购物页面里直接选择你的下一步操作。</p>
                 <div class="decision-actions" id="decision-actions"></div>
@@ -1966,6 +1966,9 @@
       "演出 / 电影 / 线下活动": [39, 79, 99]
     };
 
+    const SHOP_STAGE_SECONDS = 30;
+    const SHOP_URGENT_SECONDS = 5;
+
     const state = {
       profileIndex: 0,
       profile: { categories: [] },
@@ -1981,7 +1984,7 @@
       events: [],
       miniAnswer: null,
       timerId: null,
-      timeLeft: 60,
+      timeLeft: SHOP_STAGE_SECONDS,
       lastFeedback: "",
       sessionId: null,
       sessionReady: false,
@@ -2511,14 +2514,14 @@
         action: "show_shopping_stage",
         elementId: `round-${state.stageIndex + 1}`,
         product: state.selectedProduct || state.feedProducts[0],
-        timeRemainingSeconds: 60,
+        timeRemainingSeconds: SHOP_STAGE_SECONDS,
         metadata: { round_number: state.stageIndex + 1, round_title: stage.title }
       });
     }
 
     function startStageTimer() {
       stopStageTimer();
-      state.timeLeft = 60;
+      state.timeLeft = SHOP_STAGE_SECONDS;
       state.stageStartedAt = performance.now();
       updateTimerUI();
       state.timerId = window.setInterval(() => {
@@ -2544,9 +2547,9 @@
       const formatted = `00:${String(safeTime).padStart(2, "0")}`;
       if (timer) timer.textContent = formatted;
       if (fill) {
-        fill.style.width = `${(safeTime / 60) * 100}%`;
-        fill.classList.toggle("warn", safeTime <= 20 && safeTime > 10);
-        fill.classList.toggle("danger", safeTime <= 10);
+        fill.style.width = `${(safeTime / SHOP_STAGE_SECONDS) * 100}%`;
+        fill.classList.remove("warn");
+        fill.classList.toggle("danger", safeTime <= SHOP_URGENT_SECONDS);
       }
       document.querySelectorAll(".phone-stage-timer").forEach((item) => {
         item.textContent = formatted;
@@ -2583,7 +2586,7 @@
       return `
         <div class="phone-stage-status">
           <span class="stage-chip">⏱ <span>剩余时间</span></span>
-          <span class="phone-stage-timer">${document.getElementById("stage-timer")?.textContent || "01:00"}</span>
+          <span class="phone-stage-timer">${document.getElementById("stage-timer")?.textContent || "00:30"}</span>
         </div>
       `;
     }
@@ -3219,7 +3222,7 @@
       state.feedProducts = [];
       state.events = [];
       state.lastFeedback = "";
-      state.timeLeft = 60;
+      state.timeLeft = SHOP_STAGE_SECONDS;
       state.sessionId = null;
       state.sessionReady = false;
       state.databaseError = null;
