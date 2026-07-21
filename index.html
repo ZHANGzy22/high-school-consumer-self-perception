@@ -6,22 +6,25 @@
   <title>高中生消费自我认知与模拟选择差异</title>
   <style>
     :root {
-      --bg: #f3f5f0;
+      --bg: #f6f4ef;
       --paper: #ffffff;
-      --panel: #f9faf7;
-      --text: #202124;
-      --muted: #626a73;
-      --line: #dde2e6;
-      --accent: #1f7a5a;
-      --accent-dark: #165a43;
-      --accent-soft: #e8f4ed;
+      --panel: #fbfaf6;
+      --text: #1f2328;
+      --muted: #68707a;
+      --line: #e3e0d8;
+      --accent: #f05a18;
+      --accent-dark: #b94210;
+      --accent-soft: #fff1e8;
+      --trust: #1f7a5a;
+      --trust-dark: #165a43;
+      --trust-soft: #e8f4ed;
       --warn: #9a5b18;
       --warn-soft: #fff5e6;
       --danger: #9b2c2c;
       --danger-soft: #fff0f0;
       --blue: #245b9d;
       --blue-soft: #edf4ff;
-      --shadow: 0 18px 45px rgba(30, 38, 50, 0.08);
+      --shadow: 0 18px 45px rgba(38, 31, 24, 0.08);
       --orange: #ff641f;
       --orange-dark: #df4f12;
     }
@@ -40,14 +43,14 @@
     }
 
     body.consent-pending main { display: none; }
-    body.game-active { background: #eef3ed; }
+    body.game-active { background: #f7f1e9; }
 
     .consent-screen {
       min-height: 100vh;
       display: grid;
       place-items: center;
       padding: 22px;
-      background: var(--bg);
+      background: linear-gradient(180deg, #f8f5ef, #f1f5ee);
     }
     body:not(.consent-pending) .consent-screen { display: none; }
     .consent-card {
@@ -75,14 +78,14 @@
       border-radius: 8px;
       background: #f4fbf7;
     }
-    .consent-list strong { color: var(--accent-dark); }
+    .consent-list strong { color: var(--trust-dark); }
     .consent-icon, .card-icon, .step-icon {
       display: inline-grid;
       place-items: center;
       flex: 0 0 auto;
       border-radius: 999px;
-      background: var(--accent-soft);
-      color: var(--accent-dark);
+      background: var(--trust-soft);
+      color: var(--trust-dark);
       font-weight: 900;
       line-height: 1;
     }
@@ -138,8 +141,8 @@
       border-radius: 0;
       box-shadow: none;
       background:
-        radial-gradient(circle at 20% 8%, rgba(31,122,90,0.10), transparent 28%),
-        linear-gradient(180deg, #eef5ef, #f8faf7);
+        radial-gradient(circle at 20% 8%, rgba(240,90,24,0.10), transparent 28%),
+        linear-gradient(180deg, #fff6ef, #f7f2ea);
     }
     .overview-section { order: 3; }
     #research-section { order: 4; }
@@ -165,11 +168,11 @@
       display: grid;
       place-items: center;
       padding: 18px;
-      border: 1px solid #d9e4dc;
+      border: 1px solid #ead8cc;
       border-radius: 14px;
       background:
-        radial-gradient(circle at 20% 15%, rgba(31,122,90,0.16), transparent 30%),
-        linear-gradient(135deg, #f7fbf8, #fff7ee);
+        radial-gradient(circle at 20% 15%, rgba(240,90,24,0.14), transparent 30%),
+        linear-gradient(135deg, #fff8f3, #f8f4ec);
     }
     .mock-phone {
       width: min(320px, 100%);
@@ -214,9 +217,9 @@
     .mock-result {
       margin-top: 12px;
       padding: 10px;
-      border: 1px solid #bad8c6;
+      border: 1px solid #f2ccb7;
       border-radius: 10px;
-      background: #f4fbf7;
+      background: var(--accent-soft);
       color: var(--accent-dark);
       font-size: 13px;
       font-weight: 800;
@@ -233,19 +236,19 @@
       align-items: center;
       gap: 9px;
       padding: 12px;
-      border: 1px solid #bad8c6;
+      border: 1px solid #f2ccb7;
       border-radius: 8px;
-      background: #f4fbf7;
+      background: var(--accent-soft);
       color: var(--accent-dark);
       font-weight: 700;
     }
-    .step-icon { width: 30px; height: 30px; background: #fff; border: 1px solid #bad8c6; }
+    .step-icon { width: 30px; height: 30px; background: #fff; border: 1px solid #f2ccb7; }
     .callout {
       margin-top: 22px;
       padding: 16px 18px;
-      border: 1px solid #bad8c6;
+      border: 1px solid #f2ccb7;
       border-radius: 8px;
-      background: #f4fbf7;
+      background: var(--accent-soft);
     }
     .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
     .card { min-height: 100%; padding: 15px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }
@@ -314,7 +317,7 @@
       margin: 0 auto;
       padding: 14px 20px;
       border-bottom: 0;
-      background: rgba(238, 243, 237, 0.92);
+      background: rgba(247, 241, 233, 0.92);
       backdrop-filter: blur(14px);
     }
     .tool-body { padding: 24px; }
@@ -409,7 +412,7 @@
       gap: 16px;
       margin-top: 16px;
       padding: 16px;
-      border: 1px solid #bad8c6;
+      border: 1px solid #f0c7b1;
       border-radius: 14px;
       background: #fff;
     }
@@ -434,19 +437,56 @@
       font-weight: 700;
     }
     .bubble-grid {
+      max-width: 780px;
+      min-height: 430px;
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 16px;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin: 18px auto 2px;
+      padding: 18px;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(240, 90, 24, 0.09), transparent 26%),
+        radial-gradient(circle at 82% 70%, rgba(36, 91, 157, 0.08), transparent 26%),
+        #fffdf9;
     }
     .bubble-btn {
-      min-height: 42px;
-      display: inline-flex;
+      width: 142px;
+      height: 142px;
+      min-height: 0;
+      display: inline-grid;
       align-items: center;
-      gap: 8px;
+      justify-items: center;
+      align-content: center;
+      gap: 7px;
       border-radius: 999px;
-      padding: 9px 14px;
-      font-weight: 750;
+      padding: 14px;
+      border-color: rgba(240, 90, 24, 0.20);
+      background:
+        radial-gradient(circle at 32% 24%, rgba(255,255,255,0.9), transparent 34%),
+        linear-gradient(135deg, #ffffff, #fff2e9);
+      box-shadow: 0 16px 34px rgba(45, 37, 28, 0.08);
+      color: #28313a;
+      font-size: 15px;
+      font-weight: 850;
+      line-height: 1.25;
+      text-align: center;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    }
+    .bubble-btn span { display: block; font-size: 34px; line-height: 1; }
+    .bubble-btn:nth-child(2), .bubble-btn:nth-child(7) { width: 168px; height: 168px; }
+    .bubble-btn:nth-child(4), .bubble-btn:nth-child(9) { width: 126px; height: 126px; }
+    .bubble-btn:nth-child(5) { width: 154px; height: 154px; }
+    .bubble-btn:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 20px 42px rgba(45, 37, 28, 0.12); }
+    .bubble-btn.selected {
+      border-color: var(--accent);
+      background:
+        radial-gradient(circle at 32% 24%, rgba(255,255,255,0.85), transparent 34%),
+        linear-gradient(135deg, #ff7a2b, #f05a18);
+      color: #fff;
+      box-shadow: 0 18px 42px rgba(240, 90, 24, 0.22);
     }
     .scale-list {
       display: grid;
@@ -531,7 +571,7 @@
     .shopping-surface,
     .decision-panel {
       overflow: hidden;
-      border: 1px solid #dde4df;
+      border: 1px solid #eaded5;
       border-radius: 22px;
       background: #fff;
       box-shadow: 0 20px 44px rgba(20, 27, 38, 0.10);
@@ -541,6 +581,7 @@
       min-height: 720px;
       max-width: 520px;
       flex-direction: column;
+      animation: surfaceIn 0.35s ease both;
     }
     .shop-app-bar {
       display: flex;
@@ -571,7 +612,7 @@
       grid-template-rows: auto auto auto 1fr auto;
       min-height: 0;
       flex: 1;
-      background: #f6f7f4;
+      background: #f7f3ed;
     }
     .cart-tabs {
       display: flex;
@@ -651,9 +692,15 @@
       color: var(--text);
       text-align: left;
       box-shadow: 0 8px 20px rgba(20, 27, 38, 0.05);
+      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease, background 0.16s ease;
     }
     .cart-item.clickable { cursor: pointer; }
-    .cart-item.clickable:hover { background: #fbfdfb; }
+    .cart-item.clickable:hover {
+      border-color: rgba(240, 90, 24, 0.35);
+      background: #fffaf6;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px rgba(20, 27, 38, 0.08);
+    }
     .cart-radio {
       width: 24px;
       height: 24px;
@@ -664,8 +711,8 @@
     }
     .cart-product-main { display: flex; align-items: flex-start; gap: 16px; min-width: 0; }
     .cart-thumb {
-      width: 110px;
-      height: 110px;
+      width: 116px;
+      height: 116px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -673,15 +720,15 @@
       gap: 5px;
       flex: 0 0 auto;
       border-radius: 18px;
-      background: linear-gradient(135deg, #f0f4f1, #fbf7ef);
+      background: linear-gradient(135deg, #fff7ed, #f4f7fb);
       color: #436356;
       font-size: 12px;
       font-weight: 850;
       text-align: center;
     }
     .product-art {
-      width: 72px;
-      height: 72px;
+      width: 82px;
+      height: 82px;
       display: block;
       filter: drop-shadow(0 8px 10px rgba(31, 42, 52, 0.10));
     }
@@ -694,10 +741,10 @@
       display: inline-flex;
       align-items: center;
       padding: 2px 7px;
-      border: 1px solid #c9dfcf;
+      border: 1px solid #f2ccb7;
       border-radius: 6px;
       color: var(--accent-dark);
-      background: #f5fbf7;
+      background: #fff8f3;
       font-size: 12px;
       font-weight: 700;
     }
@@ -743,11 +790,15 @@
       flex-direction: column;
       padding: 24px;
       max-width: 340px;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(14px);
+      animation: panelIn 0.35s ease 0.05s both;
     }
     .decision-title { text-align: center; font-size: 25px; font-weight: 950; }
     .decision-timer { margin-top: 18px; color: var(--accent); text-align: center; font-size: 52px; font-weight: 950; letter-spacing: 0; line-height: 1; }
     .decision-task { margin: 12px 0 18px; text-align: center; color: #333b44; font-size: 17px; font-weight: 750; }
     .decision-actions { display: grid; gap: 12px; }
+    .decision-actions:empty { display: none; }
     .decision-btn {
       min-height: 58px;
       display: flex;
@@ -770,9 +821,9 @@
     .decision-note {
       margin-top: 18px;
       padding: 12px;
-      border: 1px solid #cfe3d5;
+      border: 1px solid #f2ccb7;
       border-radius: 10px;
-      background: #f6fbf7;
+      background: var(--accent-soft);
       color: var(--accent-dark);
       font-size: 13px;
       font-weight: 700;
@@ -793,7 +844,7 @@
       flex: 1;
       overflow: hidden;
       border-radius: 999px;
-      background: #e5ebe7;
+      background: #eee3d8;
     }
     .decision-progress-fill {
       width: 60%;
@@ -987,6 +1038,22 @@
       margin-top: 12px;
       padding-top: 4px;
     }
+    .inline-actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 9px;
+      margin-top: 14px;
+    }
+    .inline-actions .app-btn {
+      min-height: 48px;
+      text-align: center;
+      font-weight: 850;
+    }
+    .inline-actions .primary-inline {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #fff;
+    }
     .app-actions .app-btn:first-child { border-color: #ff6b21; background: #ff6b21; color: #fff; font-weight: 800; }
     .cart-sheet { padding: 11px; margin-bottom: 10px; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
     .cart-shop { display: flex; align-items: center; gap: 7px; padding-bottom: 9px; font-size: 13px; }
@@ -1058,8 +1125,8 @@
       padding: 22px;
       border-radius: 22px;
       background:
-        radial-gradient(circle at 22% 14%, rgba(31, 122, 90, 0.12), transparent 30%),
-        linear-gradient(180deg, #f8fbf8, #eef6f0);
+        radial-gradient(circle at 22% 14%, rgba(240, 90, 24, 0.12), transparent 30%),
+        linear-gradient(180deg, #fff9f5, #f7f0e8);
     }
     .mini-icon {
       width: 82px;
@@ -1078,9 +1145,9 @@
       max-width: 100%;
       margin-top: 0;
       padding: 12px 14px;
-      border: 1px solid #bad8c6;
+      border: 1px solid #f2ccb7;
       border-radius: 8px;
-      background: #f4fbf7;
+      background: var(--accent-soft);
       color: var(--accent-dark);
       font-weight: 700;
     }
@@ -1179,6 +1246,12 @@
       .market-tabs { gap: 13px; overflow-x: auto; padding-bottom: 10px; }
       .market-search { min-height: 44px; padding: 0 10px; font-size: 13px; }
       .market-shortcuts { grid-template-columns: repeat(2, 1fr); }
+      .bubble-grid { min-height: 0; padding: 14px 8px; gap: 10px; }
+      .bubble-btn, .bubble-btn:nth-child(2), .bubble-btn:nth-child(4), .bubble-btn:nth-child(5), .bubble-btn:nth-child(7), .bubble-btn:nth-child(9) {
+        width: 128px;
+        height: 128px;
+      }
+      .bubble-btn span { font-size: 30px; }
       .promo-strip { grid-template-columns: 1fr; }
       .feed-grid { grid-template-columns: 1fr; }
       .feed-visual { min-height: 96px; }
@@ -1210,6 +1283,7 @@
       }
       .cart-product-main { align-items: flex-start; gap: 10px; }
       .cart-thumb { width: 72px; height: 72px; }
+      .product-art { width: 56px; height: 56px; }
       .cart-bottom { padding: 12px 14px; }
       .cart-total-right { gap: 10px; }
       .cart-checkout { min-width: 96px; }
@@ -1228,6 +1302,25 @@
         box-shadow: 0 -8px 20px rgba(20, 27, 38, 0.08);
       }
       .phone-nav span { min-height: 48px; padding: 7px 2px 8px; font-size: 11px; }
+    }
+
+    @keyframes surfaceIn {
+      from { opacity: 0; transform: translateY(14px) scale(0.985); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes panelIn {
+      from { opacity: 0; transform: translateX(12px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.001ms !important;
+      }
     }
   </style>
 </head>
@@ -1447,9 +1540,9 @@
                 <h3 class="decision-title" id="decision-title">第 1 轮：购物选择</h3>
                 <div class="decision-timer" id="stage-timer">60</div>
                 <div class="timer-track" aria-hidden="true"><div class="timer-fill" id="timer-fill"></div></div>
-                <p class="decision-task" id="stage-task">请选择你最可能采取的操作</p>
+                <p class="decision-task" id="stage-task">在左侧购物页面里直接选择你的下一步操作。</p>
                 <div class="decision-actions" id="decision-actions"></div>
-                <div class="decision-note">不用想太久，按第一反应选择。</div>
+                <div class="decision-note">不用想太久，像平时逛购物软件一样点。</div>
                 <div class="decision-progress">
                   <div class="decision-progress-line">
                     <span>购物测试中</span>
@@ -2037,39 +2130,7 @@
     }
 
     function renderDecisionActions(stageId) {
-      const product = state.selectedProduct || state.feedProducts[0];
-      const actionsByStage = {
-        feed: [
-          ["open_product", "点开这个商品", true, product?.id],
-          ["feed_skip", "先不看，继续逛", false]
-        ],
-        popup: [
-          ["popup_view", "马上看降价", true],
-          ["popup_later", "稍后再说", false],
-          ["popup_close", "关闭提醒", false]
-        ],
-        detail: [
-          ["detail_buy", "立即购买", true],
-          ["detail_review", "查看更多评价", false],
-          ["detail_rule", "看清活动规则", false],
-          ["detail_cart", "加入购物车", false]
-        ],
-        checkout: [
-          ["checkout_keep", "直接提交订单", true],
-          ["checkout_cancel", "取消附加服务", false],
-          ["checkout_info", "查看服务说明", false],
-          ["checkout_back", "返回购物车", false]
-        ],
-        review: [
-          ["review_submit", "继续提交", true],
-          ["review_more", "查看更多评价", false],
-          ["review_cheaper", "选择更低规格", false],
-          ["review_stop", "暂时不买", false]
-        ]
-      };
-      return (actionsByStage[stageId] || []).map(([action, label, primary, productId]) => `
-        <button class="decision-btn ${primary ? "primary-action" : ""}" type="button" data-action="${action}" ${productId ? `data-product="${productId}"` : ""}>${label}</button>
-      `).join("");
+      return "";
     }
 
     function renderPhone(stageId) {
@@ -2095,9 +2156,13 @@
     function renderStagePanel(stageId, product) {
       if (stageId === "feed") {
         return `
-          <div class="app-panel" style="margin:0 22px 12px;border-color:#d7eadc;background:#f7fcf8;">
+          <div class="app-panel" style="margin:0 22px 12px;border-color:#f2ccb7;background:#fff8f3;">
             <strong>今日推荐</strong>
             <p class="muted">下面是系统为你推荐的商品。可以点开一个，也可以继续逛。</p>
+            <div class="inline-actions">
+              <button class="app-btn" type="button" data-action="feed_skip">继续逛</button>
+              <button class="app-btn primary-inline" type="button" data-action="open_product" data-product="${product.id}">点开默认推荐</button>
+            </div>
           </div>
         `;
       }
@@ -2107,6 +2172,11 @@
             <strong style="color:#ff5d18">降价消息</strong>
             <p>你刚刚浏览的「${product.name}」出现降价提醒。当前价格保留还剩 09:58。</p>
             <span class="badge">限时价格</span>
+            <div class="inline-actions">
+              <button class="app-btn primary-inline" type="button" data-action="popup_view">马上看降价</button>
+              <button class="app-btn" type="button" data-action="popup_later">稍后再说</button>
+              <button class="app-btn" type="button" data-action="popup_close">关闭提醒</button>
+            </div>
           </div>
         `;
       }
@@ -2117,6 +2187,12 @@
             <p>4.8 分。多数评价认为性价比不错，也有人提醒要看清规格。</p>
             <strong>优惠说明</strong>
             <p class="muted">当前补贴价会在倒计时结束后恢复，部分服务将在结算页显示。</p>
+            <div class="inline-actions">
+              <button class="app-btn primary-inline" type="button" data-action="detail_buy">立即购买</button>
+              <button class="app-btn" type="button" data-action="detail_review">看评价</button>
+              <button class="app-btn" type="button" data-action="detail_rule">看规则</button>
+              <button class="app-btn" type="button" data-action="detail_cart">加购物车</button>
+            </div>
           </div>
         `;
       }
@@ -2129,6 +2205,12 @@
             <p style="color:#ff5d18;font-weight:800;">✓ 默认选中：购物保障服务 ¥19</p>
             <div class="budget-bar"><div class="budget-fill" style="width:${pressure}%"></div></div>
             <p class="muted">本次消费约占你月可支配金额的 ${pressure}%</p>
+            <div class="inline-actions">
+              <button class="app-btn primary-inline" type="button" data-action="checkout_keep">直接提交</button>
+              <button class="app-btn" type="button" data-action="checkout_cancel">取消服务</button>
+              <button class="app-btn" type="button" data-action="checkout_info">服务说明</button>
+              <button class="app-btn" type="button" data-action="checkout_back">返回购物车</button>
+            </div>
           </div>
         `;
       }
@@ -2139,6 +2221,12 @@
           <p>整体评分较高，但部分评价提到“和描述有差距”“售后处理较慢”。</p>
           <div class="budget-bar"><div class="budget-fill" style="width:${pressure}%;background:#d94a3b"></div></div>
           <p>如果继续提交，预算压力将接近上限。</p>
+          <div class="inline-actions">
+            <button class="app-btn primary-inline" type="button" data-action="review_submit">继续提交</button>
+            <button class="app-btn" type="button" data-action="review_more">查看更多评价</button>
+            <button class="app-btn" type="button" data-action="review_cheaper">换低规格</button>
+            <button class="app-btn" type="button" data-action="review_stop">暂时不买</button>
+          </div>
         </div>
       `;
     }
