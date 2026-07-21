@@ -6,7 +6,7 @@
   <title>高中生消费自我认知与模拟选择差异</title>
   <style>
     :root {
-      --bg: #f5f6f2;
+      --bg: #f3f5f0;
       --paper: #ffffff;
       --panel: #f9faf7;
       --text: #202124;
@@ -22,6 +22,8 @@
       --blue: #245b9d;
       --blue-soft: #edf4ff;
       --shadow: 0 18px 45px rgba(30, 38, 50, 0.08);
+      --orange: #ff641f;
+      --orange-dark: #df4f12;
     }
 
     * { box-sizing: border-box; }
@@ -38,9 +40,7 @@
     }
 
     body.consent-pending main { display: none; }
-    body.game-active {
-      background: #eef5ef;
-    }
+    body.game-active { background: #eef3ed; }
 
     .consent-screen {
       min-height: 100vh;
@@ -117,9 +117,10 @@
       order: 1;
       display: grid;
       grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
-      gap: 26px;
+      gap: 28px;
       align-items: center;
-      padding: 34px;
+      padding: 36px;
+      border-radius: 14px;
     }
     .section { padding: 24px; }
     .tool { order: 2; overflow: hidden; display: none; }
@@ -157,7 +158,7 @@
       font-size: 14px;
       font-weight: 700;
     }
-    .subtitle { max-width: 860px; margin-top: 16px; color: var(--muted); font-size: 18px; }
+    .subtitle { max-width: 760px; margin-top: 16px; color: var(--muted); font-size: 18px; }
     .hero-copy { min-width: 0; }
     .hero-visual {
       min-height: 360px;
@@ -165,24 +166,32 @@
       place-items: center;
       padding: 18px;
       border: 1px solid #d9e4dc;
-      border-radius: 8px;
+      border-radius: 14px;
       background:
         radial-gradient(circle at 20% 15%, rgba(31,122,90,0.16), transparent 30%),
         linear-gradient(135deg, #f7fbf8, #fff7ee);
     }
     .mock-phone {
-      width: min(310px, 100%);
+      width: min(320px, 100%);
       padding: 14px;
       border: 1px solid #d5dbe0;
-      border-radius: 26px;
+      border-radius: 28px;
       background: #fff;
       box-shadow: 0 18px 34px rgba(20, 27, 38, 0.14);
+    }
+    .mock-status {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      color: #111827;
+      font-size: 13px;
+      font-weight: 850;
     }
     .mock-top { display: flex; justify-content: space-between; align-items: center; color: #1d2630; font-weight: 900; }
     .mock-search {
       margin: 12px 0;
       padding: 8px 10px;
-      border: 2px solid #ff6b21;
+      border: 2px solid var(--orange);
       border-radius: 12px;
       color: #69727c;
       font-size: 13px;
@@ -201,7 +210,7 @@
     .mock-product:nth-child(2) { background: linear-gradient(135deg, #fff0e8, #fffaf5); color: #b95423; }
     .mock-product:nth-child(3) { background: linear-gradient(135deg, #eef8f1, #ffffff); color: #28764c; }
     .mock-product:nth-child(4) { background: linear-gradient(135deg, #f2efff, #ffffff); color: #5d4a9e; }
-    .mock-price { display: block; margin-top: 46px; color: #ff5d18; font-size: 18px; }
+    .mock-price { display: block; margin-top: 46px; color: var(--orange); font-size: 18px; }
     .mock-result {
       margin-top: 12px;
       padding: 10px;
@@ -300,15 +309,19 @@
       position: sticky;
       top: 0;
       z-index: 4;
-      padding: 16px 24px;
-      background: rgba(251, 252, 250, 0.94);
+      align-items: center;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      border-bottom: 0;
+      background: rgba(238, 243, 237, 0.92);
       backdrop-filter: blur(14px);
     }
     .tool-body { padding: 24px; }
     body.game-active .tool-body {
-      max-width: 980px;
+      max-width: 1240px;
       margin: 0 auto;
-      padding: 28px 20px 52px;
+      padding: 18px 20px 52px;
     }
     .game-title-row {
       display: flex;
@@ -319,7 +332,7 @@
       min-height: 36px;
       padding: 7px 10px;
       border: 1px solid var(--line);
-      border-radius: 8px;
+      border-radius: 999px;
       background: #fff;
       color: var(--text);
       font-weight: 700;
@@ -338,6 +351,9 @@
       font-size: 13px;
     }
     .step-pill.active { border-color: var(--accent); background: var(--accent-soft); color: var(--accent-dark); font-weight: 700; }
+    body.game-active .stepper { min-width: 0; }
+    body.game-active .step-pill:not(.active) { display: none; }
+    body.game-active .step-pill.active::before { content: "当前："; }
     .screen { display: none; }
     .screen.active { display: block; }
 
@@ -403,22 +419,22 @@
 
     .shop-game {
       display: grid;
-      grid-template-columns: minmax(0, 1.65fr) minmax(300px, 0.72fr);
+      grid-template-columns: minmax(0, 1fr) minmax(310px, 360px);
       gap: 20px;
       align-items: stretch;
-      margin-top: 18px;
+      margin-top: 0;
     }
     .shopping-surface,
     .decision-panel {
       overflow: hidden;
       border: 1px solid #dde4df;
-      border-radius: 16px;
+      border-radius: 22px;
       background: #fff;
-      box-shadow: 0 16px 38px rgba(20, 27, 38, 0.08);
+      box-shadow: 0 20px 44px rgba(20, 27, 38, 0.10);
     }
     .shopping-surface {
       display: flex;
-      min-height: 660px;
+      min-height: 720px;
       flex-direction: column;
     }
     .shop-app-bar {
@@ -426,8 +442,8 @@
       align-items: center;
       justify-content: space-between;
       gap: 14px;
-      min-height: 68px;
-      padding: 18px 22px;
+      min-height: 74px;
+      padding: 18px 24px;
       border-bottom: 1px solid var(--line);
       background: #fff;
     }
@@ -444,33 +460,65 @@
       font-weight: 700;
     }
     .shop-tools { display: flex; gap: 10px; color: #68717d; font-size: 13px; font-weight: 750; }
-    .shop-tools span { padding: 6px 9px; border: 1px solid var(--line); border-radius: 999px; background: #fafafa; }
+    .shop-tools span { padding: 6px 10px; border: 1px solid var(--line); border-radius: 999px; background: #fafafa; }
     .cart-layout {
       display: grid;
-      grid-template-rows: auto auto 1fr auto;
+      grid-template-rows: auto auto auto 1fr auto;
       min-height: 0;
       flex: 1;
-      background: #fff;
+      background: #f6f7f4;
+    }
+    .cart-tabs {
+      display: flex;
+      gap: 18px;
+      overflow-x: auto;
+      padding: 16px 24px 6px;
+      color: #68717d;
+      white-space: nowrap;
+      font-size: 15px;
+      font-weight: 850;
+    }
+    .cart-tabs span:first-child {
+      position: relative;
+      color: #111827;
+    }
+    .cart-tabs span:first-child::after {
+      position: absolute;
+      right: 16%;
+      bottom: -6px;
+      left: 16%;
+      height: 3px;
+      content: "";
+      border-radius: 999px;
+      background: var(--orange);
     }
     .cart-search-row {
       display: flex;
-      justify-content: flex-end;
-      padding: 16px 22px 10px;
+      justify-content: stretch;
+      padding: 14px 24px 12px;
     }
     .cart-search {
-      width: min(360px, 100%);
-      min-height: 42px;
+      width: 100%;
+      min-height: 48px;
       display: flex;
       align-items: center;
       gap: 8px;
-      padding: 0 14px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
+      padding: 0 16px;
+      border: 2px solid var(--orange);
+      border-radius: 14px;
       color: #838b94;
-      background: #fbfbfb;
+      background: #fff;
+      font-weight: 750;
+    }
+    .cart-search b {
+      margin-left: auto;
+      color: #fff;
+      background: var(--orange);
+      padding: 6px 13px;
+      border-radius: 10px;
     }
     .cart-table-head {
-      display: grid;
+      display: none;
       grid-template-columns: 52px minmax(260px, 1fr) 100px 120px 100px;
       gap: 12px;
       align-items: center;
@@ -480,44 +528,53 @@
       font-size: 14px;
       font-weight: 750;
     }
-    .cart-items { overflow: auto; }
+    .cart-items {
+      display: grid;
+      gap: 12px;
+      overflow: auto;
+      padding: 0 18px 18px;
+    }
     .cart-item {
       display: grid;
-      grid-template-columns: 52px minmax(260px, 1fr) 100px 120px 100px;
-      gap: 12px;
-      align-items: center;
-      padding: 18px 22px;
-      border-bottom: 1px solid #edf0f2;
+      grid-template-columns: 34px minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: start;
+      padding: 16px;
+      border: 1px solid #e1e6e2;
+      border-radius: 18px;
       background: #fff;
       color: var(--text);
       text-align: left;
+      box-shadow: 0 8px 20px rgba(20, 27, 38, 0.05);
     }
     .cart-item.clickable { cursor: pointer; }
     .cart-item.clickable:hover { background: #fbfdfb; }
     .cart-radio {
       width: 24px;
       height: 24px;
+      margin-top: 36px;
       border: 2px solid #cfd5dc;
       border-radius: 50%;
       background: #fff;
     }
-    .cart-product-main { display: flex; align-items: center; gap: 16px; min-width: 0; }
+    .cart-product-main { display: flex; align-items: flex-start; gap: 16px; min-width: 0; }
     .cart-thumb {
-      width: 96px;
-      height: 96px;
+      width: 110px;
+      height: 110px;
       display: grid;
       place-items: center;
       flex: 0 0 auto;
-      border-radius: 10px;
+      border-radius: 18px;
       background: linear-gradient(135deg, #f0f4f1, #fbf7ef);
       color: #436356;
       font-size: 13px;
       font-weight: 850;
       text-align: center;
     }
+    .cart-thumb-icon { display: block; font-size: 30px; line-height: 1; margin-bottom: 7px; }
     .cart-product-copy { min-width: 0; }
-    .cart-store { margin-bottom: 4px; color: #1f2a34; font-size: 13px; font-weight: 850; }
-    .cart-name { display: -webkit-box; overflow: hidden; font-size: 15px; font-weight: 800; line-height: 1.45; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+    .cart-store { margin-bottom: 5px; color: #1f2a34; font-size: 14px; font-weight: 900; }
+    .cart-name { display: -webkit-box; overflow: hidden; font-size: 18px; font-weight: 850; line-height: 1.38; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
     .cart-badges { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 7px; }
     .cart-badge {
       min-height: 22px;
@@ -531,10 +588,11 @@
       font-size: 12px;
       font-weight: 700;
     }
-    .cart-price { color: #f05a18; font-size: 20px; font-weight: 900; }
+    .cart-price { color: var(--orange); font-size: 24px; font-weight: 950; line-height: 1.2; }
+    .cart-item > .cart-price:last-child { display: none; }
     .cart-stepper {
       width: fit-content;
-      display: grid;
+      display: none;
       grid-template-columns: 34px 42px 34px;
       overflow: hidden;
       border: 1px solid var(--line);
@@ -556,21 +614,21 @@
     }
     .cart-total-left { display: flex; align-items: center; gap: 10px; color: #39414b; font-weight: 800; }
     .cart-total-right { display: flex; align-items: center; gap: 18px; font-weight: 850; }
-    .cart-total-right strong { color: #f05a18; font-size: 25px; }
+    .cart-total-right strong { color: var(--orange); font-size: 25px; }
     .cart-checkout {
       min-width: 128px;
       min-height: 46px;
       display: grid;
       place-items: center;
       border-radius: 10px;
-      background: #f05a18;
+      background: var(--orange);
       color: #fff;
       font-weight: 900;
     }
     .decision-panel {
       display: flex;
       flex-direction: column;
-      padding: 22px;
+      padding: 24px;
     }
     .decision-title { text-align: center; font-size: 25px; font-weight: 950; }
     .decision-timer { margin-top: 18px; color: var(--accent); text-align: center; font-size: 52px; font-weight: 950; letter-spacing: 0; line-height: 1; }
@@ -960,20 +1018,28 @@
       .app-btn { min-height: 48px; text-align: center; font-weight: 750; }
       .cart-row { gap: 8px; }
       .shop-game { grid-template-columns: 1fr; }
-      .shopping-surface { min-height: auto; }
+      .shopping-surface {
+        min-height: 0;
+        max-height: 380px;
+      }
       .shop-app-bar { align-items: flex-start; flex-direction: column; padding: 14px; }
       .shop-app-title { font-size: 22px; }
       .shop-tools { flex-wrap: wrap; }
       .cart-search-row { padding: 12px 14px 8px; }
       .cart-table-head { display: none; }
       .cart-item {
-        grid-template-columns: 32px minmax(0, 1fr);
+        grid-template-columns: 28px minmax(0, 1fr);
         gap: 10px;
         padding: 14px;
       }
-      .cart-item > .cart-price,
       .cart-item > .cart-stepper,
       .cart-item > .cart-price:last-child { display: none; }
+      .cart-item > .cart-price {
+        display: block;
+        grid-column: 2;
+        margin-left: 82px;
+        font-size: 21px;
+      }
       .cart-product-main { align-items: flex-start; gap: 10px; }
       .cart-thumb { width: 72px; height: 72px; }
       .cart-bottom { padding: 12px 14px; }
@@ -982,6 +1048,9 @@
       .decision-panel { padding: 16px; }
       .decision-title { font-size: 21px; }
       .decision-timer { font-size: 42px; }
+      .decision-actions { gap: 8px; }
+      .decision-btn { min-height: 48px; font-size: 16px; }
+      .decision-note, .decision-progress { display: none; }
       .product-img { width: 72px; height: 72px; }
       .cart-copy strong { font-size: 14px; }
       .cart-total {
@@ -1022,24 +1091,25 @@
             <span class="tag">约 3–5 分钟</span>
             <span class="tag">不会真实付款</span>
           </div>
-          <h1>你的消费判断和实际点击一致吗？</h1>
+          <h1>测测你的消费判断准不准</h1>
           <p class="subtitle">
-            先做几个判断题，再进入一个模拟购物页。完成后，你会看到自己“以为会怎么选”和“实际点了什么”之间的差距。
+            先选几道短题，再进入一个模拟购物页面。最后你会看到：你以为自己会怎么消费，和你实际点了什么，差距在哪里。
           </p>
           <div class="hero-actions">
             <button class="primary" id="enter-game" type="button">马上开始测试</button>
             <a class="secondary" href="#research-section">查看研究说明</a>
           </div>
           <div class="quick-steps" aria-label="体验步骤">
-            <div class="quick-step"><span class="step-icon" aria-hidden="true">1</span><span>回答 9 个短问题</span></div>
-            <div class="quick-step"><span class="step-icon" aria-hidden="true">2</span><span>像逛购物软件一样点击</span></div>
-            <div class="quick-step"><span class="step-icon" aria-hidden="true">3</span><span>查看你的差距画像</span></div>
+            <div class="quick-step"><span class="step-icon" aria-hidden="true">1</span><span>先做短选择题</span></div>
+            <div class="quick-step"><span class="step-icon" aria-hidden="true">2</span><span>进入模拟购物页</span></div>
+            <div class="quick-step"><span class="step-icon" aria-hidden="true">3</span><span>查看差距画像</span></div>
           </div>
           <p class="privacy-note">这不是消费能力考试。你只需要按真实直觉选择。</p>
         </div>
         <div class="hero-visual" aria-hidden="true">
           <div class="mock-phone">
-            <div class="mock-top"><span>好价集市</span><span>模拟中</span></div>
+            <div class="mock-status"><span>9:41</span><span>5G  82%</span></div>
+            <div class="mock-top"><span>好价集市</span><span>模拟</span></div>
             <div class="mock-search">搜索商品、优惠或店铺</div>
             <div class="mock-products">
               <div class="mock-product">兴趣商品<span class="mock-price">¥79</span></div>
@@ -1127,8 +1197,8 @@
           <div class="game-title-row">
             <button class="back-home" id="back-home" type="button">← 返回首页</button>
             <div>
-              <h2 id="tool-title">开始消费判断测试</h2>
-              <p class="muted">按顺序作答即可。先回答 9 个短问题，再完成模拟购物点击，最后查看差距结果。</p>
+              <h2 id="tool-title">消费判断测试</h2>
+              <p class="muted">按直觉选择，不涉及真实付款。</p>
             </div>
           </div>
           <div class="stepper" aria-label="进度">
@@ -1143,11 +1213,11 @@
         </div>
         <div class="tool-body">
           <div class="screen active" id="screen-intro">
-            <h3>测试说明</h3>
-            <p>你将先回答几个消费判断问题，然后进入一个模拟购物页面。这里不会发生真实付款，也不会收集姓名、手机号、真实消费记录或支付信息。</p>
-            <p>系统会保存匿名回答、点击选择及结果反馈，用于课程研究。中途不想继续，可以直接关闭页面。</p>
+            <h3>开始前说明</h3>
+            <p>你会先回答几道短题，然后进入一个模拟购物页面。请按平时的直觉点击。</p>
+            <p>这里不会发生真实付款，也不会收集姓名、手机号、真实消费记录或支付信息。</p>
             <div class="callout">
-              <p><strong>怎么玩：</strong>前面每题选最接近你的答案；进入购物页面后，每轮限时 60 秒，像平时逛购物软件一样点开、查看、加入购物车、取消服务或暂时不买。</p>
+              <p><strong>怎么玩：</strong>每一轮只做一个选择。看到商品、弹窗、评价或结算页时，像平时逛购物软件一样点。</p>
             </div>
             <div class="actions">
               <button class="primary" id="start-btn" type="button">开始第一题</button>
@@ -1213,7 +1283,7 @@
                 <div class="timer-track" aria-hidden="true"><div class="timer-fill" id="timer-fill"></div></div>
                 <p class="decision-task" id="stage-task">请选择你最可能采取的操作</p>
                 <div class="decision-actions" id="decision-actions"></div>
-                <div class="decision-note">匿名记录中。你的选择只用于课堂研究。</div>
+                <div class="decision-note">不用想太久，按第一反应选择。</div>
                 <div class="decision-progress">
                   <div class="decision-progress-line">
                     <span class="done">基础信息</span>
@@ -1473,11 +1543,11 @@
     const scaleLabels = ["非常不符合", "比较不符合", "不确定", "比较符合", "非常符合"];
 
     const stages = [
-      { id: "feed", title: "商品流", desc: "页面展示多个类别的商品，你可以自然选择想点开的一个。", task: "本轮任务：从商品流里完成一个选择" },
-      { id: "popup", title: "降价提醒", desc: "你刚刚看过的商品出现降价弹窗。", task: "本轮任务：处理这个降价提醒" },
-      { id: "detail", title: "商品详情", desc: "你进入商品详情页，可以查看评价、规则或进入购买。", task: "本轮任务：决定下一步查看或购买动作" },
-      { id: "checkout", title: "结算页", desc: "结算页出现默认勾选的额外服务，最终价格发生变化。", task: "本轮任务：检查结算页并完成一个操作" },
-      { id: "review", title: "评价与预算提醒", desc: "提交前出现评价冲突和预算压力提示。", task: "本轮任务：做出最终处理" }
+      { id: "feed", title: "推荐页", desc: "页面展示多个类别的商品，你可以自然选择想点开的一个。", task: "你现在会点开推荐里的哪一个？" },
+      { id: "popup", title: "降价弹窗", desc: "你刚刚看过的商品出现降价弹窗。", task: "突然弹出降价提醒，你会怎么处理？" },
+      { id: "detail", title: "详情页", desc: "你进入商品详情页，可以查看评价、规则或进入购买。", task: "在详情页里，你下一步会做什么？" },
+      { id: "checkout", title: "结算页", desc: "结算页出现默认勾选的额外服务，最终价格发生变化。", task: "结算页出现默认服务，你会怎么处理？" },
+      { id: "review", title: "提交前", desc: "提交前出现评价冲突和预算压力提示。", task: "提交前看到提醒，你最后会怎么选？" }
     ];
 
     const actionFeedback = {
@@ -1759,23 +1829,23 @@
       const product = state.selectedProduct || state.feedProducts[0];
       const actionsByStage = {
         feed: [
-          ["open_product", "查看推荐商品", true, product?.id],
-          ["feed_skip", "暂时不看这些推荐", false]
+          ["open_product", "点开这个商品", true, product?.id],
+          ["feed_skip", "先不看，继续逛", false]
         ],
         popup: [
-          ["popup_view", "立即查看降价", true],
+          ["popup_view", "马上看降价", true],
           ["popup_later", "稍后再说", false],
           ["popup_close", "关闭提醒", false]
         ],
         detail: [
           ["detail_buy", "立即购买", true],
           ["detail_review", "查看更多评价", false],
-          ["detail_rule", "查看活动规则", false],
+          ["detail_rule", "看清活动规则", false],
           ["detail_cart", "加入购物车", false]
         ],
         checkout: [
-          ["checkout_keep", "保留默认服务并提交", true],
-          ["checkout_cancel", "取消默认服务", false],
+          ["checkout_keep", "直接提交订单", true],
+          ["checkout_cancel", "取消附加服务", false],
           ["checkout_info", "查看服务说明", false],
           ["checkout_back", "返回购物车", false]
         ],
@@ -1796,7 +1866,8 @@
       const stagePanel = renderStagePanel(stageId, product);
       return `
         <div class="cart-layout">
-          <div class="cart-search-row"><div class="cart-search"><span>⌕</span><span>搜索商品、优惠或店铺</span></div></div>
+          <div class="cart-tabs"><span>推荐</span><span>闪购</span><span>补贴</span><span>同城</span><span>收藏</span></div>
+          <div class="cart-search-row"><div class="cart-search"><span>⌕</span><span>搜索商品、优惠或店铺</span><b>搜索</b></div></div>
           ${stagePanel}
           <div class="cart-table-head"><span></span><span>商品信息</span><span>单价</span><span>数量</span><span>小计</span></div>
           <div class="cart-items">
@@ -1814,8 +1885,8 @@
       if (stageId === "feed") {
         return `
           <div class="app-panel" style="margin:0 22px 12px;border-color:#d7eadc;background:#f7fcf8;">
-            <strong>本轮提示</strong>
-            <p class="muted">商品列表根据你前面选择的类别生成。你可以点开一个商品，也可以在右侧选择暂时不看。</p>
+            <strong>今日推荐</strong>
+            <p class="muted">下面是系统为你推荐的商品。可以点开一个，也可以继续逛。</p>
           </div>
         `;
       }
@@ -1823,7 +1894,7 @@
         return `
           <div class="app-panel" style="margin:0 22px 12px;border-color:#ffd0b4;background:#fff7f2;">
             <strong style="color:#ff5d18">降价消息</strong>
-            <p>你刚刚浏览的「${product.name}」出现降价提醒。保留当前价格还剩 09:58。</p>
+            <p>你刚刚浏览的「${product.name}」出现降价提醒。当前价格保留还剩 09:58。</p>
             <span class="badge">限时价格</span>
           </div>
         `;
@@ -1834,7 +1905,7 @@
             <strong>商品评价</strong>
             <p>4.8 分 · 多数评价认为性价比不错，也有人提醒要看清规格。</p>
             <strong>优惠说明</strong>
-            <p class="muted">当前补贴价会在倒计时结束后恢复，部分服务会在结算页默认选中。</p>
+            <p class="muted">当前补贴价会在倒计时结束后恢复，部分服务将在结算页显示。</p>
           </div>
         `;
       }
@@ -1866,7 +1937,7 @@
         <button class="cart-item ${clickable ? "clickable" : ""}" type="button" ${clickable ? `data-action="open_product" data-product="${product.id}"` : ""}>
           <span class="cart-radio"></span>
           <span class="cart-product-main">
-            <span class="cart-thumb">${product.category}</span>
+            <span class="cart-thumb"><span class="cart-thumb-icon">${categoryIcon(product.category)}</span>${product.category}</span>
             <span class="cart-product-copy">
               <span class="cart-store">${["清风生活馆", "优选小店", "元气零食铺", "学习用品社"][index % 4]} ›</span>
               <span class="cart-name">${product.name}</span>
@@ -1885,6 +1956,21 @@
 
     function cartTotal() {
       return state.feedProducts.reduce((sum, product) => sum + product.price, 0);
+    }
+
+    function categoryIcon(category) {
+      const icons = {
+        "零食饮料": "🍵",
+        "文具 / 学习用品": "✏️",
+        "服饰 / 饰品": "👕",
+        "数码配件": "🎧",
+        "游戏 / 会员 / 虚拟商品": "🎮",
+        "美妆护肤": "🧴",
+        "盲盒 / 周边 / IP 商品": "🎁",
+        "运动 / 户外用品": "🏃",
+        "演出 / 电影 / 线下活动": "🎟️"
+      };
+      return icons[category] || "🛒";
     }
 
     function budgetPressure(price) {
