@@ -2426,7 +2426,7 @@
       state.sessionId = crypto.randomUUID();
       await supabaseInsert("sessions", {
         id: state.sessionId,
-        app_version: "mvp-3-telemetry",
+        app_version: "mvp-3-official",
         profile: state.profile,
         self_assessment: {
           consumer_self_perception: state.self,
@@ -2907,9 +2907,9 @@
         detail: scoreDimension("detail"),
         time: scoreDimension("time")
       };
-      const hasAction = (prefix) => state.events.some((event) => event.action.startsWith(prefix));
       const hasExact = (action) => state.events.some((event) => event.action === action);
       const hasInterestPath = state.events.some((event) => event.interestProduct);
+      const checkedInformation = hasExact("detail_review") || hasExact("detail_rule") || hasExact("review_more");
       const gaps = [
         {
           title: "预算控制差距",
@@ -2920,8 +2920,8 @@
         },
         {
           title: "信息核查差距",
-          good: !(dims.info >= 4 && !hasAction("detail_") && !hasExact("review_more")),
-          text: dims.info >= 4 && !hasAction("detail_") && !hasExact("review_more")
+          good: !(dims.info >= 4 && !checkedInformation),
+          text: dims.info >= 4 && !checkedInformation
             ? "前测显示你倾向核查信息，模拟中没有明显查看评价或规则。"
             : "你在信息核查方面至少进行过一次查看或暂停。"
         },
@@ -2954,7 +2954,7 @@
         mismatchCount,
         profileLabel: profileLabel(dims)
       };
-      document.getElementById("result-summary").innerHTML = `本次 demo 识别出 <strong>${mismatchCount}</strong> 个较明显的自我认知与模拟选择差距。结果只用于研究记录。`;
+      document.getElementById("result-summary").innerHTML = `本次测试识别出 <strong>${mismatchCount}</strong> 个较明显的自我认知与模拟选择差距。结果只用于研究记录。`;
       document.getElementById("result-grid").innerHTML = gaps.map((gap) => `
         <div class="result-card ${gap.good ? "good" : "mismatch"}">
           <h3>${gap.title}</h3>
@@ -2996,6 +2996,15 @@
       try {
         const awarenessPre = meanScore(state.awarenessPre);
         const awarenessPost = meanScore(state.awarenessPost);
+        trackEvent({
+          eventType: "feedback_submit",
+          stage: "result_feedback",
+          action: "submit_result_feedback_attempt",
+          elementId: "save-feedback",
+          decisionTimeMs: elapsedMs(state.screenEnteredAt),
+          metadata: { label_fit: state.labelFit }
+        });
+        await state.telemetryWrite;
         await supabaseInsert("result_feedback", {
           session_id: state.sessionId,
           awareness_pre: Number(awarenessPre.toFixed(2)),
@@ -3021,15 +3030,6 @@
           influence_notes: document.getElementById("influence-notes").value.trim() || null
         });
         state.feedbackSubmitted = true;
-        trackEvent({
-          eventType: "feedback_submit",
-          stage: "result_feedback",
-          action: "submit_result_feedback",
-          elementId: "save-feedback",
-          decisionTimeMs: elapsedMs(state.screenEnteredAt),
-          metadata: { label_fit: state.labelFit }
-        });
-        await state.telemetryWrite;
         submitButton.textContent = "反馈已提交";
         setSaveStatus("匿名结果反馈已保存。", "success");
       } catch (error) {

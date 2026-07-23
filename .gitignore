@@ -1,0 +1,47 @@
+.vercel
+
+# macOS local metadata
+.DS_Store
+
+# Node / package build artifacts
+node_modules/
+package.json
+package-lock.json
+
+# Temporary build and generated output folders
+tmp/
+output/
+outputs/
+projects/
+
+# Presentation-generation scratch packages and inspection files
+gpt-ppt-package*/
+gpt-ppt-package*.zip
+*.inspect.ndjson
+
+# Local generated slide drafts and copied templates
+midterm-filled-in-teacher-template.pptx
+midterm-image-stable.pptx
+midterm-ppt-master.pptx
+midterm-template-redone.pptx
+midterm-template.pptx
+teacher-template-original.pptx
+中期答辩PPT_模板Image固定版.pptx
+中期答辩PPT_模板版.pptx
+
+# Local scripts used only for one-off slide generation
+make-*.js
+make-*.mjs
+push-to-github.sh
+
+# Local data practice / temporary audit exports
+*.csv
+*.tsv
+*.xlsx
+
+# Local plugin / skill cache
+.agents/
+skills-lock.json
+# Local archives moved out of the repo should stay local
+_local_archive/
+local-archive/

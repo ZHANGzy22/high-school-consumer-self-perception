@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<style>text{font-family:Arial, Helvetica, sans-serif;fill:#050315}.muted{fill:#5f5b73}.title{font-weight:700;font-size:25px}.subtitle{font-size:15px}.axis{stroke:#050315;stroke-width:1.2}.grid{stroke:#d8d6ea;stroke-width:1}.label{font-size:14px}.tick{font-size:12px;fill:#5f5b73}.note{font-size:12px;fill:#5f5b73}</style>
+<text x="48" y="46" class="title">Figure 1. Pre-test and post-test self-rating</text>
+<text x="48" y="73" class="subtitle muted">Mean score on a 1-5 scale; lower post-test rating is interpreted in the discussion as recalibration.</text>
+<line x1="120" y1="440.0" x2="830" y2="440.0" class="grid"/>
+<text x="102" y="444.0" text-anchor="end" class="tick">0</text>
+<line x1="120" y1="371.0" x2="830" y2="371.0" class="grid"/>
+<text x="102" y="375.0" text-anchor="end" class="tick">1</text>
+<line x1="120" y1="302.0" x2="830" y2="302.0" class="grid"/>
+<text x="102" y="306.0" text-anchor="end" class="tick">2</text>
+<line x1="120" y1="233.0" x2="830" y2="233.0" class="grid"/>
+<text x="102" y="237.0" text-anchor="end" class="tick">3</text>
+<line x1="120" y1="164.0" x2="830" y2="164.0" class="grid"/>
+<text x="102" y="168.0" text-anchor="end" class="tick">4</text>
+<line x1="120" y1="95.0" x2="830" y2="95.0" class="grid"/>
+<text x="102" y="99.0" text-anchor="end" class="tick">5</text>
+<line x1="120" y1="95" x2="120" y2="440" class="axis"/>
+<line x1="120" y1="440" x2="830" y2="440" class="axis"/>
+<rect x="310" y="176.4" width="140" height="263.6" fill="#4a46d9"/>
+<text x="380.0" y="162.4" text-anchor="middle" font-size="21" font-weight="700">3.82</text>
+<text x="380.0" y="472" text-anchor="middle" class="label">Pre-test</text>
+<rect x="590" y="217.3" width="140" height="222.7" fill="#9a97f7"/>
+<text x="660.0" y="203.3" text-anchor="middle" font-size="21" font-weight="700">3.23</text>
+<text x="660.0" y="472" text-anchor="middle" class="label">Post-test</text>
+<text x="450.0" y="515" text-anchor="middle" font-size="16" font-weight="700" fill="#3930ed">Mean change: -0.593 (post - pre)</text>
+</svg>
